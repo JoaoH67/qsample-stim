@@ -1,0 +1,1403 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>qsample package &#8212; qsample 2.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=27fed22d" />
+    <script src="_static/documentation_options.js?v=60dbed4a"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="qsample-package">
+<h1>qsample package<a class="headerlink" href="#qsample-package" title="Link to this heading">¶</a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Link to this heading">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="qsample.sampler.html">qsample.sampler package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="qsample.sampler.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qsample.sampler.html#module-qsample.sampler.direct">qsample.sampler.direct module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="qsample.sampler.html#qsample.sampler.direct.DirectSampler"><code class="docutils literal notranslate"><span class="pre">DirectSampler</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sampler.html#qsample.sampler.direct.DirectSampler.run"><code class="docutils literal notranslate"><span class="pre">DirectSampler.run()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sampler.html#qsample.sampler.direct.DirectSampler.save"><code class="docutils literal notranslate"><span class="pre">DirectSampler.save()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sampler.html#qsample.sampler.direct.DirectSampler.stats"><code class="docutils literal notranslate"><span class="pre">DirectSampler.stats()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="qsample.sampler.html#module-qsample.sampler.experimental">qsample.sampler.experimental module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="qsample.sampler.html#qsample.sampler.experimental.SubsetSamplerERU"><code class="docutils literal notranslate"><span class="pre">SubsetSamplerERU</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sampler.html#qsample.sampler.experimental.SubsetSamplerERU.wplus1"><code class="docutils literal notranslate"><span class="pre">SubsetSamplerERU.wplus1()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="qsample.sampler.html#module-qsample.sampler.subset">qsample.sampler.subset module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="qsample.sampler.html#qsample.sampler.subset.SubsetSampler"><code class="docutils literal notranslate"><span class="pre">SubsetSampler</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sampler.html#qsample.sampler.subset.SubsetSampler.err_params_to_matrix"><code class="docutils literal notranslate"><span class="pre">SubsetSampler.err_params_to_matrix()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sampler.html#qsample.sampler.subset.SubsetSampler.run"><code class="docutils literal notranslate"><span class="pre">SubsetSampler.run()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sampler.html#qsample.sampler.subset.SubsetSampler.save"><code class="docutils literal notranslate"><span class="pre">SubsetSampler.save()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sampler.html#qsample.sampler.subset.SubsetSampler.stats"><code class="docutils literal notranslate"><span class="pre">SubsetSampler.stats()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="qsample.sampler.html#module-qsample.sampler.tree">qsample.sampler.tree module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="qsample.sampler.html#qsample.sampler.tree.Constant"><code class="docutils literal notranslate"><span class="pre">Constant</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="qsample.sampler.html#qsample.sampler.tree.Delta"><code class="docutils literal notranslate"><span class="pre">Delta</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sampler.html#qsample.sampler.tree.Delta.value"><code class="docutils literal notranslate"><span class="pre">Delta.value</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="qsample.sampler.html#qsample.sampler.tree.Tree"><code class="docutils literal notranslate"><span class="pre">Tree</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sampler.html#qsample.sampler.tree.Tree.add"><code class="docutils literal notranslate"><span class="pre">Tree.add()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sampler.html#qsample.sampler.tree.Tree.delta"><code class="docutils literal notranslate"><span class="pre">Tree.delta</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sampler.html#qsample.sampler.tree.Tree.draw"><code class="docutils literal notranslate"><span class="pre">Tree.draw()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sampler.html#qsample.sampler.tree.Tree.path_prod"><code class="docutils literal notranslate"><span class="pre">Tree.path_prod()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sampler.html#qsample.sampler.tree.Tree.path_var"><code class="docutils literal notranslate"><span class="pre">Tree.path_var()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sampler.html#qsample.sampler.tree.Tree.path_weight"><code class="docutils literal notranslate"><span class="pre">Tree.path_weight()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sampler.html#qsample.sampler.tree.Tree.remove"><code class="docutils literal notranslate"><span class="pre">Tree.remove()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sampler.html#qsample.sampler.tree.Tree.root_leaf_rate"><code class="docutils literal notranslate"><span class="pre">Tree.root_leaf_rate</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sampler.html#qsample.sampler.tree.Tree.root_leaf_var"><code class="docutils literal notranslate"><span class="pre">Tree.root_leaf_var</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sampler.html#qsample.sampler.tree.Tree.subtree_sum"><code class="docutils literal notranslate"><span class="pre">Tree.subtree_sum()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sampler.html#qsample.sampler.tree.Tree.value"><code class="docutils literal notranslate"><span class="pre">Tree.value()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sampler.html#qsample.sampler.tree.Tree.var"><code class="docutils literal notranslate"><span class="pre">Tree.var()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="qsample.sampler.html#qsample.sampler.tree.Variable"><code class="docutils literal notranslate"><span class="pre">Variable</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sampler.html#qsample.sampler.tree.Variable.rate"><code class="docutils literal notranslate"><span class="pre">Variable.rate</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sampler.html#qsample.sampler.tree.Variable.var"><code class="docutils literal notranslate"><span class="pre">Variable.var</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="qsample.sampler.html#qsample.sampler.tree.draw_tree"><code class="docutils literal notranslate"><span class="pre">draw_tree()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="qsample.sampler.html#module-qsample.sampler">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="qsample.sim.html">qsample.sim package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="qsample.sim.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qsample.sim.html#module-qsample.sim.mixin">qsample.sim.mixin module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="qsample.sim.html#qsample.sim.mixin.CircuitRunnerMixin"><code class="docutils literal notranslate"><span class="pre">CircuitRunnerMixin</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sim.html#qsample.sim.mixin.CircuitRunnerMixin.run"><code class="docutils literal notranslate"><span class="pre">CircuitRunnerMixin.run()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="qsample.sim.html#module-qsample.sim.stabilizer">qsample.sim.stabilizer module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="qsample.sim.html#qsample.sim.stabilizer.ChpSimulator"><code class="docutils literal notranslate"><span class="pre">ChpSimulator</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sim.html#qsample.sim.stabilizer.ChpSimulator.cnot"><code class="docutils literal notranslate"><span class="pre">ChpSimulator.cnot()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sim.html#qsample.sim.stabilizer.ChpSimulator.hadamard"><code class="docutils literal notranslate"><span class="pre">ChpSimulator.hadamard()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sim.html#qsample.sim.stabilizer.ChpSimulator.measure"><code class="docutils literal notranslate"><span class="pre">ChpSimulator.measure()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sim.html#qsample.sim.stabilizer.ChpSimulator.phase"><code class="docutils literal notranslate"><span class="pre">ChpSimulator.phase()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="qsample.sim.html#qsample.sim.stabilizer.MeasureResult"><code class="docutils literal notranslate"><span class="pre">MeasureResult</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="qsample.sim.html#qsample.sim.stabilizer.StabilizerSimulator"><code class="docutils literal notranslate"><span class="pre">StabilizerSimulator</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sim.html#qsample.sim.stabilizer.StabilizerSimulator.CNOT"><code class="docutils literal notranslate"><span class="pre">StabilizerSimulator.CNOT()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sim.html#qsample.sim.stabilizer.StabilizerSimulator.H"><code class="docutils literal notranslate"><span class="pre">StabilizerSimulator.H()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sim.html#qsample.sim.stabilizer.StabilizerSimulator.I"><code class="docutils literal notranslate"><span class="pre">StabilizerSimulator.I()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sim.html#qsample.sim.stabilizer.StabilizerSimulator.MSd"><code class="docutils literal notranslate"><span class="pre">StabilizerSimulator.MSd()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sim.html#qsample.sim.stabilizer.StabilizerSimulator.Q"><code class="docutils literal notranslate"><span class="pre">StabilizerSimulator.Q()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sim.html#qsample.sim.stabilizer.StabilizerSimulator.Qd"><code class="docutils literal notranslate"><span class="pre">StabilizerSimulator.Qd()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sim.html#qsample.sim.stabilizer.StabilizerSimulator.R"><code class="docutils literal notranslate"><span class="pre">StabilizerSimulator.R()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sim.html#qsample.sim.stabilizer.StabilizerSimulator.Rd"><code class="docutils literal notranslate"><span class="pre">StabilizerSimulator.Rd()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sim.html#qsample.sim.stabilizer.StabilizerSimulator.S"><code class="docutils literal notranslate"><span class="pre">StabilizerSimulator.S()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sim.html#qsample.sim.stabilizer.StabilizerSimulator.Sd"><code class="docutils literal notranslate"><span class="pre">StabilizerSimulator.Sd()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sim.html#qsample.sim.stabilizer.StabilizerSimulator.X"><code class="docutils literal notranslate"><span class="pre">StabilizerSimulator.X()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sim.html#qsample.sim.stabilizer.StabilizerSimulator.Y"><code class="docutils literal notranslate"><span class="pre">StabilizerSimulator.Y()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sim.html#qsample.sim.stabilizer.StabilizerSimulator.Z"><code class="docutils literal notranslate"><span class="pre">StabilizerSimulator.Z()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sim.html#qsample.sim.stabilizer.StabilizerSimulator.init"><code class="docutils literal notranslate"><span class="pre">StabilizerSimulator.init()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sim.html#qsample.sim.stabilizer.StabilizerSimulator.measure"><code class="docutils literal notranslate"><span class="pre">StabilizerSimulator.measure()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="qsample.sim.html#qsample.sim.stabilizer.pauli_product_phase"><code class="docutils literal notranslate"><span class="pre">pauli_product_phase()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="qsample.sim.html#module-qsample.sim.statevector">qsample.sim.statevector module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="qsample.sim.html#qsample.sim.statevector.MeasureResult"><code class="docutils literal notranslate"><span class="pre">MeasureResult</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="qsample.sim.html#qsample.sim.statevector.StatevectorSimulator"><code class="docutils literal notranslate"><span class="pre">StatevectorSimulator</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sim.html#qsample.sim.statevector.StatevectorSimulator.CNOT"><code class="docutils literal notranslate"><span class="pre">StatevectorSimulator.CNOT()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sim.html#qsample.sim.statevector.StatevectorSimulator.H"><code class="docutils literal notranslate"><span class="pre">StatevectorSimulator.H()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sim.html#qsample.sim.statevector.StatevectorSimulator.I"><code class="docutils literal notranslate"><span class="pre">StatevectorSimulator.I()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sim.html#qsample.sim.statevector.StatevectorSimulator.MSd"><code class="docutils literal notranslate"><span class="pre">StatevectorSimulator.MSd()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sim.html#qsample.sim.statevector.StatevectorSimulator.Q"><code class="docutils literal notranslate"><span class="pre">StatevectorSimulator.Q()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sim.html#qsample.sim.statevector.StatevectorSimulator.Qd"><code class="docutils literal notranslate"><span class="pre">StatevectorSimulator.Qd()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sim.html#qsample.sim.statevector.StatevectorSimulator.R"><code class="docutils literal notranslate"><span class="pre">StatevectorSimulator.R()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sim.html#qsample.sim.statevector.StatevectorSimulator.Rd"><code class="docutils literal notranslate"><span class="pre">StatevectorSimulator.Rd()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sim.html#qsample.sim.statevector.StatevectorSimulator.Rx"><code class="docutils literal notranslate"><span class="pre">StatevectorSimulator.Rx()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sim.html#qsample.sim.statevector.StatevectorSimulator.Ry"><code class="docutils literal notranslate"><span class="pre">StatevectorSimulator.Ry()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sim.html#qsample.sim.statevector.StatevectorSimulator.Rz"><code class="docutils literal notranslate"><span class="pre">StatevectorSimulator.Rz()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sim.html#qsample.sim.statevector.StatevectorSimulator.S"><code class="docutils literal notranslate"><span class="pre">StatevectorSimulator.S()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sim.html#qsample.sim.statevector.StatevectorSimulator.Sd"><code class="docutils literal notranslate"><span class="pre">StatevectorSimulator.Sd()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sim.html#qsample.sim.statevector.StatevectorSimulator.T"><code class="docutils literal notranslate"><span class="pre">StatevectorSimulator.T()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sim.html#qsample.sim.statevector.StatevectorSimulator.Td"><code class="docutils literal notranslate"><span class="pre">StatevectorSimulator.Td()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sim.html#qsample.sim.statevector.StatevectorSimulator.X"><code class="docutils literal notranslate"><span class="pre">StatevectorSimulator.X()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sim.html#qsample.sim.statevector.StatevectorSimulator.Y"><code class="docutils literal notranslate"><span class="pre">StatevectorSimulator.Y()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sim.html#qsample.sim.statevector.StatevectorSimulator.Z"><code class="docutils literal notranslate"><span class="pre">StatevectorSimulator.Z()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sim.html#qsample.sim.statevector.StatevectorSimulator.expectation"><code class="docutils literal notranslate"><span class="pre">StatevectorSimulator.expectation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sim.html#qsample.sim.statevector.StatevectorSimulator.init"><code class="docutils literal notranslate"><span class="pre">StatevectorSimulator.init()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sim.html#qsample.sim.statevector.StatevectorSimulator.measure"><code class="docutils literal notranslate"><span class="pre">StatevectorSimulator.measure()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="qsample.sim.html#module-qsample.sim.stimsimulator">qsample.sim.stimsimulator module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="qsample.sim.html#qsample.sim.stimsimulator.MeasureResult"><code class="docutils literal notranslate"><span class="pre">MeasureResult</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="qsample.sim.html#module-qsample.sim">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
+</section>
+<section id="module-qsample.callbacks">
+<span id="qsample-callbacks-module"></span><h2>qsample.callbacks module<a class="headerlink" href="#module-qsample.callbacks" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="qsample.callbacks.Callback">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qsample.callbacks.</span></span><span class="sig-name descname"><span class="pre">Callback</span></span><a class="headerlink" href="#qsample.callbacks.Callback" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Callback super class: All callbacks must inherit this class.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.callbacks.Callback.on_circuit_begin">
+<span class="sig-name descname"><span class="pre">on_circuit_begin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.callbacks.Callback.on_circuit_begin" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.callbacks.Callback.on_circuit_end">
+<span class="sig-name descname"><span class="pre">on_circuit_end</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.callbacks.Callback.on_circuit_end" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.callbacks.Callback.on_protocol_begin">
+<span class="sig-name descname"><span class="pre">on_protocol_begin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.callbacks.Callback.on_protocol_begin" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.callbacks.Callback.on_protocol_end">
+<span class="sig-name descname"><span class="pre">on_protocol_end</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.callbacks.Callback.on_protocol_end" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.callbacks.Callback.on_sampler_begin">
+<span class="sig-name descname"><span class="pre">on_sampler_begin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.callbacks.Callback.on_sampler_begin" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.callbacks.Callback.on_sampler_end">
+<span class="sig-name descname"><span class="pre">on_sampler_end</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.callbacks.Callback.on_sampler_end" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.callbacks.Callback.store">
+<span class="sig-name descname"><span class="pre">store</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ext</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.callbacks.Callback.store" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="qsample.callbacks.CallbackList">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qsample.callbacks.</span></span><span class="sig-name descname"><span class="pre">CallbackList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sampler</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callbacks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.callbacks.CallbackList" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Manages execution of all specified callbacks</p>
+<section id="attributes">
+<h3>Attributes<a class="headerlink" href="#attributes" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>sampler<span class="classifier">Sampler</span></dt><dd><p>Reference to sampler class for callbacks to access information
+during sampling process</p>
+</dd>
+<dt>callbacks<span class="classifier">list</span></dt><dd><p>List of user-specified callback instances</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.callbacks.CallbackList.on_circuit_begin">
+<span class="sig-name descname"><span class="pre">on_circuit_begin</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qsample.callbacks.CallbackList.on_circuit_begin" title="Link to this definition">¶</a></dt>
+<dd><p>Called by sampler at beginning of each circuit</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.callbacks.CallbackList.on_circuit_end">
+<span class="sig-name descname"><span class="pre">on_circuit_end</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">local_vars</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.callbacks.CallbackList.on_circuit_end" title="Link to this definition">¶</a></dt>
+<dd><p>Called by sampler at end of each circuit</p>
+<section id="parameters">
+<h4>Parameters<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>local_vars<span class="classifier">dict</span></dt><dd><p>Dictionary of all local variables at state after circuit execution</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.callbacks.CallbackList.on_protocol_begin">
+<span class="sig-name descname"><span class="pre">on_protocol_begin</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qsample.callbacks.CallbackList.on_protocol_begin" title="Link to this definition">¶</a></dt>
+<dd><p>Called by sampler at beginning of each protocol</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.callbacks.CallbackList.on_protocol_end">
+<span class="sig-name descname"><span class="pre">on_protocol_end</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qsample.callbacks.CallbackList.on_protocol_end" title="Link to this definition">¶</a></dt>
+<dd><p>Called by sampler at end of each protocol</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.callbacks.CallbackList.on_sampler_begin">
+<span class="sig-name descname"><span class="pre">on_sampler_begin</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qsample.callbacks.CallbackList.on_sampler_begin" title="Link to this definition">¶</a></dt>
+<dd><p>Called by sampler at beginning of sampling process</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.callbacks.CallbackList.on_sampler_end">
+<span class="sig-name descname"><span class="pre">on_sampler_end</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qsample.callbacks.CallbackList.on_sampler_end" title="Link to this definition">¶</a></dt>
+<dd><p>Called by sampler at end of sampling process</p>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="qsample.callbacks.CollectStatsPerShot">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qsample.callbacks.</span></span><span class="sig-name descname"><span class="pre">CollectStatsPerShot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.callbacks.CollectStatsPerShot" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qsample.callbacks.Callback" title="qsample.callbacks.Callback"><code class="xref py py-class docutils literal notranslate"><span class="pre">Callback</span></code></a></p>
+<p>Store information of Sampler.stats() with each shot and plot
+each statistic as as function of shots after sampler ends</p>
+<blockquote>
+<div><p>Attributes</p>
+</div></blockquote>
+<dl class="simple">
+<dt>data<span class="classifier">list</span></dt><dd><p>For recording each statistic per shot</p>
+</dd>
+<dt>n_calls<span class="classifier">int</span></dt><dd><p>Number of protocol calls (can deviate from <cite>n_shots</cite> due to early stopping)</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.callbacks.CollectStatsPerShot.on_protocol_end">
+<span class="sig-name descname"><span class="pre">on_protocol_end</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sampler</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.callbacks.CollectStatsPerShot.on_protocol_end" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="qsample.callbacks.PathProducts">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qsample.callbacks.</span></span><span class="sig-name descname"><span class="pre">PathProducts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.callbacks.PathProducts" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qsample.callbacks.Callback" title="qsample.callbacks.Callback"><code class="xref py py-class docutils literal notranslate"><span class="pre">Callback</span></code></a></p>
+<p>Callback to plot distribution of sampled paths</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.callbacks.PathProducts.on_sampler_end">
+<span class="sig-name descname"><span class="pre">on_sampler_end</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sampler</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.callbacks.PathProducts.on_sampler_end" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.callbacks.PathProducts.plot">
+<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">names</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">marked</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.callbacks.PathProducts.plot" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="qsample.callbacks.PlotERVPerShot">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qsample.callbacks.</span></span><span class="sig-name descname"><span class="pre">PlotERVPerShot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.callbacks.PlotERVPerShot" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qsample.callbacks.Callback" title="qsample.callbacks.Callback"><code class="xref py py-class docutils literal notranslate"><span class="pre">Callback</span></code></a></p>
+<p>Callback to plot statistics about ERV values and selected subsets due to ERV</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.callbacks.PlotERVPerShot.on_circuit_end">
+<span class="sig-name descname"><span class="pre">on_circuit_end</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sampler</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">local_vars</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.callbacks.PlotERVPerShot.on_circuit_end" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.callbacks.PlotERVPerShot.on_protocol_begin">
+<span class="sig-name descname"><span class="pre">on_protocol_begin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.callbacks.PlotERVPerShot.on_protocol_begin" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.callbacks.PlotERVPerShot.on_protocol_end">
+<span class="sig-name descname"><span class="pre">on_protocol_end</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.callbacks.PlotERVPerShot.on_protocol_end" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.callbacks.PlotERVPerShot.on_sampler_end">
+<span class="sig-name descname"><span class="pre">on_sampler_end</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.callbacks.PlotERVPerShot.on_sampler_end" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="qsample.callbacks.PlotStats">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qsample.callbacks.</span></span><span class="sig-name descname"><span class="pre">PlotStats</span></span><a class="headerlink" href="#qsample.callbacks.PlotStats" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qsample.callbacks.Callback" title="qsample.callbacks.Callback"><code class="xref py py-class docutils literal notranslate"><span class="pre">Callback</span></code></a></p>
+<p>Plot sampler statistics at end of sampling process</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.callbacks.PlotStats.on_sampler_end">
+<span class="sig-name descname"><span class="pre">on_sampler_end</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sampler</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.callbacks.PlotStats.on_sampler_end" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="qsample.callbacks.PrintERVPerShot">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qsample.callbacks.</span></span><span class="sig-name descname"><span class="pre">PrintERVPerShot</span></span><a class="headerlink" href="#qsample.callbacks.PrintERVPerShot" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qsample.callbacks.Callback" title="qsample.callbacks.Callback"><code class="xref py py-class docutils literal notranslate"><span class="pre">Callback</span></code></a></p>
+<p>Callback to print ERV statistics per shot</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.callbacks.PrintERVPerShot.on_circuit_end">
+<span class="sig-name descname"><span class="pre">on_circuit_end</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sampler</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">local_vars</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.callbacks.PrintERVPerShot.on_circuit_end" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.callbacks.PrintERVPerShot.on_protocol_begin">
+<span class="sig-name descname"><span class="pre">on_protocol_begin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sampler</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.callbacks.PrintERVPerShot.on_protocol_begin" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.callbacks.PrintERVPerShot.on_protocol_end">
+<span class="sig-name descname"><span class="pre">on_protocol_end</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sampler</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.callbacks.PrintERVPerShot.on_protocol_end" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="qsample.callbacks.RelStdTarget">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qsample.callbacks.</span></span><span class="sig-name descname"><span class="pre">RelStdTarget</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_delta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.callbacks.RelStdTarget" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qsample.callbacks.Callback" title="qsample.callbacks.Callback"><code class="xref py py-class docutils literal notranslate"><span class="pre">Callback</span></code></a></p>
+<p>Callback to stop sampling when the relative standard
+deviation target <cite>target</cite> is reached</p>
+<section id="id1">
+<h3>Attributes<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>target<span class="classifier">float</span></dt><dd><p>The relative standard deviation target value</p>
+</dd>
+<dt>include_delta<span class="classifier">bool</span></dt><dd><p>Flag if in the comparision delta is also included</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.callbacks.RelStdTarget.on_protocol_end">
+<span class="sig-name descname"><span class="pre">on_protocol_end</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sampler</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.callbacks.RelStdTarget.on_protocol_end" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</section>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="qsample.callbacks.StatsPerShot">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qsample.callbacks.</span></span><span class="sig-name descname"><span class="pre">StatsPerShot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.callbacks.StatsPerShot" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qsample.callbacks.Callback" title="qsample.callbacks.Callback"><code class="xref py py-class docutils literal notranslate"><span class="pre">Callback</span></code></a></p>
+<p>Store information of <cite>Sampler.stats()</cite> with each shot and plot
+each statistic as as function of shots after sampler ends</p>
+<section id="id2">
+<h3>Attributes<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>log_dir<span class="classifier">str or None</span></dt><dd><p>The directory to which recorded stats are written (if desired)</p>
+</dd>
+<dt>data<span class="classifier">list</span></dt><dd><p>For recording each statistic per shot</p>
+</dd>
+<dt>n_calls<span class="classifier">int</span></dt><dd><p>Number of protocol calls (can deviate from <cite>n_shots</cite> due to early stopping)</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.callbacks.StatsPerShot.on_protocol_end">
+<span class="sig-name descname"><span class="pre">on_protocol_end</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sampler</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.callbacks.StatsPerShot.on_protocol_end" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.callbacks.StatsPerShot.on_sampler_end">
+<span class="sig-name descname"><span class="pre">on_sampler_end</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.callbacks.StatsPerShot.on_sampler_end" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</section>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="qsample.callbacks.StopAtNoHits">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qsample.callbacks.</span></span><span class="sig-name descname"><span class="pre">StopAtNoHits</span></span><a class="headerlink" href="#qsample.callbacks.StopAtNoHits" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qsample.callbacks.Callback" title="qsample.callbacks.Callback"><code class="xref py py-class docutils literal notranslate"><span class="pre">Callback</span></code></a></p>
+<p>Callback for DirectSampler only</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.callbacks.StopAtNoHits.on_protocol_end">
+<span class="sig-name descname"><span class="pre">on_protocol_end</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sampler</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.callbacks.StopAtNoHits.on_protocol_end" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="qsample.callbacks.SubsetRates">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qsample.callbacks.</span></span><span class="sig-name descname"><span class="pre">SubsetRates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.callbacks.SubsetRates" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qsample.callbacks.Callback" title="qsample.callbacks.Callback"><code class="xref py py-class docutils literal notranslate"><span class="pre">Callback</span></code></a></p>
+<p>Callback to plot progression of each fail path as a function of shots</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.callbacks.SubsetRates.on_protocol_end">
+<span class="sig-name descname"><span class="pre">on_protocol_end</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sampler</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.callbacks.SubsetRates.on_protocol_end" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.callbacks.SubsetRates.on_sampler_end">
+<span class="sig-name descname"><span class="pre">on_sampler_end</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sampler</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.callbacks.SubsetRates.on_sampler_end" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="qsample.callbacks.VerboseCircuitExec">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qsample.callbacks.</span></span><span class="sig-name descname"><span class="pre">VerboseCircuitExec</span></span><a class="headerlink" href="#qsample.callbacks.VerboseCircuitExec" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qsample.callbacks.Callback" title="qsample.callbacks.Callback"><code class="xref py py-class docutils literal notranslate"><span class="pre">Callback</span></code></a></p>
+<p>Callback to output detailed information about circuit selection, 
+specific fault that occured, measurement outcome and next circuit</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.callbacks.VerboseCircuitExec.on_circuit_end">
+<span class="sig-name descname"><span class="pre">on_circuit_end</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sampler</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">local_vars</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.callbacks.VerboseCircuitExec.on_circuit_end" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-qsample.circuit">
+<span id="qsample-circuit-module"></span><h2>qsample.circuit module<a class="headerlink" href="#module-qsample.circuit" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="qsample.circuit.Circuit">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qsample.circuit.</span></span><span class="sig-name descname"><span class="pre">Circuit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ticks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noisy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.circuit.Circuit" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">MutableSequence</span></code></p>
+<p>Representation of a quantum circuit</p>
+<section id="id3">
+<h3>Attributes<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>_ticks<span class="classifier">list of dict</span></dt><dd><p>List of ticks in the circuit</p>
+</dd>
+<dt>noisy<span class="classifier">bool</span></dt><dd><p>If true, circuit is subject to noise during sampling</p>
+</dd>
+<dt>ff_deterministic<span class="classifier">bool</span></dt><dd><p>If true, the measurement result of the circuit in the
+fault-free case is always deterministic</p>
+</dd>
+<dt>qubits<span class="classifier">set</span></dt><dd><p>Set of qubits “touched” by circuit</p>
+</dd>
+<dt>n_qubits<span class="classifier">int</span></dt><dd><p>Numbers of qubits “touched” by circuit</p>
+</dd>
+<dt>n_ticks<span class="classifier">int</span></dt><dd><p>Number of ticks in circuit</p>
+</dd>
+<dt>id<span class="classifier">str</span></dt><dd><p>Unique circuit identifier</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.circuit.Circuit.draw">
+<span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.circuit.Circuit.draw" title="Link to this definition">¶</a></dt>
+<dd><p>Draw the circuit</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.circuit.Circuit.from_qasm_circuit">
+<span class="sig-name descname"><span class="pre">from_qasm_circuit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qasm_str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.circuit.Circuit.from_qasm_circuit" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.circuit.Circuit.from_qiskit_circuit">
+<span class="sig-name descname"><span class="pre">from_qiskit_circuit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qc</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.circuit.Circuit.from_qiskit_circuit" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.circuit.Circuit.from_stim_circuit">
+<span class="sig-name descname"><span class="pre">from_stim_circuit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stim_str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.circuit.Circuit.from_stim_circuit" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="qsample.circuit.Circuit.id">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#qsample.circuit.Circuit.id" title="Link to this definition">¶</a></dt>
+<dd><p>Unique circuit identifier</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.circuit.Circuit.insert">
+<span class="sig-name descname"><span class="pre">insert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tick_index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tick</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.circuit.Circuit.insert" title="Link to this definition">¶</a></dt>
+<dd><p>Insert a tick into a circuit</p>
+<section id="id4">
+<h4>Parameters<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>tick_index<span class="classifier">int</span></dt><dd><p>Index at which tick is inserted (tick indices to right incremented by 1)</p>
+</dd>
+<dt>tick<span class="classifier">dict</span></dt><dd><p>Tick dictionary to insert</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="qsample.circuit.Circuit.measured_qubits">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">measured_qubits</span></span><a class="headerlink" href="#qsample.circuit.Circuit.measured_qubits" title="Link to this definition">¶</a></dt>
+<dd><p>Set of qubits measured in circuit</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="qsample.circuit.Circuit.n_measurements">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">n_measurements</span></span><a class="headerlink" href="#qsample.circuit.Circuit.n_measurements" title="Link to this definition">¶</a></dt>
+<dd><p>Number of measured qubits in the circuit</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="qsample.circuit.Circuit.n_qubits">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">n_qubits</span></span><a class="headerlink" href="#qsample.circuit.Circuit.n_qubits" title="Link to this definition">¶</a></dt>
+<dd><p>Number of qubits used in circuit</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="qsample.circuit.Circuit.n_ticks">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">n_ticks</span></span><a class="headerlink" href="#qsample.circuit.Circuit.n_ticks" title="Link to this definition">¶</a></dt>
+<dd><p>Number of ticks</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="qsample.circuit.Circuit.qubits">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">qubits</span></span><a class="headerlink" href="#qsample.circuit.Circuit.qubits" title="Link to this definition">¶</a></dt>
+<dd><p>Set of qubits used in circuit</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="qsample.circuit.Circuit.to_stim_circuit">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">to_stim_circuit</span></span><a class="headerlink" href="#qsample.circuit.Circuit.to_stim_circuit" title="Link to this definition">¶</a></dt>
+<dd><p>Cached STIM circuit</p>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qsample.circuit.draw_circuit">
+<span class="sig-prename descclassname"><span class="pre">qsample.circuit.</span></span><span class="sig-name descname"><span class="pre">draw_circuit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">circuit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.circuit.draw_circuit" title="Link to this definition">¶</a></dt>
+<dd><p>Draw circuit using <cite>latextools</cite> library</p>
+<section id="id5">
+<h3>Parameters<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>circuit<span class="classifier">Circuit</span></dt><dd><p>The circuit to draw</p>
+</dd>
+<dt>path<span class="classifier">str or None</span></dt><dd><p>The path to save the resulting image to (optional)</p>
+</dd>
+<dt>scale<span class="classifier">int</span></dt><dd><p>The scale of the image</p>
+</dd>
+</dl>
+</section>
+<section id="returns">
+<h3>Returns<a class="headerlink" href="#returns" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>drawSvg.drawing.Drawing</dt><dd><p>Image object</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qsample.circuit.unpack">
+<span class="sig-prename descclassname"><span class="pre">qsample.circuit.</span></span><span class="sig-name descname"><span class="pre">unpack</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seq</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.circuit.unpack" title="Link to this definition">¶</a></dt>
+<dd><p>Generator to unpack all values of dicts inside
+a list of dicts</p>
+<section id="id6">
+<h3>Parameters<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>seq<span class="classifier">Iterable</span></dt><dd><p>Iterable to recursively unpack</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</section>
+<section id="module-qsample.examples">
+<span id="qsample-examples-module"></span><h2>qsample.examples module<a class="headerlink" href="#module-qsample.examples" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="qsample.examples.flagged">
+<span class="sig-prename descclassname"><span class="pre">qsample.examples.</span></span><span class="sig-name descname"><span class="pre">flagged</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.examples.flagged" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qsample.examples.flagged_z_look_up_table_1">
+<span class="sig-prename descclassname"><span class="pre">qsample.examples.</span></span><span class="sig-name descname"><span class="pre">flagged_z_look_up_table_1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">z</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.examples.flagged_z_look_up_table_1" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qsample.examples.flut">
+<span class="sig-prename descclassname"><span class="pre">qsample.examples.</span></span><span class="sig-name descname"><span class="pre">flut</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f1a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f1b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f2a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f2b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f3a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f3b</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.examples.flut" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qsample.examples.hamming2">
+<span class="sig-prename descclassname"><span class="pre">qsample.examples.</span></span><span class="sig-name descname"><span class="pre">hamming2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.examples.hamming2" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qsample.examples.logErr">
+<span class="sig-prename descclassname"><span class="pre">qsample.examples.</span></span><span class="sig-name descname"><span class="pre">logErr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">out</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.examples.logErr" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qsample.examples.nft_check1">
+<span class="sig-prename descclassname"><span class="pre">qsample.examples.</span></span><span class="sig-name descname"><span class="pre">nft_check1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.examples.nft_check1" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qsample.examples.nft_check2">
+<span class="sig-prename descclassname"><span class="pre">qsample.examples.</span></span><span class="sig-name descname"><span class="pre">nft_check2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">m2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.examples.nft_check2" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qsample.examples.rep_check">
+<span class="sig-prename descclassname"><span class="pre">qsample.examples.</span></span><span class="sig-name descname"><span class="pre">rep_check</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.examples.rep_check" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qsample.examples.syn_check">
+<span class="sig-prename descclassname"><span class="pre">qsample.examples.</span></span><span class="sig-name descname"><span class="pre">syn_check</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">m2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.examples.syn_check" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-qsample.math">
+<span id="qsample-math-module"></span><h2>qsample.math module<a class="headerlink" href="#module-qsample.math" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="qsample.math.Wald_var">
+<span class="sig-prename descclassname"><span class="pre">qsample.math.</span></span><span class="sig-name descname"><span class="pre">Wald_var</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.math.Wald_var" title="Link to this definition">¶</a></dt>
+<dd><p>Wald estimation of binomial variance</p>
+<p>see Eq. C11 in paper</p>
+<section id="id7">
+<h3>Parameters<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>p<span class="classifier">float</span></dt><dd><p>Estimator of probability</p>
+</dd>
+<dt>N<span class="classifier">int</span></dt><dd><p>Sample size</p>
+</dd>
+</dl>
+</section>
+<section id="id8">
+<h3>Returns<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>float</dt><dd><p>Estimated variance of Wald CI</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qsample.math.Wilson_var">
+<span class="sig-prename descclassname"><span class="pre">qsample.math.</span></span><span class="sig-name descname"><span class="pre">Wilson_var</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.math.Wilson_var" title="Link to this definition">¶</a></dt>
+<dd><p>Wilson estimator of binomial variance</p>
+<p>The formula for the Wilson interval is:</p>
+<blockquote>
+<div><p>CI = p+z^2/(2n) pm zsqrt{pq/n + z^2/(4n^2)}/(1 + z^2/n)</p>
+</div></blockquote>
+<p>we can extract the var (z=1) as:</p>
+<blockquote>
+<div><p>Var(p) = (CI/2)^2 = (npq + 0.25) / (1 + n)^2</p>
+</div></blockquote>
+<p>see Eq. C12 in paper</p>
+<section id="id9">
+<h3>Parameters<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>p<span class="classifier">float</span></dt><dd><p>Estimator of probability</p>
+</dd>
+<dt>N<span class="classifier">int</span></dt><dd><p>Sample size</p>
+</dd>
+</dl>
+</section>
+<section id="id10">
+<h3>Returns<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>float</dt><dd><p>Estimated variance of Wilson CI</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qsample.math.binom">
+<span class="sig-prename descclassname"><span class="pre">qsample.math.</span></span><span class="sig-name descname"><span class="pre">binom</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.math.binom" title="Link to this definition">¶</a></dt>
+<dd><p>Vectorized binomial distribution: <cite>binom(k,n,p)`=`comb(n,k)</cite> p^k (1-p)^n-k</p>
+<section id="example">
+<h3>Example<a class="headerlink" href="#example" title="Link to this heading">¶</a></h3>
+<p>&gt;&gt; binom(k=[1,2], n=[3,4], p=0.1)
+[0.243 , 0.0486]</p>
+<p>see Eq. 2 in paper</p>
+</section>
+<section id="id11">
+<h3>Parameters<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>n<span class="classifier">int or list of int</span></dt><dd><p>First parameter of combination</p>
+</dd>
+<dt>k<span class="classifier">int or list of int</span></dt><dd><p>Second parameter of combination</p>
+</dd>
+<dt>p<span class="classifier">float or list of float</span></dt><dd><p>Probability</p>
+</dd>
+</dl>
+</section>
+<section id="id12">
+<h3>Returns<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>np.array</dt><dd><p>Value(s) of binomial distribution evaluated at k,n,p.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qsample.math.cartesian_product">
+<span class="sig-prename descclassname"><span class="pre">qsample.math.</span></span><span class="sig-name descname"><span class="pre">cartesian_product</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list_of_sets</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.math.cartesian_product" title="Link to this definition">¶</a></dt>
+<dd><p>Calculate cartesian product between all members of sets</p>
+<section id="id13">
+<h3>Example<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h3>
+<p>&gt;&gt; cartesian_product([{1,2}, {3,4}])
+[(1,3), (1,4), (2,3), (2,4)]</p>
+</section>
+<section id="id14">
+<h3>Parameters<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>list_of_sets<span class="classifier">list</span></dt><dd><p>List of sets between which to calculate Cartesian product</p>
+</dd>
+</dl>
+</section>
+<section id="id15">
+<h3>Returns<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>list of tuple</dt><dd><p>Cartesian products</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qsample.math.comb">
+<span class="sig-prename descclassname"><span class="pre">qsample.math.</span></span><span class="sig-name descname"><span class="pre">comb</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.math.comb" title="Link to this definition">¶</a></dt>
+<dd><p>Vectorized combination: <cite>comb(n,k)</cite> = n! / ((n-k)!k!)</p>
+<section id="id16">
+<h3>Parameters<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>n<span class="classifier">int or np.array of int</span></dt><dd><p>First parameter of combination</p>
+</dd>
+<dt>k<span class="classifier">int or np.array of int</span></dt><dd><p>Second parameter of combination</p>
+</dd>
+</dl>
+</section>
+<section id="id17">
+<h3>Returns<a class="headerlink" href="#id17" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>np.array</dt><dd><p>Combination (choose k out of n)</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qsample.math.joint_binom">
+<span class="sig-prename descclassname"><span class="pre">qsample.math.</span></span><span class="sig-name descname"><span class="pre">joint_binom</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.math.joint_binom" title="Link to this definition">¶</a></dt>
+<dd><p>Product of independent binomial distributions with
+parameters <cite>k</cite>, <cite>n</cite> and <cite>p</cite> (can be list of lists), i.e.:</p>
+<p><cite>joint_binom(k,n,p)`=`binom(k[0],n[0],p[0])`×…×`binom(k[-1],n[-1],p[-1])</cite></p>
+<p>see Eq. 26 in paper</p>
+<section id="id18">
+<h3>Example<a class="headerlink" href="#id18" title="Link to this heading">¶</a></h3>
+<p>&gt;&gt; joint_binom(k=[1,1], n=[2,2], p=[0.5,0.5])
+0.25</p>
+</section>
+<section id="id19">
+<h3>Parameters<a class="headerlink" href="#id19" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>n<span class="classifier">list of int</span></dt><dd><p>List of first parameters of combination</p>
+</dd>
+<dt>k<span class="classifier">list of int</span></dt><dd><p>List of second parameters of combination</p>
+</dd>
+<dt>p<span class="classifier">list of list, list of float, or float</span></dt><dd><p>Probability</p>
+</dd>
+</dl>
+</section>
+<section id="id20">
+<h3>Returns<a class="headerlink" href="#id20" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>np.array</dt><dd><p>Joint probability</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qsample.math.subset_cards">
+<span class="sig-prename descclassname"><span class="pre">qsample.math.</span></span><span class="sig-name descname"><span class="pre">subset_cards</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">superset</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.math.subset_cards" title="Link to this definition">¶</a></dt>
+<dd><p>Calculate cardinalities of all possible subsets of <cite>superset</cite></p>
+<section id="id21">
+<h3>Example<a class="headerlink" href="#id21" title="Link to this heading">¶</a></h3>
+<p>&gt;&gt; subset_cards({1,2,3})
+{0,1,2,3}</p>
+</section>
+<section id="id22">
+<h3>Parameters<a class="headerlink" href="#id22" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>superset<span class="classifier">set</span></dt><dd><p>Input set</p>
+</dd>
+</dl>
+</section>
+<section id="id23">
+<h3>Returns<a class="headerlink" href="#id23" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>list of int</dt><dd><p>All possible cardinalities of subsets in superset</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qsample.math.subset_probs">
+<span class="sig-prename descclassname"><span class="pre">qsample.math.</span></span><span class="sig-name descname"><span class="pre">subset_probs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">circuit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">error_model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prob</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.math.subset_probs" title="Link to this definition">¶</a></dt>
+<dd><p>Calculate occurence probability of subsets in <cite>circuit</cite> with physical
+error rate <cite>prob</cite>. <cite>error_model</cite> defines how the circuit is to be 
+partitioned before occurence probabilities are calculated.</p>
+<section id="id24">
+<h3>Example<a class="headerlink" href="#id24" title="Link to this heading">¶</a></h3>
+<p>&gt;&gt; subset_probs(qsample.examples.por, qsample.noise.E1, 0.1)
+{(0,): 0.6561,</p>
+<blockquote>
+<div><p>(1,): 0.2916,
+(2,): 0.04860000000000001,
+(3,): 0.0036000000000000008,
+(4,): 0.00010000000000000002}</p>
+</div></blockquote>
+</section>
+<section id="id25">
+<h3>Parameters<a class="headerlink" href="#id25" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>circuit<span class="classifier">Circuit</span></dt><dd><p>Circuit wrt. which subset probabilities are calculated</p>
+</dd>
+<dt>error_model<span class="classifier">ErrorModel</span></dt><dd><p>Error model by which to partition <cite>circuit</cite></p>
+</dd>
+<dt>prob<span class="classifier">float or list of float</span></dt><dd><p>Physical error probabilities</p>
+</dd>
+</dl>
+</section>
+<section id="id26">
+<h3>Returns<a class="headerlink" href="#id26" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>dict</dt><dd><p>keys: subset, values: corresponding probability</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</section>
+<section id="module-qsample.noise">
+<span id="qsample-noise-module"></span><h2>qsample.noise module<a class="headerlink" href="#module-qsample.noise" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="qsample.noise.E0">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qsample.noise.</span></span><span class="sig-name descname"><span class="pre">E0</span></span><a class="headerlink" href="#qsample.noise.E0" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qsample.noise.ErrorModel" title="qsample.noise.ErrorModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">ErrorModel</span></code></a></p>
+<p>No-Error error model</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.noise.E0.group">
+<span class="sig-name descname"><span class="pre">group</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">circuit</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.noise.E0.group" title="Link to this definition">¶</a></dt>
+<dd><p>Must be implemented by subclass</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qsample.noise.E0.groups">
+<span class="sig-name descname"><span class="pre">groups</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['0']</span></em><a class="headerlink" href="#qsample.noise.E0.groups" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.noise.E0.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.noise.E0.run" title="Link to this definition">¶</a></dt>
+<dd><p>Generate new Circuit of same length as <cite>Circuit</cite> with faults generated
+by <cite>self.generate</cite> and corresponding location for each group in fgroups.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="qsample.noise.E1">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qsample.noise.</span></span><span class="sig-name descname"><span class="pre">E1</span></span><a class="headerlink" href="#qsample.noise.E1" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qsample.noise.ErrorModel" title="qsample.noise.ErrorModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">ErrorModel</span></code></a></p>
+<p>One prob/weight for all 1- and 2-qubit gates</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.noise.E1.generate">
+<span class="sig-name descname"><span class="pre">generate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fgroups</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">circuit</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.noise.E1.generate" title="Link to this definition">¶</a></dt>
+<dd><p>Must be implemented by subclass</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.noise.E1.group">
+<span class="sig-name descname"><span class="pre">group</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">circuit</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.noise.E1.group" title="Link to this definition">¶</a></dt>
+<dd><p>Must be implemented by subclass</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qsample.noise.E1.groups">
+<span class="sig-name descname"><span class="pre">groups</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['q']</span></em><a class="headerlink" href="#qsample.noise.E1.groups" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="qsample.noise.E1_1">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qsample.noise.</span></span><span class="sig-name descname"><span class="pre">E1_1</span></span><a class="headerlink" href="#qsample.noise.E1_1" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qsample.noise.ErrorModel" title="qsample.noise.ErrorModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">ErrorModel</span></code></a></p>
+<p>One prob/weight for all 1- and 2-qubit gates and measurements</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.noise.E1_1.generate">
+<span class="sig-name descname"><span class="pre">generate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fgroups</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">circuit</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.noise.E1_1.generate" title="Link to this definition">¶</a></dt>
+<dd><p>Must be implemented by subclass</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.noise.E1_1.group">
+<span class="sig-name descname"><span class="pre">group</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">circuit</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.noise.E1_1.group" title="Link to this definition">¶</a></dt>
+<dd><p>Must be implemented by subclass</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qsample.noise.E1_1.groups">
+<span class="sig-name descname"><span class="pre">groups</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['q']</span></em><a class="headerlink" href="#qsample.noise.E1_1.groups" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="qsample.noise.E2">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qsample.noise.</span></span><span class="sig-name descname"><span class="pre">E2</span></span><a class="headerlink" href="#qsample.noise.E2" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qsample.noise.ErrorModel" title="qsample.noise.ErrorModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">ErrorModel</span></code></a></p>
+<p>Individual errors on 1-qubit and 2-qubit gates.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.noise.E2.generate">
+<span class="sig-name descname"><span class="pre">generate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fgroups</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">circuit</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.noise.E2.generate" title="Link to this definition">¶</a></dt>
+<dd><p>Must be implemented by subclass</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.noise.E2.group">
+<span class="sig-name descname"><span class="pre">group</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">circuit</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.noise.E2.group" title="Link to this definition">¶</a></dt>
+<dd><p>Must be implemented by subclass</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qsample.noise.E2.groups">
+<span class="sig-name descname"><span class="pre">groups</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['q1',</span> <span class="pre">'q2']</span></em><a class="headerlink" href="#qsample.noise.E2.groups" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="qsample.noise.E3">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qsample.noise.</span></span><span class="sig-name descname"><span class="pre">E3</span></span><a class="headerlink" href="#qsample.noise.E3" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qsample.noise.ErrorModel" title="qsample.noise.ErrorModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">ErrorModel</span></code></a></p>
+<p>Errors on all gates individual + idle.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.noise.E3.generate">
+<span class="sig-name descname"><span class="pre">generate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fgroups</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">circuit</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.noise.E3.generate" title="Link to this definition">¶</a></dt>
+<dd><p>Must be implemented by subclass</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.noise.E3.group">
+<span class="sig-name descname"><span class="pre">group</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">circuit</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.noise.E3.group" title="Link to this definition">¶</a></dt>
+<dd><p>Must be implemented by subclass</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qsample.noise.E3.groups">
+<span class="sig-name descname"><span class="pre">groups</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['q1',</span> <span class="pre">'q2',</span> <span class="pre">'meas',</span> <span class="pre">'idle',</span> <span class="pre">'init']</span></em><a class="headerlink" href="#qsample.noise.E3.groups" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="qsample.noise.E3_1">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qsample.noise.</span></span><span class="sig-name descname"><span class="pre">E3_1</span></span><a class="headerlink" href="#qsample.noise.E3_1" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qsample.noise.ErrorModel" title="qsample.noise.ErrorModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">ErrorModel</span></code></a></p>
+<p>Like E3, but idle locations split in two subsets.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.noise.E3_1.generate">
+<span class="sig-name descname"><span class="pre">generate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fgroups</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">circuit</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.noise.E3_1.generate" title="Link to this definition">¶</a></dt>
+<dd><p>Must be implemented by subclass</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.noise.E3_1.group">
+<span class="sig-name descname"><span class="pre">group</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">circuit</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.noise.E3_1.group" title="Link to this definition">¶</a></dt>
+<dd><p>Must be implemented by subclass</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qsample.noise.E3_1.groups">
+<span class="sig-name descname"><span class="pre">groups</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['q1',</span> <span class="pre">'q2',</span> <span class="pre">'meas',</span> <span class="pre">'idle1',</span> <span class="pre">'idle2',</span> <span class="pre">'init']</span></em><a class="headerlink" href="#qsample.noise.E3_1.groups" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="qsample.noise.ErrorModel">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qsample.noise.</span></span><span class="sig-name descname"><span class="pre">ErrorModel</span></span><a class="headerlink" href="#qsample.noise.ErrorModel" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Representation of an incoherent error model.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.noise.ErrorModel.choose_p">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">choose_p</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">groups</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">probs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.noise.ErrorModel.choose_p" title="Link to this definition">¶</a></dt>
+<dd><p>Select elements from group g_i with probability p_i.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.noise.ErrorModel.choose_w">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">choose_w</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">groups</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.noise.ErrorModel.choose_w" title="Link to this definition">¶</a></dt>
+<dd><p>Select w_i locations for group g_i in groups</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.noise.ErrorModel.generate">
+<span class="sig-name descname"><span class="pre">generate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fgroups</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">circuit</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.noise.ErrorModel.generate" title="Link to this definition">¶</a></dt>
+<dd><p>Must be implemented by subclass</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.noise.ErrorModel.group">
+<span class="sig-name descname"><span class="pre">group</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">circuit</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.noise.ErrorModel.group" title="Link to this definition">¶</a></dt>
+<dd><p>Must be implemented by subclass</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qsample.noise.ErrorModel.groups">
+<span class="sig-name descname"><span class="pre">groups</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#qsample.noise.ErrorModel.groups" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.noise.ErrorModel.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">circuit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fgroups</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.noise.ErrorModel.run" title="Link to this definition">¶</a></dt>
+<dd><p>Generate new Circuit of same length as <cite>Circuit</cite> with faults generated
+by <cite>self.generate</cite> and corresponding location for each group in fgroups.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="qsample.noise.S1">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qsample.noise.</span></span><span class="sig-name descname"><span class="pre">S1</span></span><a class="headerlink" href="#qsample.noise.S1" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qsample.noise.ErrorModel" title="qsample.noise.ErrorModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">ErrorModel</span></code></a></p>
+<p>Single parameter depolarizing noise on all operations</p>
+<p>See App. D and sections 3B and 3D in paper</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.noise.S1.generate">
+<span class="sig-name descname"><span class="pre">generate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fgroups</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">circuit</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.noise.S1.generate" title="Link to this definition">¶</a></dt>
+<dd><p>Must be implemented by subclass</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.noise.S1.group">
+<span class="sig-name descname"><span class="pre">group</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">circuit</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.noise.S1.group" title="Link to this definition">¶</a></dt>
+<dd><p>Must be implemented by subclass</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qsample.noise.S1.groups">
+<span class="sig-name descname"><span class="pre">groups</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['q']</span></em><a class="headerlink" href="#qsample.noise.S1.groups" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="qsample.noise.S2">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qsample.noise.</span></span><span class="sig-name descname"><span class="pre">S2</span></span><a class="headerlink" href="#qsample.noise.S2" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qsample.noise.ErrorModel" title="qsample.noise.ErrorModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">ErrorModel</span></code></a></p>
+<p>Individual errors on 1-qubit and 2-qubit gates. Depolarizing noise with 1-qubit rate on init and meas</p>
+<p>See App. D and section 3C in paper</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.noise.S2.generate">
+<span class="sig-name descname"><span class="pre">generate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fgroups</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">circuit</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.noise.S2.generate" title="Link to this definition">¶</a></dt>
+<dd><p>Must be implemented by subclass</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.noise.S2.group">
+<span class="sig-name descname"><span class="pre">group</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">circuit</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.noise.S2.group" title="Link to this definition">¶</a></dt>
+<dd><p>Must be implemented by subclass</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qsample.noise.S2.groups">
+<span class="sig-name descname"><span class="pre">groups</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['q1',</span> <span class="pre">'q2']</span></em><a class="headerlink" href="#qsample.noise.S2.groups" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="qsample.noise.S4">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qsample.noise.</span></span><span class="sig-name descname"><span class="pre">S4</span></span><a class="headerlink" href="#qsample.noise.S4" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qsample.noise.ErrorModel" title="qsample.noise.ErrorModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">ErrorModel</span></code></a></p>
+<p>Depolarizing noise on all operations, 4 parameters</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.noise.S4.generate">
+<span class="sig-name descname"><span class="pre">generate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fgroups</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">circuit</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.noise.S4.generate" title="Link to this definition">¶</a></dt>
+<dd><p>Must be implemented by subclass</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.noise.S4.group">
+<span class="sig-name descname"><span class="pre">group</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">circuit</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.noise.S4.group" title="Link to this definition">¶</a></dt>
+<dd><p>Must be implemented by subclass</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qsample.noise.S4.groups">
+<span class="sig-name descname"><span class="pre">groups</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['q1',</span> <span class="pre">'q2',</span> <span class="pre">'meas',</span> <span class="pre">'init']</span></em><a class="headerlink" href="#qsample.noise.S4.groups" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-qsample.protocol">
+<span id="qsample-protocol-module"></span><h2>qsample.protocol module<a class="headerlink" href="#module-qsample.protocol" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="qsample.protocol.Protocol">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qsample.protocol.</span></span><span class="sig-name descname"><span class="pre">Protocol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fault_tolerant</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_functions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.protocol.Protocol" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">DiGraph</span></code></p>
+<p>Representation of a Quantum (Error Correction) Protocol</p>
+<section id="id27">
+<h3>Attributes<a class="headerlink" href="#id27" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>fault_tolerant<span class="classifier">bool</span></dt><dd><p>True if protocol fault tolerant (robust against any 1-qubit error)</p>
+</dd>
+<dt>check_functions<span class="classifier">dict</span></dt><dd><p>Functions used in transition checks between circuits</p>
+</dd>
+<dt>circuits<span class="classifier">dict</span></dt><dd><p>Circuits used inside protocol, key: circuit id</p>
+</dd>
+<dt>qubits<span class="classifier">set</span></dt><dd><p>All qubits “touched” by the circuits</p>
+</dd>
+<dt>root<span class="classifier">str</span></dt><dd><p>Start node of the protocol</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.protocol.Protocol.add_node">
+<span class="sig-name descname"><span class="pre">add_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">circuit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.protocol.Protocol.add_node" title="Link to this definition">¶</a></dt>
+<dd><p>Add node to protocol</p>
+<section id="id28">
+<h4>Parameters<a class="headerlink" href="#id28" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>name<span class="classifier">str</span></dt><dd><p>Name of the node (must be unique)</p>
+</dd>
+<dt>circuit<span class="classifier">Circuit</span></dt><dd><p>Circuit associated with node</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.protocol.Protocol.add_nodes_from">
+<span class="sig-name descname"><span class="pre">add_nodes_from</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">names</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">circuits</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.protocol.Protocol.add_nodes_from" title="Link to this definition">¶</a></dt>
+<dd><p>Add list of nodes and corresponding circuits to protocol</p>
+<section id="id29">
+<h4>Parameters<a class="headerlink" href="#id29" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>names<span class="classifier">list of str</span></dt><dd><p>Names of nodes (must be unique)</p>
+</dd>
+<dt>circuits<span class="classifier">list of Circuit or Circuit</span></dt><dd><p>Circuits corresponding to names</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.protocol.Protocol.draw">
+<span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.protocol.Protocol.draw" title="Link to this definition">¶</a></dt>
+<dd><p>Draw protocol</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.protocol.Protocol.get_circuit">
+<span class="sig-name descname"><span class="pre">get_circuit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.protocol.Protocol.get_circuit" title="Link to this definition">¶</a></dt>
+<dd><p>Return circuit corresponding to node <cite>name</cite></p>
+<section id="id30">
+<h4>Parameters<a class="headerlink" href="#id30" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>name<span class="classifier">str</span></dt><dd><p>Name of node</p>
+</dd>
+</dl>
+</section>
+<section id="id31">
+<h4>Returns<a class="headerlink" href="#id31" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>Circuit</dt><dd><p>Circuit corresponding to <cite>name</cite></p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="qsample.protocol.Protocol.qubits">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">qubits</span></span><a class="headerlink" href="#qsample.protocol.Protocol.qubits" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="qsample.protocol.Protocol.root">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">root</span></span><a class="headerlink" href="#qsample.protocol.Protocol.root" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.protocol.Protocol.successor">
+<span class="sig-name descname"><span class="pre">successor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hist</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.protocol.Protocol.successor" title="Link to this definition">¶</a></dt>
+<dd><p>Return successor node of node <cite>name</cite></p>
+<section id="id32">
+<h4>Parameters<a class="headerlink" href="#id32" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>name<span class="classifier">str</span></dt><dd><p>Name of node of which the successor is determined</p>
+</dd>
+<dt>hist<span class="classifier">dict</span></dt><dd><p>Meaurement history used to determine successor via transition checks</p>
+</dd>
+</dl>
+</section>
+<section id="id33">
+<h4>Returns<a class="headerlink" href="#id33" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>tuple</dt><dd><p>(name of successor node or None, corresponding circuit or None)</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qsample.protocol.draw_protocol">
+<span class="sig-prename descclassname"><span class="pre">qsample.protocol.</span></span><span class="sig-name descname"><span class="pre">draw_protocol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">protocol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">legend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(6,</span> <span class="pre">6)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.05,</span> <span class="pre">0.05)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.protocol.draw_protocol" title="Link to this definition">¶</a></dt>
+<dd><p>Draw protocol using <cite>networkx</cite> library</p>
+<section id="id34">
+<h3>Parameters<a class="headerlink" href="#id34" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>protocol<span class="classifier">Protocol</span></dt><dd><p>The protocol to draw</p>
+</dd>
+<dt>path<span class="classifier">str or None</span></dt><dd><p>The path to save the resulting image to (optional)</p>
+</dd>
+<dt>legend<span class="classifier">bool</span></dt><dd><p>If true, edge labels will be numbers referenced in legend</p>
+</dd>
+<dt>figsize<span class="classifier">tuple</span></dt><dd><p>The <cite>matplotlib</cite> figsize argument of the plot</p>
+</dd>
+<dt>label_offset<span class="classifier">tuple</span></dt><dd><p>Offset position of all edge labels</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</section>
+<section id="module-qsample.utils">
+<span id="qsample-utils-module"></span><h2>qsample.utils module<a class="headerlink" href="#module-qsample.utils" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="qsample.utils.load">
+<span class="sig-prename descclassname"><span class="pre">qsample.utils.</span></span><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.utils.load" title="Link to this definition">¶</a></dt>
+<dd><p>Load data from path</p>
+<section id="id35">
+<h3>Parameters<a class="headerlink" href="#id35" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>path<span class="classifier">str</span></dt><dd><p>File path to load from</p>
+</dd>
+</dl>
+</section>
+<section id="id36">
+<h3>Returns<a class="headerlink" href="#id36" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Loaded data</p></li>
+</ul>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qsample.utils.save">
+<span class="sig-prename descclassname"><span class="pre">qsample.utils.</span></span><span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.utils.save" title="Link to this definition">¶</a></dt>
+<dd><p>Save data to path</p>
+<section id="id37">
+<h3>Parameters<a class="headerlink" href="#id37" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>path<span class="classifier">str</span></dt><dd><p>File path to save to</p>
+</dd>
+<dt>data<span class="classifier">*</span></dt><dd><p>Data to write to path</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</section>
+<section id="module-qsample">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-qsample" title="Link to this heading">¶</a></h2>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">qsample</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2025, Don Winter, Sascha Heussen, Joao Fontes.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.2.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="_sources/qsample.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
