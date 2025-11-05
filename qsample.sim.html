@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>qsample.sim package &#8212; qsample 2.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=27fed22d" />
+    <script src="_static/documentation_options.js?v=60dbed4a"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="qsample-sim-package">
+<h1>qsample.sim package<a class="headerlink" href="#qsample-sim-package" title="Link to this heading">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
+</section>
+<section id="module-qsample.sim.mixin">
+<span id="qsample-sim-mixin-module"></span><h2>qsample.sim.mixin module<a class="headerlink" href="#module-qsample.sim.mixin" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="qsample.sim.mixin.CircuitRunnerMixin">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qsample.sim.mixin.</span></span><span class="sig-name descname"><span class="pre">CircuitRunnerMixin</span></span><a class="headerlink" href="#qsample.sim.mixin.CircuitRunnerMixin" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Simulator mixin for running quantum circuits</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.sim.mixin.CircuitRunnerMixin.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">circuit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fault_circuit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.sim.mixin.CircuitRunnerMixin.run" title="Link to this definition">¶</a></dt>
+<dd><p>Apply gates in <cite>circuit</cite> sequentially to current state.
+If <cite>fault_circuit</cite> is specified apply fault gates at end of each tick</p>
+<p>Measurements are stored and executed at the end of a tick.
+Measurement results are saved in the order in which they appear in the
+circuit into an output string.</p>
+<section id="parameters">
+<h3>Parameters<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>circuit<span class="classifier">Circuit</span></dt><dd><p>The circuit to simulate</p>
+</dd>
+<dt>fault_circuit<span class="classifier">Circuit or None</span></dt><dd><p>Circuit of faults to iterate in parallel. Faults are applied <em>after</em>
+gates in <cite>circuit</cite>, only for <cite>measure</cite> gates fault is applied before</p>
+</dd>
+</dl>
+</section>
+<section id="returns">
+<h3>Returns<a class="headerlink" href="#returns" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>str or None</dt><dd><p>Measurement results as bitstring (None if no measurements were made)</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-qsample.sim.stabilizer">
+<span id="qsample-sim-stabilizer-module"></span><h2>qsample.sim.stabilizer module<a class="headerlink" href="#module-qsample.sim.stabilizer" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="qsample.sim.stabilizer.ChpSimulator">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qsample.sim.stabilizer.</span></span><span class="sig-name descname"><span class="pre">ChpSimulator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_qubits</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.sim.stabilizer.ChpSimulator" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>The bare minimum needed for the CHP simulation.</p>
+<dl class="simple">
+<dt>Original author:</dt><dd><p>Craig Gidney (<a class="reference external" href="https://github.com/Strilanc/python-chp-stabilizer-simulator">https://github.com/Strilanc/python-chp-stabilizer-simulator</a>)</p>
+</dd>
+<dt>Changes:</dt><dd><p>np.bool -&gt; bool (reason: np.bool is deprecated since numpy&gt;=1.23)</p>
+</dd>
+<dt>Reference:</dt><dd><p>“Improved Simulation of Stabilizer Circuits”
+Scott Aaronson and Daniel Gottesman
+<a class="reference external" href="https://arxiv.org/abs/quant-ph/0406196">https://arxiv.org/abs/quant-ph/0406196</a></p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.sim.stabilizer.ChpSimulator.cnot">
+<span class="sig-name descname"><span class="pre">cnot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">control</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#qsample.sim.stabilizer.ChpSimulator.cnot" title="Link to this definition">¶</a></dt>
+<dd><p>Applies a CNOT gate between two qubits.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>control: The control qubit of the CNOT.
+target: The target qubit of the CNOT.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.sim.stabilizer.ChpSimulator.hadamard">
+<span class="sig-name descname"><span class="pre">hadamard</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#qsample.sim.stabilizer.ChpSimulator.hadamard" title="Link to this definition">¶</a></dt>
+<dd><p>Applies a Hadamard gate to a qubit.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>qubit: The qubit to apply the H gate to.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.sim.stabilizer.ChpSimulator.measure">
+<span class="sig-name descname"><span class="pre">measure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">bias</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.5</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#qsample.sim.stabilizer.MeasureResult" title="qsample.sim.stabilizer.MeasureResult"><span class="pre">MeasureResult</span></a></span></span><a class="headerlink" href="#qsample.sim.stabilizer.ChpSimulator.measure" title="Link to this definition">¶</a></dt>
+<dd><p>Computational basis (Z basis) measurement.</p>
+<dl>
+<dt>Args:</dt><dd><p>qubit: The index of the qubit to measure.
+bias: When the measurement result is random, this is the probability</p>
+<blockquote>
+<div><p>of getting a True result value instead of False. Mostly useful
+for making reproducible unit tests.</p>
+</div></blockquote>
+</dd>
+<dt>Returns:</dt><dd><p>A MeasurementResult instance whose <cite>value</cite> attribute is the outcome
+of the measurement and whose <cite>determined</cite> attribute indicates
+whether the outcome was deterministic or random.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.sim.stabilizer.ChpSimulator.phase">
+<span class="sig-name descname"><span class="pre">phase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#qsample.sim.stabilizer.ChpSimulator.phase" title="Link to this definition">¶</a></dt>
+<dd><p>Applies an S gate to a qubit.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>qubit: The qubit to apply the S gate to.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="qsample.sim.stabilizer.MeasureResult">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qsample.sim.stabilizer.</span></span><span class="sig-name descname"><span class="pre">MeasureResult</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">determined</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.sim.stabilizer.MeasureResult" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A measurement’s output and whether it was random or not.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="qsample.sim.stabilizer.StabilizerSimulator">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qsample.sim.stabilizer.</span></span><span class="sig-name descname"><span class="pre">StabilizerSimulator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_qubits</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.sim.stabilizer.StabilizerSimulator" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qsample.sim.stabilizer.ChpSimulator" title="qsample.sim.stabilizer.ChpSimulator"><code class="xref py py-class docutils literal notranslate"><span class="pre">ChpSimulator</span></code></a>, <a class="reference internal" href="#qsample.sim.mixin.CircuitRunnerMixin" title="qsample.sim.mixin.CircuitRunnerMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">CircuitRunnerMixin</span></code></a></p>
+<p>The bare minimum needed for the CHP simulation.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.sim.stabilizer.StabilizerSimulator.CNOT">
+<span class="sig-name descname"><span class="pre">CNOT</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">control</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#qsample.sim.stabilizer.StabilizerSimulator.CNOT" title="Link to this definition">¶</a></dt>
+<dd><p>CNOT gate</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.sim.stabilizer.StabilizerSimulator.H">
+<span class="sig-name descname"><span class="pre">H</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#qsample.sim.stabilizer.StabilizerSimulator.H" title="Link to this definition">¶</a></dt>
+<dd><p>H gate</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.sim.stabilizer.StabilizerSimulator.I">
+<span class="sig-name descname"><span class="pre">I</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#qsample.sim.stabilizer.StabilizerSimulator.I" title="Link to this definition">¶</a></dt>
+<dd><p>Identity gate</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.sim.stabilizer.StabilizerSimulator.MSd">
+<span class="sig-name descname"><span class="pre">MSd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubitA</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qubitB</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#qsample.sim.stabilizer.StabilizerSimulator.MSd" title="Link to this definition">¶</a></dt>
+<dd><p>Molmer-Sorensen gate: -pi/2 XX rotation</p>
+<section id="reference">
+<h3>Reference<a class="headerlink" href="#reference" title="Link to this heading">¶</a></h3>
+<blockquote>
+<div><p><a class="reference external" href="https://arxiv.org/pdf/2111.12654.pdf">https://arxiv.org/pdf/2111.12654.pdf</a></p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.sim.stabilizer.StabilizerSimulator.Q">
+<span class="sig-name descname"><span class="pre">Q</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#qsample.sim.stabilizer.StabilizerSimulator.Q" title="Link to this definition">¶</a></dt>
+<dd><p>Q = sqrt(X) = HSH</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.sim.stabilizer.StabilizerSimulator.Qd">
+<span class="sig-name descname"><span class="pre">Qd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#qsample.sim.stabilizer.StabilizerSimulator.Qd" title="Link to this definition">¶</a></dt>
+<dd><p>Q^(dagger) = Q^3</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.sim.stabilizer.StabilizerSimulator.R">
+<span class="sig-name descname"><span class="pre">R</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#qsample.sim.stabilizer.StabilizerSimulator.R" title="Link to this definition">¶</a></dt>
+<dd><p>R = sqrt(XZ) = SQS^(dagger)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.sim.stabilizer.StabilizerSimulator.Rd">
+<span class="sig-name descname"><span class="pre">Rd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#qsample.sim.stabilizer.StabilizerSimulator.Rd" title="Link to this definition">¶</a></dt>
+<dd><p>R^(dagger) = R^3</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.sim.stabilizer.StabilizerSimulator.S">
+<span class="sig-name descname"><span class="pre">S</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#qsample.sim.stabilizer.StabilizerSimulator.S" title="Link to this definition">¶</a></dt>
+<dd><p>Phase gate</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.sim.stabilizer.StabilizerSimulator.Sd">
+<span class="sig-name descname"><span class="pre">Sd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#qsample.sim.stabilizer.StabilizerSimulator.Sd" title="Link to this definition">¶</a></dt>
+<dd><p>S^(dagger) = S^3</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.sim.stabilizer.StabilizerSimulator.X">
+<span class="sig-name descname"><span class="pre">X</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#qsample.sim.stabilizer.StabilizerSimulator.X" title="Link to this definition">¶</a></dt>
+<dd><p>X = HZH</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.sim.stabilizer.StabilizerSimulator.Y">
+<span class="sig-name descname"><span class="pre">Y</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#qsample.sim.stabilizer.StabilizerSimulator.Y" title="Link to this definition">¶</a></dt>
+<dd><p>Y = SXS^(dagger)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.sim.stabilizer.StabilizerSimulator.Z">
+<span class="sig-name descname"><span class="pre">Z</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#qsample.sim.stabilizer.StabilizerSimulator.Z" title="Link to this definition">¶</a></dt>
+<dd><p>Z = SS</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.sim.stabilizer.StabilizerSimulator.init">
+<span class="sig-name descname"><span class="pre">init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#qsample.sim.stabilizer.StabilizerSimulator.init" title="Link to this definition">¶</a></dt>
+<dd><p>Initialize to <a href="#id1"><span class="problematic" id="id2">|</span></a>0&gt;</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.sim.stabilizer.StabilizerSimulator.measure">
+<span class="sig-name descname"><span class="pre">measure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#qsample.sim.stabilizer.MeasureResult" title="qsample.sim.stabilizer.MeasureResult"><span class="pre">MeasureResult</span></a></span></span><a class="headerlink" href="#qsample.sim.stabilizer.StabilizerSimulator.measure" title="Link to this definition">¶</a></dt>
+<dd><p>Measurement in Z basis</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qsample.sim.stabilizer.pauli_product_phase">
+<span class="sig-prename descclassname"><span class="pre">qsample.sim.stabilizer.</span></span><span class="sig-name descname"><span class="pre">pauli_product_phase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#qsample.sim.stabilizer.pauli_product_phase" title="Link to this definition">¶</a></dt>
+<dd><p>Determines the power of i in the product of two Paulis.</p>
+<p>For example, X*Y = iZ and so this method would return +1 for X and Y.</p>
+<p>The input Paulis are encoded into the following form:</p>
+<blockquote>
+<div><p>x z | Pauli
+—-+——-
+0 0 | I
+1 0 | X
+1 1 | Y
+0 1 | Z</p>
+</div></blockquote>
+</dd></dl>
+
+</section>
+<section id="module-qsample.sim.statevector">
+<span id="qsample-sim-statevector-module"></span><h2>qsample.sim.statevector module<a class="headerlink" href="#module-qsample.sim.statevector" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="qsample.sim.statevector.MeasureResult">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qsample.sim.statevector.</span></span><span class="sig-name descname"><span class="pre">MeasureResult</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.sim.statevector.MeasureResult" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class to hold measurement result</p>
+<section id="attributes">
+<h3>Attributes<a class="headerlink" href="#attributes" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>value<span class="classifier">bool</span></dt><dd><p>Outcome of measurement</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="qsample.sim.statevector.StatevectorSimulator">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qsample.sim.statevector.</span></span><span class="sig-name descname"><span class="pre">StatevectorSimulator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_qubits</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.sim.statevector.StatevectorSimulator" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qsample.sim.mixin.CircuitRunnerMixin" title="qsample.sim.mixin.CircuitRunnerMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">CircuitRunnerMixin</span></code></a></p>
+<p>Statevector simulator using <cite>ProjectQ</cite> simulator</p>
+<section id="id3">
+<h3>Attributes<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>_n<span class="classifier">int</span></dt><dd><p>Number of qubits to simulate</p>
+</dd>
+<dt>eng<span class="classifier">ProjectQ.MainEngine</span></dt><dd><p>ProjectQ simulator</p>
+</dd>
+<dt>qureg<span class="classifier">ProjectQ.QuantumRegister</span></dt><dd><p>ProjectQ representation of quantum register</p>
+</dd>
+<dt>qubits<span class="classifier">dict</span></dt><dd><p>Dictionary representation of quantum register</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.sim.statevector.StatevectorSimulator.CNOT">
+<span class="sig-name descname"><span class="pre">CNOT</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">control</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#qsample.sim.statevector.StatevectorSimulator.CNOT" title="Link to this definition">¶</a></dt>
+<dd><p>CNOT gate</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.sim.statevector.StatevectorSimulator.H">
+<span class="sig-name descname"><span class="pre">H</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#qsample.sim.statevector.StatevectorSimulator.H" title="Link to this definition">¶</a></dt>
+<dd><p>H gate</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.sim.statevector.StatevectorSimulator.I">
+<span class="sig-name descname"><span class="pre">I</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#qsample.sim.statevector.StatevectorSimulator.I" title="Link to this definition">¶</a></dt>
+<dd><p>Identity gate</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.sim.statevector.StatevectorSimulator.MSd">
+<span class="sig-name descname"><span class="pre">MSd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubitA</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qubitB</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#qsample.sim.statevector.StatevectorSimulator.MSd" title="Link to this definition">¶</a></dt>
+<dd><p>Molmer-Sorensen gate: -pi/2 XX rotation</p>
+<section id="id4">
+<h4>Reference<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p><a class="reference external" href="https://arxiv.org/pdf/2111.12654.pdf">https://arxiv.org/pdf/2111.12654.pdf</a></p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.sim.statevector.StatevectorSimulator.Q">
+<span class="sig-name descname"><span class="pre">Q</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#qsample.sim.statevector.StatevectorSimulator.Q" title="Link to this definition">¶</a></dt>
+<dd><p>Q gate</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.sim.statevector.StatevectorSimulator.Qd">
+<span class="sig-name descname"><span class="pre">Qd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#qsample.sim.statevector.StatevectorSimulator.Qd" title="Link to this definition">¶</a></dt>
+<dd><p>Q^(dagger) gate</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.sim.statevector.StatevectorSimulator.R">
+<span class="sig-name descname"><span class="pre">R</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#qsample.sim.statevector.StatevectorSimulator.R" title="Link to this definition">¶</a></dt>
+<dd><p>R gate</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.sim.statevector.StatevectorSimulator.Rd">
+<span class="sig-name descname"><span class="pre">Rd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#qsample.sim.statevector.StatevectorSimulator.Rd" title="Link to this definition">¶</a></dt>
+<dd><p>R^(dagger) gate</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.sim.statevector.StatevectorSimulator.Rx">
+<span class="sig-name descname"><span class="pre">Rx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#qsample.sim.statevector.StatevectorSimulator.Rx" title="Link to this definition">¶</a></dt>
+<dd><p>X-rotation gate</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.sim.statevector.StatevectorSimulator.Ry">
+<span class="sig-name descname"><span class="pre">Ry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#qsample.sim.statevector.StatevectorSimulator.Ry" title="Link to this definition">¶</a></dt>
+<dd><p>Y-rotation gate</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.sim.statevector.StatevectorSimulator.Rz">
+<span class="sig-name descname"><span class="pre">Rz</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#qsample.sim.statevector.StatevectorSimulator.Rz" title="Link to this definition">¶</a></dt>
+<dd><p>Z-rotation gate</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.sim.statevector.StatevectorSimulator.S">
+<span class="sig-name descname"><span class="pre">S</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#qsample.sim.statevector.StatevectorSimulator.S" title="Link to this definition">¶</a></dt>
+<dd><p>Phase gate</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.sim.statevector.StatevectorSimulator.Sd">
+<span class="sig-name descname"><span class="pre">Sd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#qsample.sim.statevector.StatevectorSimulator.Sd" title="Link to this definition">¶</a></dt>
+<dd><p>S^(dagger) gate</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.sim.statevector.StatevectorSimulator.T">
+<span class="sig-name descname"><span class="pre">T</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#qsample.sim.statevector.StatevectorSimulator.T" title="Link to this definition">¶</a></dt>
+<dd><p>T gate</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.sim.statevector.StatevectorSimulator.Td">
+<span class="sig-name descname"><span class="pre">Td</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#qsample.sim.statevector.StatevectorSimulator.Td" title="Link to this definition">¶</a></dt>
+<dd><p>T^(dagger) gate</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.sim.statevector.StatevectorSimulator.X">
+<span class="sig-name descname"><span class="pre">X</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#qsample.sim.statevector.StatevectorSimulator.X" title="Link to this definition">¶</a></dt>
+<dd><p>X gate</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.sim.statevector.StatevectorSimulator.Y">
+<span class="sig-name descname"><span class="pre">Y</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#qsample.sim.statevector.StatevectorSimulator.Y" title="Link to this definition">¶</a></dt>
+<dd><p>Y gate</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.sim.statevector.StatevectorSimulator.Z">
+<span class="sig-name descname"><span class="pre">Z</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#qsample.sim.statevector.StatevectorSimulator.Z" title="Link to this definition">¶</a></dt>
+<dd><p>Z gate</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.sim.statevector.StatevectorSimulator.expectation">
+<span class="sig-name descname"><span class="pre">expectation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#qsample.sim.statevector.StatevectorSimulator.expectation" title="Link to this definition">¶</a></dt>
+<dd><p>Expectation value of measuring <cite>qubit</cite></p>
+<section id="id5">
+<h4>Parameters<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>qubit<span class="classifier">int</span></dt><dd><p>Qubit of which expectation value is determined</p>
+</dd>
+</dl>
+</section>
+<section id="id6">
+<h4>Returns<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>float</dt><dd><p>Expectation value of <cite>qubit</cite></p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.sim.statevector.StatevectorSimulator.init">
+<span class="sig-name descname"><span class="pre">init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#qsample.sim.statevector.StatevectorSimulator.init" title="Link to this definition">¶</a></dt>
+<dd><p>Initialize to <a href="#id7"><span class="problematic" id="id8">|</span></a>0&gt;</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.sim.statevector.StatevectorSimulator.measure">
+<span class="sig-name descname"><span class="pre">measure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#qsample.sim.statevector.MeasureResult" title="qsample.sim.statevector.MeasureResult"><span class="pre">MeasureResult</span></a></span></span><a class="headerlink" href="#qsample.sim.statevector.StatevectorSimulator.measure" title="Link to this definition">¶</a></dt>
+<dd><p>Measurement in Z basis</p>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+</section>
+<section id="module-qsample.sim.stimsimulator">
+<span id="qsample-sim-stimsimulator-module"></span><h2>qsample.sim.stimsimulator module<a class="headerlink" href="#module-qsample.sim.stimsimulator" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="qsample.sim.stimsimulator.MeasureResult">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qsample.sim.stimsimulator.</span></span><span class="sig-name descname"><span class="pre">MeasureResult</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.sim.stimsimulator.MeasureResult" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A measurement’s output.</p>
+</dd></dl>
+
+</section>
+<section id="module-qsample.sim">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-qsample.sim" title="Link to this heading">¶</a></h2>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">qsample</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2025, Don Winter, Sascha Heussen, Joao Fontes.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.2.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="_sources/qsample.sim.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

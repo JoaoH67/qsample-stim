@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>new_qsample &#8212; qsample 2.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=27fed22d" />
+    <script src="_static/documentation_options.js?v=60dbed4a"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="new-qsample">
+<h1>new_qsample<a class="headerlink" href="#new-qsample" title="Link to this heading">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="qsample.html">qsample package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="qsample.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="qsample.sampler.html">qsample.sampler package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sampler.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sampler.html#module-qsample.sampler.direct">qsample.sampler.direct module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sampler.html#module-qsample.sampler.experimental">qsample.sampler.experimental module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sampler.html#module-qsample.sampler.subset">qsample.sampler.subset module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sampler.html#module-qsample.sampler.tree">qsample.sampler.tree module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sampler.html#module-qsample.sampler">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="qsample.sim.html">qsample.sim package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sim.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sim.html#module-qsample.sim.mixin">qsample.sim.mixin module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sim.html#module-qsample.sim.stabilizer">qsample.sim.stabilizer module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sim.html#module-qsample.sim.statevector">qsample.sim.statevector module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sim.html#module-qsample.sim.stimsimulator">qsample.sim.stimsimulator module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.sim.html#module-qsample.sim">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="qsample.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qsample.html#module-qsample.callbacks">qsample.callbacks module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="qsample.html#qsample.callbacks.Callback"><code class="docutils literal notranslate"><span class="pre">Callback</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.callbacks.Callback.on_circuit_begin"><code class="docutils literal notranslate"><span class="pre">Callback.on_circuit_begin()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.callbacks.Callback.on_circuit_end"><code class="docutils literal notranslate"><span class="pre">Callback.on_circuit_end()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.callbacks.Callback.on_protocol_begin"><code class="docutils literal notranslate"><span class="pre">Callback.on_protocol_begin()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.callbacks.Callback.on_protocol_end"><code class="docutils literal notranslate"><span class="pre">Callback.on_protocol_end()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.callbacks.Callback.on_sampler_begin"><code class="docutils literal notranslate"><span class="pre">Callback.on_sampler_begin()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.callbacks.Callback.on_sampler_end"><code class="docutils literal notranslate"><span class="pre">Callback.on_sampler_end()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.callbacks.Callback.store"><code class="docutils literal notranslate"><span class="pre">Callback.store()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="qsample.html#qsample.callbacks.CallbackList"><code class="docutils literal notranslate"><span class="pre">CallbackList</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.callbacks.CallbackList.on_circuit_begin"><code class="docutils literal notranslate"><span class="pre">CallbackList.on_circuit_begin()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.callbacks.CallbackList.on_circuit_end"><code class="docutils literal notranslate"><span class="pre">CallbackList.on_circuit_end()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.callbacks.CallbackList.on_protocol_begin"><code class="docutils literal notranslate"><span class="pre">CallbackList.on_protocol_begin()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.callbacks.CallbackList.on_protocol_end"><code class="docutils literal notranslate"><span class="pre">CallbackList.on_protocol_end()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.callbacks.CallbackList.on_sampler_begin"><code class="docutils literal notranslate"><span class="pre">CallbackList.on_sampler_begin()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.callbacks.CallbackList.on_sampler_end"><code class="docutils literal notranslate"><span class="pre">CallbackList.on_sampler_end()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="qsample.html#qsample.callbacks.CollectStatsPerShot"><code class="docutils literal notranslate"><span class="pre">CollectStatsPerShot</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.callbacks.CollectStatsPerShot.on_protocol_end"><code class="docutils literal notranslate"><span class="pre">CollectStatsPerShot.on_protocol_end()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="qsample.html#qsample.callbacks.PathProducts"><code class="docutils literal notranslate"><span class="pre">PathProducts</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.callbacks.PathProducts.on_sampler_end"><code class="docutils literal notranslate"><span class="pre">PathProducts.on_sampler_end()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.callbacks.PathProducts.plot"><code class="docutils literal notranslate"><span class="pre">PathProducts.plot()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="qsample.html#qsample.callbacks.PlotERVPerShot"><code class="docutils literal notranslate"><span class="pre">PlotERVPerShot</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.callbacks.PlotERVPerShot.on_circuit_end"><code class="docutils literal notranslate"><span class="pre">PlotERVPerShot.on_circuit_end()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.callbacks.PlotERVPerShot.on_protocol_begin"><code class="docutils literal notranslate"><span class="pre">PlotERVPerShot.on_protocol_begin()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.callbacks.PlotERVPerShot.on_protocol_end"><code class="docutils literal notranslate"><span class="pre">PlotERVPerShot.on_protocol_end()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.callbacks.PlotERVPerShot.on_sampler_end"><code class="docutils literal notranslate"><span class="pre">PlotERVPerShot.on_sampler_end()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="qsample.html#qsample.callbacks.PlotStats"><code class="docutils literal notranslate"><span class="pre">PlotStats</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.callbacks.PlotStats.on_sampler_end"><code class="docutils literal notranslate"><span class="pre">PlotStats.on_sampler_end()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="qsample.html#qsample.callbacks.PrintERVPerShot"><code class="docutils literal notranslate"><span class="pre">PrintERVPerShot</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.callbacks.PrintERVPerShot.on_circuit_end"><code class="docutils literal notranslate"><span class="pre">PrintERVPerShot.on_circuit_end()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.callbacks.PrintERVPerShot.on_protocol_begin"><code class="docutils literal notranslate"><span class="pre">PrintERVPerShot.on_protocol_begin()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.callbacks.PrintERVPerShot.on_protocol_end"><code class="docutils literal notranslate"><span class="pre">PrintERVPerShot.on_protocol_end()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="qsample.html#qsample.callbacks.RelStdTarget"><code class="docutils literal notranslate"><span class="pre">RelStdTarget</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.callbacks.RelStdTarget.on_protocol_end"><code class="docutils literal notranslate"><span class="pre">RelStdTarget.on_protocol_end()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="qsample.html#qsample.callbacks.StatsPerShot"><code class="docutils literal notranslate"><span class="pre">StatsPerShot</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.callbacks.StatsPerShot.on_protocol_end"><code class="docutils literal notranslate"><span class="pre">StatsPerShot.on_protocol_end()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.callbacks.StatsPerShot.on_sampler_end"><code class="docutils literal notranslate"><span class="pre">StatsPerShot.on_sampler_end()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="qsample.html#qsample.callbacks.StopAtNoHits"><code class="docutils literal notranslate"><span class="pre">StopAtNoHits</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.callbacks.StopAtNoHits.on_protocol_end"><code class="docutils literal notranslate"><span class="pre">StopAtNoHits.on_protocol_end()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="qsample.html#qsample.callbacks.SubsetRates"><code class="docutils literal notranslate"><span class="pre">SubsetRates</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.callbacks.SubsetRates.on_protocol_end"><code class="docutils literal notranslate"><span class="pre">SubsetRates.on_protocol_end()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.callbacks.SubsetRates.on_sampler_end"><code class="docutils literal notranslate"><span class="pre">SubsetRates.on_sampler_end()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="qsample.html#qsample.callbacks.VerboseCircuitExec"><code class="docutils literal notranslate"><span class="pre">VerboseCircuitExec</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.callbacks.VerboseCircuitExec.on_circuit_end"><code class="docutils literal notranslate"><span class="pre">VerboseCircuitExec.on_circuit_end()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="qsample.html#module-qsample.circuit">qsample.circuit module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="qsample.html#qsample.circuit.Circuit"><code class="docutils literal notranslate"><span class="pre">Circuit</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.circuit.Circuit.draw"><code class="docutils literal notranslate"><span class="pre">Circuit.draw()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.circuit.Circuit.from_qasm_circuit"><code class="docutils literal notranslate"><span class="pre">Circuit.from_qasm_circuit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.circuit.Circuit.from_qiskit_circuit"><code class="docutils literal notranslate"><span class="pre">Circuit.from_qiskit_circuit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.circuit.Circuit.from_stim_circuit"><code class="docutils literal notranslate"><span class="pre">Circuit.from_stim_circuit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.circuit.Circuit.id"><code class="docutils literal notranslate"><span class="pre">Circuit.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.circuit.Circuit.insert"><code class="docutils literal notranslate"><span class="pre">Circuit.insert()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.circuit.Circuit.measured_qubits"><code class="docutils literal notranslate"><span class="pre">Circuit.measured_qubits</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.circuit.Circuit.n_measurements"><code class="docutils literal notranslate"><span class="pre">Circuit.n_measurements</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.circuit.Circuit.n_qubits"><code class="docutils literal notranslate"><span class="pre">Circuit.n_qubits</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.circuit.Circuit.n_ticks"><code class="docutils literal notranslate"><span class="pre">Circuit.n_ticks</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.circuit.Circuit.qubits"><code class="docutils literal notranslate"><span class="pre">Circuit.qubits</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.circuit.Circuit.to_stim_circuit"><code class="docutils literal notranslate"><span class="pre">Circuit.to_stim_circuit</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="qsample.html#qsample.circuit.draw_circuit"><code class="docutils literal notranslate"><span class="pre">draw_circuit()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="qsample.html#qsample.circuit.unpack"><code class="docutils literal notranslate"><span class="pre">unpack()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="qsample.html#module-qsample.examples">qsample.examples module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="qsample.html#qsample.examples.flagged"><code class="docutils literal notranslate"><span class="pre">flagged()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="qsample.html#qsample.examples.flagged_z_look_up_table_1"><code class="docutils literal notranslate"><span class="pre">flagged_z_look_up_table_1()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="qsample.html#qsample.examples.flut"><code class="docutils literal notranslate"><span class="pre">flut()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="qsample.html#qsample.examples.hamming2"><code class="docutils literal notranslate"><span class="pre">hamming2()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="qsample.html#qsample.examples.logErr"><code class="docutils literal notranslate"><span class="pre">logErr()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="qsample.html#qsample.examples.nft_check1"><code class="docutils literal notranslate"><span class="pre">nft_check1()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="qsample.html#qsample.examples.nft_check2"><code class="docutils literal notranslate"><span class="pre">nft_check2()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="qsample.html#qsample.examples.rep_check"><code class="docutils literal notranslate"><span class="pre">rep_check()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="qsample.html#qsample.examples.syn_check"><code class="docutils literal notranslate"><span class="pre">syn_check()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="qsample.html#module-qsample.math">qsample.math module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="qsample.html#qsample.math.Wald_var"><code class="docutils literal notranslate"><span class="pre">Wald_var()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="qsample.html#qsample.math.Wilson_var"><code class="docutils literal notranslate"><span class="pre">Wilson_var()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="qsample.html#qsample.math.binom"><code class="docutils literal notranslate"><span class="pre">binom()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="qsample.html#qsample.math.cartesian_product"><code class="docutils literal notranslate"><span class="pre">cartesian_product()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="qsample.html#qsample.math.comb"><code class="docutils literal notranslate"><span class="pre">comb()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="qsample.html#qsample.math.joint_binom"><code class="docutils literal notranslate"><span class="pre">joint_binom()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="qsample.html#qsample.math.subset_cards"><code class="docutils literal notranslate"><span class="pre">subset_cards()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="qsample.html#qsample.math.subset_probs"><code class="docutils literal notranslate"><span class="pre">subset_probs()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="qsample.html#module-qsample.noise">qsample.noise module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="qsample.html#qsample.noise.E0"><code class="docutils literal notranslate"><span class="pre">E0</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.noise.E0.group"><code class="docutils literal notranslate"><span class="pre">E0.group()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.noise.E0.groups"><code class="docutils literal notranslate"><span class="pre">E0.groups</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.noise.E0.run"><code class="docutils literal notranslate"><span class="pre">E0.run()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="qsample.html#qsample.noise.E1"><code class="docutils literal notranslate"><span class="pre">E1</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.noise.E1.generate"><code class="docutils literal notranslate"><span class="pre">E1.generate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.noise.E1.group"><code class="docutils literal notranslate"><span class="pre">E1.group()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.noise.E1.groups"><code class="docutils literal notranslate"><span class="pre">E1.groups</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="qsample.html#qsample.noise.E1_1"><code class="docutils literal notranslate"><span class="pre">E1_1</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.noise.E1_1.generate"><code class="docutils literal notranslate"><span class="pre">E1_1.generate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.noise.E1_1.group"><code class="docutils literal notranslate"><span class="pre">E1_1.group()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.noise.E1_1.groups"><code class="docutils literal notranslate"><span class="pre">E1_1.groups</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="qsample.html#qsample.noise.E2"><code class="docutils literal notranslate"><span class="pre">E2</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.noise.E2.generate"><code class="docutils literal notranslate"><span class="pre">E2.generate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.noise.E2.group"><code class="docutils literal notranslate"><span class="pre">E2.group()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.noise.E2.groups"><code class="docutils literal notranslate"><span class="pre">E2.groups</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="qsample.html#qsample.noise.E3"><code class="docutils literal notranslate"><span class="pre">E3</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.noise.E3.generate"><code class="docutils literal notranslate"><span class="pre">E3.generate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.noise.E3.group"><code class="docutils literal notranslate"><span class="pre">E3.group()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.noise.E3.groups"><code class="docutils literal notranslate"><span class="pre">E3.groups</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="qsample.html#qsample.noise.E3_1"><code class="docutils literal notranslate"><span class="pre">E3_1</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.noise.E3_1.generate"><code class="docutils literal notranslate"><span class="pre">E3_1.generate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.noise.E3_1.group"><code class="docutils literal notranslate"><span class="pre">E3_1.group()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.noise.E3_1.groups"><code class="docutils literal notranslate"><span class="pre">E3_1.groups</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="qsample.html#qsample.noise.ErrorModel"><code class="docutils literal notranslate"><span class="pre">ErrorModel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.noise.ErrorModel.choose_p"><code class="docutils literal notranslate"><span class="pre">ErrorModel.choose_p()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.noise.ErrorModel.choose_w"><code class="docutils literal notranslate"><span class="pre">ErrorModel.choose_w()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.noise.ErrorModel.generate"><code class="docutils literal notranslate"><span class="pre">ErrorModel.generate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.noise.ErrorModel.group"><code class="docutils literal notranslate"><span class="pre">ErrorModel.group()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.noise.ErrorModel.groups"><code class="docutils literal notranslate"><span class="pre">ErrorModel.groups</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.noise.ErrorModel.run"><code class="docutils literal notranslate"><span class="pre">ErrorModel.run()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="qsample.html#qsample.noise.S1"><code class="docutils literal notranslate"><span class="pre">S1</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.noise.S1.generate"><code class="docutils literal notranslate"><span class="pre">S1.generate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.noise.S1.group"><code class="docutils literal notranslate"><span class="pre">S1.group()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.noise.S1.groups"><code class="docutils literal notranslate"><span class="pre">S1.groups</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="qsample.html#qsample.noise.S2"><code class="docutils literal notranslate"><span class="pre">S2</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.noise.S2.generate"><code class="docutils literal notranslate"><span class="pre">S2.generate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.noise.S2.group"><code class="docutils literal notranslate"><span class="pre">S2.group()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.noise.S2.groups"><code class="docutils literal notranslate"><span class="pre">S2.groups</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="qsample.html#qsample.noise.S4"><code class="docutils literal notranslate"><span class="pre">S4</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.noise.S4.generate"><code class="docutils literal notranslate"><span class="pre">S4.generate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.noise.S4.group"><code class="docutils literal notranslate"><span class="pre">S4.group()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.noise.S4.groups"><code class="docutils literal notranslate"><span class="pre">S4.groups</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="qsample.html#module-qsample.protocol">qsample.protocol module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="qsample.html#qsample.protocol.Protocol"><code class="docutils literal notranslate"><span class="pre">Protocol</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.protocol.Protocol.add_node"><code class="docutils literal notranslate"><span class="pre">Protocol.add_node()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.protocol.Protocol.add_nodes_from"><code class="docutils literal notranslate"><span class="pre">Protocol.add_nodes_from()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.protocol.Protocol.draw"><code class="docutils literal notranslate"><span class="pre">Protocol.draw()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.protocol.Protocol.get_circuit"><code class="docutils literal notranslate"><span class="pre">Protocol.get_circuit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.protocol.Protocol.qubits"><code class="docutils literal notranslate"><span class="pre">Protocol.qubits</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.protocol.Protocol.root"><code class="docutils literal notranslate"><span class="pre">Protocol.root</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qsample.html#qsample.protocol.Protocol.successor"><code class="docutils literal notranslate"><span class="pre">Protocol.successor()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="qsample.html#qsample.protocol.draw_protocol"><code class="docutils literal notranslate"><span class="pre">draw_protocol()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="qsample.html#module-qsample.utils">qsample.utils module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="qsample.html#qsample.utils.load"><code class="docutils literal notranslate"><span class="pre">load()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="qsample.html#qsample.utils.save"><code class="docutils literal notranslate"><span class="pre">save()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="qsample.html#module-qsample">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">qsample</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2025, Don Winter, Sascha Heussen, Joao Fontes.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.2.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="_sources/modules.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
