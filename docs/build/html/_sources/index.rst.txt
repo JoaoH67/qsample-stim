@@ -3,15 +3,20 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-qsample documentation
-=====================
+QSample 2.0 Documentation
+=========================
 
-Add your content using ``reStructuredText`` syntax. See the
-`reStructuredText <https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html>`_
-documentation for details.
-
+Welcome to the official documentation for **QSample 2.0**.
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
+   qsample
+   usage
+
+Quick Links
+-----------
+
+- :doc:'QSample <qsample>'
+- :doc:'Usage <usage>'
