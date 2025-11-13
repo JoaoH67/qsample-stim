@@ -3,7 +3,7 @@
   <head><meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html"><link rel="search" title="Search" href="search.html"><link rel="prev" title="qsample.sim package" href="qsample.sim.html">
+<link rel="index" title="Index" href="genindex.html"><link rel="search" title="Search" href="search.html"><link rel="next" title="GHZ" href="GHZ.html"><link rel="prev" title="qsample.sim package" href="qsample.sim.html">
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2025.09.25 -->
         <title>Examples - qsample 2.0 documentation</title>
@@ -172,7 +172,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
         <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
       </label>
     </div>
@@ -197,7 +197,14 @@
 <li class="toctree-l2"><a class="reference internal" href="qsample.sim.html">qsample.sim package</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Examples</a></li>
+<li class="toctree-l1 current has-children current-page"><a class="current reference internal" href="#">Examples</a><input aria-label="Toggle navigation of Examples" checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="GHZ.html">GHZ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Teleportation.html">Teleportation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PyMatching.html">PyMatching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Steane.html">Steane</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Surface.html">Surface Code</a></li>
+</ul>
+</li>
 </ul>
 
 </div>
@@ -231,49 +238,23 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
             <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
           </label>
         </div>
         <article role="main" id="furo-main-content">
           <section id="examples">
 <h1>Examples<a class="headerlink" href="#examples" title="Link to this heading">¶</a></h1>
-<section id="ghz">
-<h2>GHZ<a class="headerlink" href="#ghz" title="Link to this heading">¶</a></h2>
-<p>GHZ protocol using QSample 2.0:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">qsample</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">qs</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">stim</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
-
-<span class="n">ghz</span> <span class="o">=</span> <span class="n">qs</span><span class="o">.</span><span class="n">Circuit</span><span class="p">([</span> <span class="p">{</span><span class="s2">&quot;init&quot;</span><span class="p">:</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">}},</span>
-                <span class="p">{</span><span class="s2">&quot;H&quot;</span><span class="p">:</span> <span class="p">{</span><span class="mi">0</span><span class="p">}},</span>
-                <span class="p">{</span><span class="s2">&quot;CNOT&quot;</span><span class="p">:</span> <span class="p">{(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)}},</span>
-                <span class="p">{</span><span class="s2">&quot;CNOT&quot;</span><span class="p">:</span> <span class="p">{(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)}},</span>
-                <span class="p">{</span><span class="s2">&quot;CNOT&quot;</span><span class="p">:</span> <span class="p">{(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)}},</span>
-                <span class="p">{</span><span class="s2">&quot;CNOT&quot;</span><span class="p">:</span> <span class="p">{(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)}},</span>
-                <span class="p">{</span><span class="s2">&quot;CNOT&quot;</span><span class="p">:</span> <span class="p">{(</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">)}},</span>
-                <span class="p">{</span><span class="s2">&quot;measure&quot;</span><span class="p">:</span> <span class="p">{</span><span class="mi">4</span><span class="p">}}</span>   <span class="p">])</span>
-
-<span class="c1"># Define protocol for 1 round of repetition</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">logErr</span><span class="p">(</span><span class="n">msmt_list</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">msmt_list</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span> <span class="c1"># If True transition to FAIL</span>
-
-<span class="n">functions</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;logErr&#39;</span><span class="p">:</span> <span class="n">logErr</span><span class="p">}</span>
-
-<span class="n">ghz1</span> <span class="o">=</span> <span class="n">qs</span><span class="o">.</span><span class="n">Protocol</span><span class="p">(</span><span class="n">check_functions</span><span class="o">=</span><span class="n">functions</span><span class="p">,</span> <span class="n">fault_tolerant</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
-<span class="n">ghz1</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s1">&#39;ghz&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">=</span><span class="n">ghz</span><span class="p">)</span> <span class="c1"># Add node with corresponding circuit</span>
-<span class="n">ghz1</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s1">&#39;START&#39;</span><span class="p">,</span> <span class="s1">&#39;ghz&#39;</span><span class="p">,</span> <span class="n">check</span><span class="o">=</span><span class="s1">&#39;True&#39;</span><span class="p">)</span> <span class="c1"># Transition START -&gt; first circuit node always True</span>
-<span class="n">ghz1</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s1">&#39;ghz&#39;</span><span class="p">,</span> <span class="s1">&#39;FAIL&#39;</span><span class="p">,</span> <span class="n">check</span><span class="o">=</span><span class="s1">&#39;logErr(ghz)&#39;</span><span class="p">)</span>
-</pre></div>
+<p>Some example protocols</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="GHZ.html">GHZ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Teleportation.html">Teleportation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PyMatching.html">PyMatching</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Steane.html">Steane</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Surface.html">Surface Code</a></li>
+</ul>
 </div>
-<p>Lorem ipsum dolor sit amet.</p>
-</section>
 </section>
 
         </article>
@@ -281,7 +262,15 @@
       <footer>
         
         <div class="related-pages">
-          
+          <a class="next-page" href="GHZ.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">GHZ</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
           <a class="prev-page" href="qsample.sim.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
@@ -311,27 +300,8 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer">
+    <aside class="toc-drawer no-toc">
       
-      
-      <div class="toc-sticky toc-scroll">
-        <div class="toc-title-container">
-          <span class="toc-title">
-            On this page
-          </span>
-        </div>
-        <div class="toc-tree-container">
-          <div class="toc-tree">
-            <ul>
-<li><a class="reference internal" href="#">Examples</a><ul>
-<li><a class="reference internal" href="#ghz">GHZ</a></li>
-</ul>
-</li>
-</ul>
-
-          </div>
-        </div>
-      </div>
       
       
     </aside>
