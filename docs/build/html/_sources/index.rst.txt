@@ -14,9 +14,3 @@ Welcome to the official documentation for **QSample 2.0**.
 
    qsample
    examples
-
-Quick Links
------------
-
-- :doc:'QSample <qsample>'
-- :doc:'Examples <examples>'
