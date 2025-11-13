@@ -13,10 +13,10 @@ Welcome to the official documentation for **QSample 2.0**.
    :caption: Contents:
 
    qsample
-   usage
+   examples
 
 Quick Links
 -----------
 
 - :doc:'QSample <qsample>'
-- :doc:'Usage <usage>'
+- :doc:'Examples <examples>'
