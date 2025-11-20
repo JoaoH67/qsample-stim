@@ -1,12 +1,12 @@
 Examples
 ========
 
-Some example protocols
+Some example protocols:
 
 .. toctree::
-    GHZ
-    Teleportation
-    PyMatching 
-    Steane
-    Surface 
+    GHZ state preparation <GHZ>
+    Quantum teleportation <Teleportation>
+    Using PyMatching to decode errors <PyMatching>
+    Many ways of defining a circuit for the Steane code <Steane>
+    Topological QEC with the Surface code <Surface> 
 

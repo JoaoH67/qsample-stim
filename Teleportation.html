@@ -3,7 +3,7 @@
   <head><meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html"><link rel="search" title="Search" href="search.html">
+<link rel="index" title="Index" href="genindex.html"><link rel="search" title="Search" href="search.html"><link rel="next" title="PyMatching" href="PyMatching.html"><link rel="prev" title="GHZ" href="GHZ.html">
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2025.09.25 -->
         <title>Teleportation - qsample 2.0 documentation</title>
@@ -191,13 +191,25 @@
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1 has-children"><a class="reference internal" href="qsample.html">qsample package</a><input aria-label="Toggle navigation of qsample package" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="qsample.sampler.html">qsample.sampler package</a></li>
-<li class="toctree-l2"><a class="reference internal" href="qsample.sim.html">qsample.sim package</a></li>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation guide</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="qsample.html">QSample docs</a><input aria-label="Toggle navigation of QSample docs" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="qsample.sampler.html">Samplers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qsample.sim.html">Simulators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qsample.circuit.html">circuit.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qsample.callbacks.html">callbacks.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qsample.math.html">math.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qsample.noise.html">noise.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qsample.protocol.html">protocol.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qsample.utils.html">utils.py</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="examples.html">Examples</a><input aria-label="Toggle navigation of Examples" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul class="simple">
+<li class="toctree-l1 current has-children"><a class="reference internal" href="examples.html">Example protocols</a><input aria-label="Toggle navigation of Example protocols" checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="GHZ.html">GHZ state preparation</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Quantum teleportation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PyMatching.html">Using PyMatching to decode errors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Steane.html">Many ways of defining a circuit for the Steane code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Surface.html">Topological QEC with the Surface code</a></li>
 </ul>
 </li>
 </ul>
@@ -240,8 +252,9 @@
         <article role="main" id="furo-main-content">
           <section id="teleportation">
 <h1>Teleportation<a class="headerlink" href="#teleportation" title="Link to this heading">¶</a></h1>
-<p>Teleportation protocol.</p>
-<p>Image comes here</p>
+<p>Here we demonstrate how to use QSample to define a simple quantum teleportation protocol.</p>
+<a class="reference internal image-reference" href="_images/protocol_tele.png"><img alt="GHZ circuit output" class="align-center" src="_images/protocol_tele.png" style="width: 500px;" />
+</a>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">err_model</span> <span class="o">=</span> <span class="n">qs</span><span class="o">.</span><span class="n">noise</span><span class="o">.</span><span class="n">E1</span>
 <span class="n">q</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1e-5</span><span class="p">,</span> <span class="mf">1e-4</span><span class="p">,</span> <span class="mf">1e-3</span><span class="p">,</span> <span class="mf">1e-2</span><span class="p">,</span> <span class="mf">1e-1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]</span>
 <span class="n">err_params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;q&#39;</span><span class="p">:</span> <span class="n">q</span><span class="p">}</span>
@@ -257,6 +270,50 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+<a class="reference internal image-reference" href="_images/plog_tele.png"><img alt="GHZ circuit output" class="align-center" src="_images/plog_tele.png" style="width: 500px;" />
+</a>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">qsample_times</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">stim_times</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="n">samples</span> <span class="o">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">3000</span><span class="p">,</span> <span class="mi">10000</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">samples</span><span class="p">:</span>
+    <span class="n">begin</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">ss_sam</span> <span class="o">=</span> <span class="n">qs</span><span class="o">.</span><span class="n">SubsetSampler</span><span class="p">(</span><span class="n">protocol</span><span class="o">=</span><span class="n">tele_proto</span><span class="p">,</span> <span class="n">simulator</span><span class="o">=</span><span class="n">qs</span><span class="o">.</span><span class="n">StabilizerSimulator</span><span class="p">,</span>  <span class="n">p_max</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;q&#39;</span><span class="p">:</span> <span class="mf">0.01</span><span class="p">},</span> <span class="n">err_model</span><span class="o">=</span><span class="n">err_model</span><span class="p">,</span> <span class="n">err_params</span><span class="o">=</span><span class="n">err_params</span><span class="p">,</span> <span class="n">L</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">ss_sam</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+    <span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">qsample_times</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">end</span><span class="o">-</span><span class="n">begin</span><span class="p">)</span>
+
+    <span class="n">begin</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">ss_sam</span> <span class="o">=</span> <span class="n">qs</span><span class="o">.</span><span class="n">SubsetSampler</span><span class="p">(</span><span class="n">protocol</span><span class="o">=</span><span class="n">tele_proto</span><span class="p">,</span> <span class="n">simulator</span><span class="o">=</span><span class="n">qs</span><span class="o">.</span><span class="n">StimSimulator</span><span class="p">,</span>  <span class="n">p_max</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;q&#39;</span><span class="p">:</span> <span class="mf">0.01</span><span class="p">},</span> <span class="n">err_model</span><span class="o">=</span><span class="n">err_model</span><span class="p">,</span> <span class="n">err_params</span><span class="o">=</span><span class="n">err_params</span><span class="p">,</span> <span class="n">L</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">ss_sam</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+    <span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">stim_times</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">end</span><span class="o">-</span><span class="n">begin</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">qsample_times</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;qsample times&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">stim_times</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;stim times&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;# of samples&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;time (s)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>As we can see below, simulating with STIM is consistently ~30% faster than with CHP, and scales linearly with the number of samples:
+.. image:: _static/times_tele.png</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">alt<span class="colon">:</span></dt>
+<dd class="field-odd"><p>GHZ circuit output</p>
+</dd>
+<dt class="field-even">width<span class="colon">:</span></dt>
+<dd class="field-even"><p>500px</p>
+</dd>
+<dt class="field-odd">align<span class="colon">:</span></dt>
+<dd class="field-odd"><p>center</p>
+</dd>
+</dl>
+</div></blockquote>
 </section>
 
         </article>
@@ -264,8 +321,26 @@
       <footer>
         
         <div class="related-pages">
-          
-          
+          <a class="next-page" href="PyMatching.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">PyMatching</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="GHZ.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">GHZ</div>
+                
+              </div>
+            </a>
         </div>
         <div class="bottom-of-page">
           <div class="left-details">

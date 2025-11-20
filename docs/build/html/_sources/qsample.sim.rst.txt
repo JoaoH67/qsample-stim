@@ -1,10 +1,7 @@
-qsample.sim package
+Simulators
 ===================
 
-Submodules
-----------
-
-qsample.sim.mixin module
+mixin.py
 ------------------------
 
 .. automodule:: qsample.sim.mixin
@@ -12,7 +9,7 @@ qsample.sim.mixin module
    :show-inheritance:
    :undoc-members:
 
-qsample.sim.stabilizer module
+CHP simulator
 -----------------------------
 
 .. automodule:: qsample.sim.stabilizer
@@ -20,7 +17,7 @@ qsample.sim.stabilizer module
    :show-inheritance:
    :undoc-members:
 
-qsample.sim.statevector module
+Statevector simulator
 ------------------------------
 
 .. automodule:: qsample.sim.statevector
@@ -28,18 +25,10 @@ qsample.sim.statevector module
    :show-inheritance:
    :undoc-members:
 
-qsample.sim.stimsimulator module
+STIM simulator
 --------------------------------
 
 .. automodule:: qsample.sim.stimsimulator
-   :members:
-   :show-inheritance:
-   :undoc-members:
-
-Module contents
----------------
-
-.. automodule:: qsample.sim
    :members:
    :show-inheritance:
    :undoc-members:

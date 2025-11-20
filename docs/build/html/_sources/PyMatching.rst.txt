@@ -1,7 +1,7 @@
 PyMatching
 ==========
 
-How to use a decoder.
+Here we demonstrate how to use PyMatching to decode errors on STIM circuits. We define a very simple circuit that is supposed to only generate correctable errors.
 
 .. code-block:: python
 
@@ -30,7 +30,18 @@ How to use a decoder.
     matcher = pymatching.Matching.from_detector_error_model(dem)
     matcher.decode([0,1])
 
-Images here
+The detector error model is shown below, together with a positive result for an error given the measurement 01:
+
+.. code-block:: text
+
+    stim.DetectorErrorModel('''
+        error(0.01) D0 D1
+        error(0.01) D0 L0
+        error(0.0198) D1 L0
+    ''')
+    array([1], dtype=uint8)
+
+We use this PyMatching decoder inside a check function in our QSample protocol:
 
 .. code-block:: python
 
@@ -67,7 +78,10 @@ Images here
 
     protocol.draw(figsize=(16,10))
 
-Image comes here.
+.. image:: _static/protocol_pymatching.png
+    :alt: GHZ circuit output
+    :width: 500px
+    :align: center
 
 .. code-block:: python
 
@@ -85,3 +99,10 @@ Image comes here.
     plt.plot(q, v1)
     plt.plot(q, w1)
     plt.xscale('log')    
+
+As expected, the protocol always corrects the error, independently of the physical error rate. This is not the case for more complicated protocols.
+
+.. image:: _static/plog_pymatching.png
+    :alt: GHZ circuit output
+    :width: 500px
+    :align: center

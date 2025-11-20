@@ -12,5 +12,6 @@ Welcome to the official documentation for **QSample 2.0**.
    :maxdepth: 2
    :caption: Contents:
 
-   qsample
-   examples
+   Installation guide <installation>
+   QSample docs <qsample>
+   Example protocols <examples>

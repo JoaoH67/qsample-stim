@@ -3,7 +3,7 @@
   <head><meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html"><link rel="search" title="Search" href="search.html"><link rel="next" title="qsample package" href="qsample.html">
+<link rel="index" title="Index" href="genindex.html"><link rel="search" title="Search" href="search.html"><link rel="next" title="Installation guide" href="installation.html">
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2025.09.25 -->
         <title>qsample 2.0 documentation</title>
@@ -192,17 +192,24 @@
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1 has-children"><a class="reference internal" href="qsample.html">qsample package</a><input aria-label="Toggle navigation of qsample package" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="qsample.sampler.html">qsample.sampler package</a></li>
-<li class="toctree-l2"><a class="reference internal" href="qsample.sim.html">qsample.sim package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation guide</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="qsample.html">QSample docs</a><input aria-label="Toggle navigation of QSample docs" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="qsample.sampler.html">Samplers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qsample.sim.html">Simulators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qsample.circuit.html">circuit.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qsample.callbacks.html">callbacks.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qsample.math.html">math.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qsample.noise.html">noise.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qsample.protocol.html">protocol.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qsample.utils.html">utils.py</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="examples.html">Examples</a><input aria-label="Toggle navigation of Examples" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="GHZ.html">GHZ</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Teleportation.html">Teleportation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PyMatching.html">PyMatching</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Steane.html">Steane</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Surface.html">Surface Code</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="examples.html">Example protocols</a><input aria-label="Toggle navigation of Example protocols" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="GHZ.html">GHZ state preparation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Teleportation.html">Quantum teleportation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PyMatching.html">Using PyMatching to decode errors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Steane.html">Many ways of defining a circuit for the Steane code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Surface.html">Topological QEC with the Surface code</a></li>
 </ul>
 </li>
 </ul>
@@ -249,25 +256,24 @@
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="qsample.html">qsample package</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="qsample.html#subpackages">Subpackages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="qsample.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="qsample.html#module-qsample.callbacks">qsample.callbacks module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="qsample.html#module-qsample.circuit">qsample.circuit module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="qsample.html#module-qsample.examples">qsample.examples module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="qsample.html#module-qsample.math">qsample.math module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="qsample.html#module-qsample.noise">qsample.noise module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="qsample.html#module-qsample.protocol">qsample.protocol module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="qsample.html#module-qsample.utils">qsample.utils module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="qsample.html#module-qsample">Module contents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qsample.html">QSample docs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="qsample.sampler.html">Samplers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qsample.sim.html">Simulators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qsample.circuit.html">circuit.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qsample.callbacks.html">callbacks.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qsample.math.html">math.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qsample.noise.html">noise.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qsample.protocol.html">protocol.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qsample.utils.html">utils.py</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="GHZ.html">GHZ</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Teleportation.html">Teleportation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PyMatching.html">PyMatching</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Steane.html">Steane</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Surface.html">Surface Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Example protocols</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="GHZ.html">GHZ state preparation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Teleportation.html">Quantum teleportation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PyMatching.html">Using PyMatching to decode errors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Steane.html">Many ways of defining a circuit for the Steane code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Surface.html">Topological QEC with the Surface code</a></li>
 </ul>
 </li>
 </ul>
@@ -279,12 +285,12 @@
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="qsample.html">
+          <a class="next-page" href="installation.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">qsample package</div>
+                <div class="title">Installation guide</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>

@@ -1,7 +1,7 @@
 Teleportation
 ============
 
-Teleportation protocol.
+Here we demonstrate how to use QSample to define a simple quantum teleportation protocol.
 
 .. code-block:: python
     import qsample as qs
@@ -31,7 +31,10 @@ Teleportation protocol.
     tele_proto.draw(figsize=(8,5))
 
 
-Image comes here
+.. image:: _static/protocol_tele.png
+    :alt: GHZ circuit output
+    :width: 500px
+    :align: center
 
 .. code-block:: python
 
@@ -48,3 +51,42 @@ Image comes here
     plt.plot(q, v2)
     plt.xscale('log')
     plt.yscale('log')
+
+.. image:: _static/plog_tele.png
+    :alt: GHZ circuit output
+    :width: 500px
+    :align: center
+
+.. code-block:: python
+
+    qsample_times = []
+    stim_times = []
+
+    samples = [100, 300, 1000, 3000, 10000]
+
+    for s in samples:
+        begin = time.time()
+        ss_sam = qs.SubsetSampler(protocol=tele_proto, simulator=qs.StabilizerSimulator,  p_max={'q': 0.01}, err_model=err_model, err_params=err_params, L=3)
+        ss_sam.run(s)
+        end = time.time()
+        qsample_times.append(end-begin)
+
+        begin = time.time()
+        ss_sam = qs.SubsetSampler(protocol=tele_proto, simulator=qs.StimSimulator,  p_max={'q': 0.01}, err_model=err_model, err_params=err_params, L=3)
+        ss_sam.run(s)
+        end = time.time()
+        stim_times.append(end-begin)
+
+    plt.plot(samples, qsample_times, label='qsample times')
+    plt.plot(samples, stim_times, label='stim times')
+    plt.xlabel('# of samples')
+    plt.ylabel('time (s)')
+    plt.xscale('log')
+    plt.yscale('log')
+    plt.legend()
+
+As we can see below, simulating with STIM is consistently ~30% faster than with CHP, and scales linearly with the number of samples:
+.. image:: _static/times_tele.png
+    :alt: GHZ circuit output
+    :width: 500px
+    :align: center

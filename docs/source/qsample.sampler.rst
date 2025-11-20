@@ -1,10 +1,7 @@
-qsample.sampler package
+Samplers
 =======================
 
-Submodules
-----------
-
-qsample.sampler.direct module
+Direct sampler
 -----------------------------
 
 .. automodule:: qsample.sampler.direct
@@ -12,15 +9,7 @@ qsample.sampler.direct module
    :show-inheritance:
    :undoc-members:
 
-qsample.sampler.experimental module
------------------------------------
-
-.. automodule:: qsample.sampler.experimental
-   :members:
-   :show-inheritance:
-   :undoc-members:
-
-qsample.sampler.subset module
+Subset sampler
 -----------------------------
 
 .. automodule:: qsample.sampler.subset
@@ -28,18 +17,20 @@ qsample.sampler.subset module
    :show-inheritance:
    :undoc-members:
 
-qsample.sampler.tree module
----------------------------
+ERU sampler (experimental)
+-----------------------------------
 
-.. automodule:: qsample.sampler.tree
+.. automodule:: qsample.sampler.experimental
    :members:
    :show-inheritance:
    :undoc-members:
 
-Module contents
----------------
 
-.. automodule:: qsample.sampler
+
+tree.py
+---------------------------
+
+.. automodule:: qsample.sampler.tree
    :members:
    :show-inheritance:
    :undoc-members:

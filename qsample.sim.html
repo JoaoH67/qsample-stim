@@ -3,10 +3,10 @@
   <head><meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html"><link rel="search" title="Search" href="search.html">
+<link rel="index" title="Index" href="genindex.html"><link rel="search" title="Search" href="search.html"><link rel="next" title="circuit.py" href="qsample.circuit.html"><link rel="prev" title="Samplers" href="qsample.sampler.html">
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2025.09.25 -->
-        <title>qsample.sim package - qsample 2.0 documentation</title>
+        <title>Simulators - qsample 2.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d111a655" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=580074bf" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
@@ -190,7 +190,29 @@
   <input type="hidden" name="area" value="default">
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
-  
+  <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current has-children"><a class="reference internal" href="qsample.html">QSample documentation</a><input aria-label="Toggle navigation of QSample documentation" checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="qsample.sampler.html">Samplers</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Simulators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qsample.circuit.html">circuit.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qsample.callbacks.html">callbacks.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qsample.math.html">math.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qsample.noise.html">noise.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qsample.protocol.html">protocol.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qsample.utils.html">utils.py</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="examples.html">Examples</a><input aria-label="Toggle navigation of Examples" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="GHZ.html">GHZ state preparation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Teleportation.html">Quantum teleportation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PyMatching.html">Using PyMatching to decode errors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Steane.html">Many ways of defining a circuit for the Steane code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Surface.html">Topological QEC with the Surface code</a></li>
+</ul>
+</li>
+</ul>
+
 </div>
 </div>
 
@@ -227,13 +249,10 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="qsample-sim-package">
-<h1>qsample.sim package<a class="headerlink" href="#qsample-sim-package" title="Link to this heading">¶</a></h1>
-<section id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
-</section>
+          <section id="simulators">
+<h1>Simulators<a class="headerlink" href="#simulators" title="Link to this heading">¶</a></h1>
 <section id="module-qsample.sim.mixin">
-<span id="qsample-sim-mixin-module"></span><h2>qsample.sim.mixin module<a class="headerlink" href="#module-qsample.sim.mixin" title="Link to this heading">¶</a></h2>
+<span id="mixin-py"></span><h2>mixin.py<a class="headerlink" href="#module-qsample.sim.mixin" title="Link to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="qsample.sim.mixin.CircuitRunnerMixin">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qsample.sim.mixin.</span></span><span class="sig-name descname"><span class="pre">CircuitRunnerMixin</span></span><a class="headerlink" href="#qsample.sim.mixin.CircuitRunnerMixin" title="Link to this definition">¶</a></dt>
@@ -247,8 +266,7 @@ If <cite>fault_circuit</cite> is specified apply fault gates at end of each tick
 <p>Measurements are stored and executed at the end of a tick.
 Measurement results are saved in the order in which they appear in the
 circuit into an output string.</p>
-<section id="parameters">
-<h3>Parameters<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h3>
+<p><strong>Attributes:</strong></p>
 <dl class="simple">
 <dt>circuit<span class="classifier">Circuit</span></dt><dd><p>The circuit to simulate</p>
 </dd>
@@ -256,21 +274,18 @@ circuit into an output string.</p>
 gates in <cite>circuit</cite>, only for <cite>measure</cite> gates fault is applied before</p>
 </dd>
 </dl>
-</section>
-<section id="returns">
-<h3>Returns<a class="headerlink" href="#returns" title="Link to this heading">¶</a></h3>
+<p><strong>Returns:</strong></p>
 <dl class="simple">
 <dt>str or None</dt><dd><p>Measurement results as bitstring (None if no measurements were made)</p>
 </dd>
 </dl>
-</section>
 </dd></dl>
 
 </dd></dl>
 
 </section>
 <section id="module-qsample.sim.stabilizer">
-<span id="qsample-sim-stabilizer-module"></span><h2>qsample.sim.stabilizer module<a class="headerlink" href="#module-qsample.sim.stabilizer" title="Link to this heading">¶</a></h2>
+<span id="chp-simulator"></span><h2>CHP simulator<a class="headerlink" href="#module-qsample.sim.stabilizer" title="Link to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="qsample.sim.stabilizer.ChpSimulator">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qsample.sim.stabilizer.</span></span><span class="sig-name descname"><span class="pre">ChpSimulator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_qubits</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.sim.stabilizer.ChpSimulator" title="Link to this definition">¶</a></dt>
@@ -466,19 +481,17 @@ whether the outcome was deterministic or random.</p>
 
 </section>
 <section id="module-qsample.sim.statevector">
-<span id="qsample-sim-statevector-module"></span><h2>qsample.sim.statevector module<a class="headerlink" href="#module-qsample.sim.statevector" title="Link to this heading">¶</a></h2>
+<span id="statevector-simulator"></span><h2>Statevector simulator<a class="headerlink" href="#module-qsample.sim.statevector" title="Link to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="qsample.sim.statevector.MeasureResult">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qsample.sim.statevector.</span></span><span class="sig-name descname"><span class="pre">MeasureResult</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.sim.statevector.MeasureResult" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Class to hold measurement result</p>
-<section id="attributes">
-<h3>Attributes<a class="headerlink" href="#attributes" title="Link to this heading">¶</a></h3>
+<p><strong>Attributes:</strong></p>
 <dl class="simple">
 <dt>value<span class="classifier">bool</span></dt><dd><p>Outcome of measurement</p>
 </dd>
 </dl>
-</section>
 </dd></dl>
 
 <dl class="py class">
@@ -486,8 +499,7 @@ whether the outcome was deterministic or random.</p>
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qsample.sim.statevector.</span></span><span class="sig-name descname"><span class="pre">StatevectorSimulator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_qubits</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.sim.statevector.StatevectorSimulator" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#qsample.sim.mixin.CircuitRunnerMixin" title="qsample.sim.mixin.CircuitRunnerMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">CircuitRunnerMixin</span></code></a></p>
 <p>Statevector simulator using <cite>ProjectQ</cite> simulator</p>
-<section id="id3">
-<h3>Attributes<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
+<p><strong>Attributes:</strong></p>
 <dl class="simple">
 <dt>_n<span class="classifier">int</span></dt><dd><p>Number of qubits to simulate</p>
 </dd>
@@ -520,8 +532,8 @@ whether the outcome was deterministic or random.</p>
 <dt class="sig sig-object py" id="qsample.sim.statevector.StatevectorSimulator.MSd">
 <span class="sig-name descname"><span class="pre">MSd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubitA</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qubitB</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#qsample.sim.statevector.StatevectorSimulator.MSd" title="Link to this definition">¶</a></dt>
 <dd><p>Molmer-Sorensen gate: -pi/2 XX rotation</p>
-<section id="id4">
-<h4>Reference<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h4>
+<section id="id3">
+<h3>Reference<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
 <blockquote>
 <div><p><a class="reference external" href="https://arxiv.org/pdf/2111.12654.pdf">https://arxiv.org/pdf/2111.12654.pdf</a></p>
 </div></blockquote>
@@ -616,26 +628,22 @@ whether the outcome was deterministic or random.</p>
 <dt class="sig sig-object py" id="qsample.sim.statevector.StatevectorSimulator.expectation">
 <span class="sig-name descname"><span class="pre">expectation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#qsample.sim.statevector.StatevectorSimulator.expectation" title="Link to this definition">¶</a></dt>
 <dd><p>Expectation value of measuring <cite>qubit</cite></p>
-<section id="id5">
-<h4>Parameters<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h4>
+<p><strong>Attributes:</strong></p>
 <dl class="simple">
 <dt>qubit<span class="classifier">int</span></dt><dd><p>Qubit of which expectation value is determined</p>
 </dd>
 </dl>
-</section>
-<section id="id6">
-<h4>Returns<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h4>
+<p><strong>Returns:</strong></p>
 <dl class="simple">
 <dt>float</dt><dd><p>Expectation value of <cite>qubit</cite></p>
 </dd>
 </dl>
-</section>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qsample.sim.statevector.StatevectorSimulator.init">
 <span class="sig-name descname"><span class="pre">init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#qsample.sim.statevector.StatevectorSimulator.init" title="Link to this definition">¶</a></dt>
-<dd><p>Initialize to <a href="#id7"><span class="problematic" id="id8">|</span></a>0&gt;</p>
+<dd><p>Initialize to <a href="#id4"><span class="problematic" id="id5">|</span></a>0&gt;</p>
 </dd></dl>
 
 <dl class="py method">
@@ -644,12 +652,11 @@ whether the outcome was deterministic or random.</p>
 <dd><p>Measurement in Z basis</p>
 </dd></dl>
 
-</section>
 </dd></dl>
 
 </section>
 <section id="module-qsample.sim.stimsimulator">
-<span id="qsample-sim-stimsimulator-module"></span><h2>qsample.sim.stimsimulator module<a class="headerlink" href="#module-qsample.sim.stimsimulator" title="Link to this heading">¶</a></h2>
+<span id="stim-simulator"></span><h2>STIM simulator<a class="headerlink" href="#module-qsample.sim.stimsimulator" title="Link to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="qsample.sim.stimsimulator.MeasureResult">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qsample.sim.stimsimulator.</span></span><span class="sig-name descname"><span class="pre">MeasureResult</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.sim.stimsimulator.MeasureResult" title="Link to this definition">¶</a></dt>
@@ -657,9 +664,109 @@ whether the outcome was deterministic or random.</p>
 <p>A measurement’s output.</p>
 </dd></dl>
 
+<dl class="py class">
+<dt class="sig sig-object py" id="qsample.sim.stimsimulator.StimSimulator">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qsample.sim.stimsimulator.</span></span><span class="sig-name descname"><span class="pre">StimSimulator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_qubits</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.sim.stimsimulator.StimSimulator" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qsample.sim.mixin.CircuitRunnerMixin" title="qsample.sim.mixin.CircuitRunnerMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">CircuitRunnerMixin</span></code></a></p>
+<p>Simulator running on stim.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.sim.stimsimulator.StimSimulator.CNOT">
+<span class="sig-name descname"><span class="pre">CNOT</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">control</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#qsample.sim.stimsimulator.StimSimulator.CNOT" title="Link to this definition">¶</a></dt>
+<dd><p>CNOT gate</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.sim.stimsimulator.StimSimulator.H">
+<span class="sig-name descname"><span class="pre">H</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#qsample.sim.stimsimulator.StimSimulator.H" title="Link to this definition">¶</a></dt>
+<dd><p>H gate</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.sim.stimsimulator.StimSimulator.I">
+<span class="sig-name descname"><span class="pre">I</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#qsample.sim.stimsimulator.StimSimulator.I" title="Link to this definition">¶</a></dt>
+<dd><p>Identity gate</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.sim.stimsimulator.StimSimulator.MSd">
+<span class="sig-name descname"><span class="pre">MSd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubitA</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qubitB</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#qsample.sim.stimsimulator.StimSimulator.MSd" title="Link to this definition">¶</a></dt>
+<dd><p>Molmer-Sorensen gate: -pi/2 XX rotation</p>
+<section id="id6">
+<h3>Reference<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h3>
+<blockquote>
+<div><p><a class="reference external" href="https://arxiv.org/pdf/2111.12654.pdf">https://arxiv.org/pdf/2111.12654.pdf</a></p>
+</div></blockquote>
 </section>
-<section id="module-qsample.sim">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-qsample.sim" title="Link to this heading">¶</a></h2>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.sim.stimsimulator.StimSimulator.Q">
+<span class="sig-name descname"><span class="pre">Q</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#qsample.sim.stimsimulator.StimSimulator.Q" title="Link to this definition">¶</a></dt>
+<dd><p>Q = sqrt(X) = HSH</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.sim.stimsimulator.StimSimulator.Qd">
+<span class="sig-name descname"><span class="pre">Qd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#qsample.sim.stimsimulator.StimSimulator.Qd" title="Link to this definition">¶</a></dt>
+<dd><p>Q^(dagger) = Q^3</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.sim.stimsimulator.StimSimulator.R">
+<span class="sig-name descname"><span class="pre">R</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#qsample.sim.stimsimulator.StimSimulator.R" title="Link to this definition">¶</a></dt>
+<dd><p>R = sqrt(XZ) = SQS^(dagger)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.sim.stimsimulator.StimSimulator.Rd">
+<span class="sig-name descname"><span class="pre">Rd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#qsample.sim.stimsimulator.StimSimulator.Rd" title="Link to this definition">¶</a></dt>
+<dd><p>R^(dagger) = R^3</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.sim.stimsimulator.StimSimulator.S">
+<span class="sig-name descname"><span class="pre">S</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#qsample.sim.stimsimulator.StimSimulator.S" title="Link to this definition">¶</a></dt>
+<dd><p>Phase gate</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.sim.stimsimulator.StimSimulator.Sd">
+<span class="sig-name descname"><span class="pre">Sd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#qsample.sim.stimsimulator.StimSimulator.Sd" title="Link to this definition">¶</a></dt>
+<dd><p>S^(dagger) = S^3</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.sim.stimsimulator.StimSimulator.X">
+<span class="sig-name descname"><span class="pre">X</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#qsample.sim.stimsimulator.StimSimulator.X" title="Link to this definition">¶</a></dt>
+<dd><p>X = HZH</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.sim.stimsimulator.StimSimulator.Y">
+<span class="sig-name descname"><span class="pre">Y</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#qsample.sim.stimsimulator.StimSimulator.Y" title="Link to this definition">¶</a></dt>
+<dd><p>Y = SXS^(dagger)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.sim.stimsimulator.StimSimulator.Z">
+<span class="sig-name descname"><span class="pre">Z</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#qsample.sim.stimsimulator.StimSimulator.Z" title="Link to this definition">¶</a></dt>
+<dd><p>Z = SS</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.sim.stimsimulator.StimSimulator.init">
+<span class="sig-name descname"><span class="pre">init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#qsample.sim.stimsimulator.StimSimulator.init" title="Link to this definition">¶</a></dt>
+<dd><p>Initialize to <a href="#id7"><span class="problematic" id="id8">|</span></a>0&gt;</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.sim.stimsimulator.StimSimulator.measure">
+<span class="sig-name descname"><span class="pre">measure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#qsample.sim.stimsimulator.MeasureResult" title="qsample.sim.stimsimulator.MeasureResult"><span class="pre">MeasureResult</span></a></span></span><a class="headerlink" href="#qsample.sim.stimsimulator.StimSimulator.measure" title="Link to this definition">¶</a></dt>
+<dd><p>Measurement in Z basis</p>
+</dd></dl>
+
+</dd></dl>
+
 </section>
 </section>
 
@@ -668,8 +775,26 @@ whether the outcome was deterministic or random.</p>
       <footer>
         
         <div class="related-pages">
-          
-          
+          <a class="next-page" href="qsample.circuit.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">circuit.py</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="qsample.sampler.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Samplers</div>
+                
+              </div>
+            </a>
         </div>
         <div class="bottom-of-page">
           <div class="left-details">
@@ -700,16 +825,15 @@ whether the outcome was deterministic or random.</p>
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">qsample.sim package</a><ul>
-<li><a class="reference internal" href="#submodules">Submodules</a></li>
-<li><a class="reference internal" href="#module-qsample.sim.mixin">qsample.sim.mixin module</a><ul>
+<li><a class="reference internal" href="#">Simulators</a><ul>
+<li><a class="reference internal" href="#module-qsample.sim.mixin">mixin.py</a><ul>
 <li><a class="reference internal" href="#qsample.sim.mixin.CircuitRunnerMixin"><code class="docutils literal notranslate"><span class="pre">CircuitRunnerMixin</span></code></a><ul>
 <li><a class="reference internal" href="#qsample.sim.mixin.CircuitRunnerMixin.run"><code class="docutils literal notranslate"><span class="pre">CircuitRunnerMixin.run()</span></code></a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#module-qsample.sim.stabilizer">qsample.sim.stabilizer module</a><ul>
+<li><a class="reference internal" href="#module-qsample.sim.stabilizer">CHP simulator</a><ul>
 <li><a class="reference internal" href="#qsample.sim.stabilizer.ChpSimulator"><code class="docutils literal notranslate"><span class="pre">ChpSimulator</span></code></a><ul>
 <li><a class="reference internal" href="#qsample.sim.stabilizer.ChpSimulator.cnot"><code class="docutils literal notranslate"><span class="pre">ChpSimulator.cnot()</span></code></a></li>
 <li><a class="reference internal" href="#qsample.sim.stabilizer.ChpSimulator.hadamard"><code class="docutils literal notranslate"><span class="pre">ChpSimulator.hadamard()</span></code></a></li>
@@ -739,7 +863,7 @@ whether the outcome was deterministic or random.</p>
 <li><a class="reference internal" href="#qsample.sim.stabilizer.pauli_product_phase"><code class="docutils literal notranslate"><span class="pre">pauli_product_phase()</span></code></a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#module-qsample.sim.statevector">qsample.sim.statevector module</a><ul>
+<li><a class="reference internal" href="#module-qsample.sim.statevector">Statevector simulator</a><ul>
 <li><a class="reference internal" href="#qsample.sim.statevector.MeasureResult"><code class="docutils literal notranslate"><span class="pre">MeasureResult</span></code></a></li>
 <li><a class="reference internal" href="#qsample.sim.statevector.StatevectorSimulator"><code class="docutils literal notranslate"><span class="pre">StatevectorSimulator</span></code></a><ul>
 <li><a class="reference internal" href="#qsample.sim.statevector.StatevectorSimulator.CNOT"><code class="docutils literal notranslate"><span class="pre">StatevectorSimulator.CNOT()</span></code></a></li>
@@ -767,11 +891,28 @@ whether the outcome was deterministic or random.</p>
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#module-qsample.sim.stimsimulator">qsample.sim.stimsimulator module</a><ul>
+<li><a class="reference internal" href="#module-qsample.sim.stimsimulator">STIM simulator</a><ul>
 <li><a class="reference internal" href="#qsample.sim.stimsimulator.MeasureResult"><code class="docutils literal notranslate"><span class="pre">MeasureResult</span></code></a></li>
+<li><a class="reference internal" href="#qsample.sim.stimsimulator.StimSimulator"><code class="docutils literal notranslate"><span class="pre">StimSimulator</span></code></a><ul>
+<li><a class="reference internal" href="#qsample.sim.stimsimulator.StimSimulator.CNOT"><code class="docutils literal notranslate"><span class="pre">StimSimulator.CNOT()</span></code></a></li>
+<li><a class="reference internal" href="#qsample.sim.stimsimulator.StimSimulator.H"><code class="docutils literal notranslate"><span class="pre">StimSimulator.H()</span></code></a></li>
+<li><a class="reference internal" href="#qsample.sim.stimsimulator.StimSimulator.I"><code class="docutils literal notranslate"><span class="pre">StimSimulator.I()</span></code></a></li>
+<li><a class="reference internal" href="#qsample.sim.stimsimulator.StimSimulator.MSd"><code class="docutils literal notranslate"><span class="pre">StimSimulator.MSd()</span></code></a></li>
+<li><a class="reference internal" href="#qsample.sim.stimsimulator.StimSimulator.Q"><code class="docutils literal notranslate"><span class="pre">StimSimulator.Q()</span></code></a></li>
+<li><a class="reference internal" href="#qsample.sim.stimsimulator.StimSimulator.Qd"><code class="docutils literal notranslate"><span class="pre">StimSimulator.Qd()</span></code></a></li>
+<li><a class="reference internal" href="#qsample.sim.stimsimulator.StimSimulator.R"><code class="docutils literal notranslate"><span class="pre">StimSimulator.R()</span></code></a></li>
+<li><a class="reference internal" href="#qsample.sim.stimsimulator.StimSimulator.Rd"><code class="docutils literal notranslate"><span class="pre">StimSimulator.Rd()</span></code></a></li>
+<li><a class="reference internal" href="#qsample.sim.stimsimulator.StimSimulator.S"><code class="docutils literal notranslate"><span class="pre">StimSimulator.S()</span></code></a></li>
+<li><a class="reference internal" href="#qsample.sim.stimsimulator.StimSimulator.Sd"><code class="docutils literal notranslate"><span class="pre">StimSimulator.Sd()</span></code></a></li>
+<li><a class="reference internal" href="#qsample.sim.stimsimulator.StimSimulator.X"><code class="docutils literal notranslate"><span class="pre">StimSimulator.X()</span></code></a></li>
+<li><a class="reference internal" href="#qsample.sim.stimsimulator.StimSimulator.Y"><code class="docutils literal notranslate"><span class="pre">StimSimulator.Y()</span></code></a></li>
+<li><a class="reference internal" href="#qsample.sim.stimsimulator.StimSimulator.Z"><code class="docutils literal notranslate"><span class="pre">StimSimulator.Z()</span></code></a></li>
+<li><a class="reference internal" href="#qsample.sim.stimsimulator.StimSimulator.init"><code class="docutils literal notranslate"><span class="pre">StimSimulator.init()</span></code></a></li>
+<li><a class="reference internal" href="#qsample.sim.stimsimulator.StimSimulator.measure"><code class="docutils literal notranslate"><span class="pre">StimSimulator.measure()</span></code></a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#module-qsample.sim">Module contents</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

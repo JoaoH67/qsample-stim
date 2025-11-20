@@ -1,9 +1,9 @@
 Steane
 =====
 
-Multiple inputs with the Steane code.
+Here we demonstrate how to input circuits to qsample using different formats.
 
-STIM
+**STIM**
 
 .. code-block:: python
     
@@ -47,7 +47,7 @@ STIM
 
     meas7.from_stim_circuit("""M 0 1 2 3 4 5 6""")
 
-QSample
+**QSample**
 
 .. code-block:: python
 
@@ -77,7 +77,7 @@ QSample
 
 
 
-QASM
+**QASM**
 
 .. code-block:: python
 
@@ -105,7 +105,7 @@ QASM
 
     measure q[7] -> c[0];""")
 
-Qiskit
+**Qiskit**
 
 .. code-block:: python
 
@@ -134,7 +134,9 @@ Qiskit
 
     eft = qs.Circuit().from_qiskit_circuit(eft)
 
-Steane protocol
+
+
+The code for the protocol itself is below:
 
 .. code-block:: python
 
@@ -205,4 +207,9 @@ Steane protocol
     v2 = stim_sam.stats()[0]
     w2 = stim_sam.stats()[2]
 
-Lorem ipsum.
+As expected, they all lead to similar results:
+
+.. image:: _static/plog_steane.png
+    :alt: GHZ circuit output
+    :width: 500px
+    :align: center

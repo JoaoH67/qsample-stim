@@ -12,8 +12,8 @@ import projectq.ops as ops
 class MeasureResult:
     """Class to hold measurement result
     
-    Attributes
-    ----------
+    **Attributes:**
+
     value : bool
         Outcome of measurement
     """
@@ -27,8 +27,8 @@ class MeasureResult:
 class StatevectorSimulator(CircuitRunnerMixin):
     """Statevector simulator using `ProjectQ` simulator
     
-    Attributes
-    ----------
+    **Attributes:**
+
     _n : int
         Number of qubits to simulate
     eng : ProjectQ.MainEngine
@@ -41,8 +41,8 @@ class StatevectorSimulator(CircuitRunnerMixin):
 
     def __init__(self, num_qubits):
         """
-        Parameters
-        ----------
+        **Attributes:**
+
         num_qubits : int
             Number of qubits to simualate
         """
@@ -68,13 +68,13 @@ class StatevectorSimulator(CircuitRunnerMixin):
     def expectation(self, qubit: int) -> float:
         """Expectation value of measuring `qubit`
         
-        Parameters
-        ----------
+        **Attributes:**
+
         qubit : int
             Qubit of which expectation value is determined
         
-        Returns
-        -------
+        **Returns:**
+
         float
             Expectation value of `qubit`
         """

@@ -3,10 +3,10 @@
   <head><meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html"><link rel="search" title="Search" href="search.html">
+<link rel="index" title="Index" href="genindex.html"><link rel="search" title="Search" href="search.html"><link rel="next" title="Simulators" href="qsample.sim.html"><link rel="prev" title="QSample documentation" href="qsample.html">
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2025.09.25 -->
-        <title>qsample.sampler package - qsample 2.0 documentation</title>
+        <title>Samplers - qsample 2.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d111a655" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=580074bf" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
@@ -190,7 +190,29 @@
   <input type="hidden" name="area" value="default">
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
-  
+  <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current has-children"><a class="reference internal" href="qsample.html">QSample documentation</a><input aria-label="Toggle navigation of QSample documentation" checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul class="current">
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Samplers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qsample.sim.html">Simulators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qsample.circuit.html">circuit.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qsample.callbacks.html">callbacks.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qsample.math.html">math.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qsample.noise.html">noise.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qsample.protocol.html">protocol.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qsample.utils.html">utils.py</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="examples.html">Examples</a><input aria-label="Toggle navigation of Examples" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="GHZ.html">GHZ state preparation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Teleportation.html">Quantum teleportation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PyMatching.html">Using PyMatching to decode errors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Steane.html">Many ways of defining a circuit for the Steane code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Surface.html">Topological QEC with the Surface code</a></li>
+</ul>
+</li>
+</ul>
+
 </div>
 </div>
 
@@ -227,20 +249,16 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="qsample-sampler-package">
-<h1>qsample.sampler package<a class="headerlink" href="#qsample-sampler-package" title="Link to this heading">¶</a></h1>
-<section id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
-</section>
+          <section id="samplers">
+<h1>Samplers<a class="headerlink" href="#samplers" title="Link to this heading">¶</a></h1>
 <section id="module-qsample.sampler.direct">
-<span id="qsample-sampler-direct-module"></span><h2>qsample.sampler.direct module<a class="headerlink" href="#module-qsample.sampler.direct" title="Link to this heading">¶</a></h2>
+<span id="direct-sampler"></span><h2>Direct sampler<a class="headerlink" href="#module-qsample.sampler.direct" title="Link to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="qsample.sampler.direct.DirectSampler">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qsample.sampler.direct.</span></span><span class="sig-name descname"><span class="pre">DirectSampler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">protocol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">simulator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">err_model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">err_params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.sampler.direct.DirectSampler" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Direct Monte Carlo Sampler</p>
-<section id="attributes">
-<h3>Attributes<a class="headerlink" href="#attributes" title="Link to this heading">¶</a></h3>
+<p><strong>Attributes:</strong></p>
 <dl class="simple">
 <dt>protocol<span class="classifier">Protocol</span></dt><dd><p>Protocol to sample from</p>
 </dd>
@@ -261,28 +279,24 @@
 <dt class="sig sig-object py" id="qsample.sampler.direct.DirectSampler.run">
 <span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_shots</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callbacks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.sampler.direct.DirectSampler.run" title="Link to this definition">¶</a></dt>
 <dd><p>Execute n_shots of direct Monte Carlo sampling</p>
-<section id="parameters">
-<h4>Parameters<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h4>
+<p><strong>Attributes:</strong></p>
 <dl class="simple">
 <dt>n_shots<span class="classifier">int</span></dt><dd><p>Number of shots sampled in total</p>
 </dd>
 <dt>callbacks<span class="classifier">list of Callback</span></dt><dd><p>Callback instances executed during sampling</p>
 </dd>
 </dl>
-</section>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qsample.sampler.direct.DirectSampler.save">
 <span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.sampler.direct.DirectSampler.save" title="Link to this definition">¶</a></dt>
 <dd><p>Save sampler to path</p>
-<section id="id1">
-<h4>Parameters<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h4>
+<p><strong>Attributes:</strong></p>
 <dl class="simple">
 <dt>path<span class="classifier">str</span></dt><dd><p>File path to save to</p>
 </dd>
 </dl>
-</section>
 </dd></dl>
 
 <dl class="py method">
@@ -290,66 +304,24 @@
 <span class="sig-name descname"><span class="pre">stats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.sampler.direct.DirectSampler.stats" title="Link to this definition">¶</a></dt>
 <dd><p>Calculate sampling statistics</p>
 <p>See Eq. 1 and C12 in paper</p>
-<section id="returns">
-<h4>Returns<a class="headerlink" href="#returns" title="Link to this heading">¶</a></h4>
+<p><strong>Returns:</strong></p>
 <dl class="simple">
 <dt>tuple</dt><dd><p>(Logical failure rate, Wilson variance on logical failure rate)</p>
 </dd>
 </dl>
-</section>
 </dd></dl>
 
-</section>
-</dd></dl>
-
-</section>
-<section id="module-qsample.sampler.experimental">
-<span id="qsample-sampler-experimental-module"></span><h2>qsample.sampler.experimental module<a class="headerlink" href="#module-qsample.sampler.experimental" title="Link to this heading">¶</a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="qsample.sampler.experimental.SubsetSamplerERU">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qsample.sampler.experimental.</span></span><span class="sig-name descname"><span class="pre">SubsetSamplerERU</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">protocol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">simulator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_max</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">err_model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">err_params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">L</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.sampler.experimental.SubsetSamplerERU" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#qsample.sampler.subset.SubsetSampler" title="qsample.sampler.subset.SubsetSampler"><code class="xref py py-class docutils literal notranslate"><span class="pre">SubsetSampler</span></code></a></p>
-<p>Subset sampler implementing ERU sampling technique</p>
-<p>WORK IN EXPERIMENTAL STATE</p>
-<p>See App. C3b in paper</p>
-<section id="id2">
-<h3>Attributes<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h3>
-<dl class="simple">
-<dt>k<span class="classifier">int</span></dt><dd><p>Application of ERU every k-th shots</p>
-</dd>
-</dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="qsample.sampler.experimental.SubsetSamplerERU.wplus1">
-<span class="sig-name descname"><span class="pre">wplus1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tree_node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">circuit</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.sampler.experimental.SubsetSamplerERU.wplus1" title="Link to this definition">¶</a></dt>
-<dd><p>Return subsets of this <cite>tree_node</cite> plus next important subset</p>
-<section id="id3">
-<h4>Parameters<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h4>
-<dl class="simple">
-<dt>tree_node<span class="classifier">Variable</span></dt><dd><p>Circuit node for which subsets are returned</p>
-</dd>
-<dt>circuit<span class="classifier">Circuit</span></dt><dd><p>Circuit corresponding to <cite>tree_node</cite></p>
-</dd>
-</dl>
-</section>
-</dd></dl>
-
-</section>
 </dd></dl>
 
 </section>
 <section id="module-qsample.sampler.subset">
-<span id="qsample-sampler-subset-module"></span><h2>qsample.sampler.subset module<a class="headerlink" href="#module-qsample.sampler.subset" title="Link to this heading">¶</a></h2>
+<span id="subset-sampler"></span><h2>Subset sampler<a class="headerlink" href="#module-qsample.sampler.subset" title="Link to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="qsample.sampler.subset.SubsetSampler">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qsample.sampler.subset.</span></span><span class="sig-name descname"><span class="pre">SubsetSampler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">protocol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">simulator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_max</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">err_model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">err_params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">L</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.sampler.subset.SubsetSampler" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Class to represent subset sampler</p>
-<section id="references">
-<h3>References<a class="headerlink" href="#references" title="Link to this heading">¶</a></h3>
-<p>…</p>
-</section>
-<section id="id4">
-<h3>Attributes<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
+<p><strong>Attributes:</strong></p>
 <dl class="simple">
 <dt>protocol<span class="classifier">Protocol</span></dt><dd><p>Protocol to sample from</p>
 </dd>
@@ -375,15 +347,13 @@
 <dt class="sig sig-object py" id="qsample.sampler.subset.SubsetSampler.run">
 <span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_shots</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callbacks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.sampler.subset.SubsetSampler.run" title="Link to this definition">¶</a></dt>
 <dd><p>Execute n_shots of subset sampling</p>
-<section id="id5">
-<h4>Parameters<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h4>
+<p><strong>Attributes:</strong></p>
 <dl class="simple">
 <dt>n_shots<span class="classifier">int</span></dt><dd><p>Number of shots sampled in total</p>
 </dd>
 <dt>callbacks<span class="classifier">list of Callback</span></dt><dd><p>Callback instances executed during sampling</p>
 </dd>
 </dl>
-</section>
 </dd></dl>
 
 <dl class="py method">
@@ -396,21 +366,48 @@
 <span class="sig-name descname"><span class="pre">stats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">err_params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.sampler.subset.SubsetSampler.stats" title="Link to this definition">¶</a></dt>
 <dd><p>Calculate statistics of sample tree wrt <cite>err_params</cite></p>
 <p>See Eq. 12, Eq. 17, Eq. 18 and Eq. 19 in paper</p>
-<section id="id6">
-<h4>Parameters<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h4>
+<p><strong>Attributes:</strong></p>
 <dl class="simple">
 <dt>err_params<span class="classifier">dict or None</span></dt><dd><p>Parameter range wrt to which statistics are calculated</p>
 </dd>
 </dl>
-</section>
+</dd></dl>
+
 </dd></dl>
 
 </section>
+<section id="module-qsample.sampler.experimental">
+<span id="eru-sampler-experimental"></span><h2>ERU sampler (experimental)<a class="headerlink" href="#module-qsample.sampler.experimental" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="qsample.sampler.experimental.SubsetSamplerERU">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qsample.sampler.experimental.</span></span><span class="sig-name descname"><span class="pre">SubsetSamplerERU</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">protocol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">simulator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_max</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">err_model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">err_params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">L</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.sampler.experimental.SubsetSamplerERU" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qsample.sampler.subset.SubsetSampler" title="qsample.sampler.subset.SubsetSampler"><code class="xref py py-class docutils literal notranslate"><span class="pre">SubsetSampler</span></code></a></p>
+<p>Subset sampler implementing ERU sampling technique</p>
+<p>WORK IN EXPERIMENTAL STATE</p>
+<p>See App. C3b in paper</p>
+<p><strong>Attributes:</strong></p>
+<dl class="simple">
+<dt>k<span class="classifier">int</span></dt><dd><p>Application of ERU every k-th shots</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="qsample.sampler.experimental.SubsetSamplerERU.wplus1">
+<span class="sig-name descname"><span class="pre">wplus1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tree_node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">circuit</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.sampler.experimental.SubsetSamplerERU.wplus1" title="Link to this definition">¶</a></dt>
+<dd><p>Return subsets of this <cite>tree_node</cite> plus next important subset</p>
+<p><strong>Attributes:</strong></p>
+<dl class="simple">
+<dt>tree_node<span class="classifier">Variable</span></dt><dd><p>Circuit node for which subsets are returned</p>
+</dd>
+<dt>circuit<span class="classifier">Circuit</span></dt><dd><p>Circuit corresponding to <cite>tree_node</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 </section>
 <section id="module-qsample.sampler.tree">
-<span id="qsample-sampler-tree-module"></span><h2>qsample.sampler.tree module<a class="headerlink" href="#module-qsample.sampler.tree" title="Link to this heading">¶</a></h2>
+<span id="tree-py"></span><h2>tree.py<a class="headerlink" href="#module-qsample.sampler.tree" title="Link to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="qsample.sampler.tree.Constant">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qsample.sampler.tree.</span></span><span class="sig-name descname"><span class="pre">Constant</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">const_val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.sampler.tree.Constant" title="Link to this definition">¶</a></dt>
@@ -422,15 +419,13 @@ parent and leaf nodes have not children.</p>
 <p>The <cite>Constant</cite> class complements the common tree node by a <cite>count</cite> attribute
 which represents the number of times a node has been visited during sampling.</p>
 <p>See Appendix C in paper</p>
-<section id="id7">
-<h3>Attributes<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h3>
+<p><strong>Attributes:</strong></p>
 <dl class="simple">
 <dt>name<span class="classifier">str</span></dt><dd><p>The (not necessarily unique) name of the node</p>
 </dd>
 <dt>count<span class="classifier">int</span></dt><dd><p>Node visit counter variable</p>
 </dd>
 </dl>
-</section>
 </dd></dl>
 
 <dl class="py class">
@@ -439,8 +434,7 @@ which represents the number of times a node has been visited during sampling.</p
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Node</span></code></p>
 <p>Representation of subset cutoff error inside <cite>Tree</cite></p>
 <p>See Appendix C in paper</p>
-<section id="id8">
-<h3>Attributes<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h3>
+<p><strong>Attributes:</strong></p>
 <dl class="simple">
 <dt>name<span class="classifier">str</span></dt><dd><p>The (not necessarily unique) name of the node</p>
 </dd>
@@ -452,7 +446,6 @@ which represents the number of times a node has been visited during sampling.</p
 <span class="sig-name descname"><span class="pre">value</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#qsample.sampler.tree.Delta.value" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
-</section>
 </dd></dl>
 
 <dl class="py class">
@@ -460,8 +453,7 @@ which represents the number of times a node has been visited during sampling.</p
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qsample.sampler.tree.</span></span><span class="sig-name descname"><span class="pre">Tree</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">constants</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">L</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.sampler.tree.Tree" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Data structure to track sampled <cite>Circuit`s in `Protocol</cite></p>
-<section id="id9">
-<h3>Attributes<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h3>
+<p><strong>Attributes:</strong></p>
 <dl class="simple">
 <dt>constants<span class="classifier">list</span></dt><dd><p>List of constant values corresponding to circuits’ weight subsets</p>
 </dd>
@@ -474,8 +466,7 @@ which represents the number of times a node has been visited during sampling.</p
 <dt class="sig sig-object py" id="qsample.sampler.tree.Tree.add">
 <span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.sampler.tree.Tree.add" title="Link to this definition">¶</a></dt>
 <dd><p>Add node of <cite>node_type</cite> and <cite>name</cite> as child of <cite>parent</cite>.</p>
-<section id="id10">
-<h4>Parameters<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h4>
+<p><strong>Attributes:</strong></p>
 <dl class="simple">
 <dt>name<span class="classifier">str</span></dt><dd><p>Name of node to add</p>
 </dd>
@@ -484,14 +475,11 @@ which represents the number of times a node has been visited during sampling.</p
 <dt>parent<span class="classifier">Variable or Constant, default: None</span></dt><dd><p>Parent of node to add, only root node has no parent</p>
 </dd>
 </dl>
-</section>
-<section id="id11">
-<h4>Returns<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h4>
+<p><strong>Returns:</strong></p>
 <dl class="simple">
 <dt>Variable, Constant or Delta</dt><dd><p>Reference to added node</p>
 </dd>
 </dl>
-</section>
 </dd></dl>
 
 <dl class="py property">
@@ -499,13 +487,11 @@ which represents the number of times a node has been visited during sampling.</p
 <em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">delta</span></span><a class="headerlink" href="#qsample.sampler.tree.Tree.delta" title="Link to this definition">¶</a></dt>
 <dd><p>Cutoff error of tree</p>
 <p>See Eq. B2 and Fig. 1c in paper</p>
-<section id="id12">
-<h4>Returns<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h4>
+<p><strong>Returns:</strong></p>
 <dl class="simple">
 <dt>float</dt><dd><p>Sum of delta paths</p>
 </dd>
 </dl>
-</section>
 </dd></dl>
 
 <dl class="py method">
@@ -518,15 +504,13 @@ which represents the number of times a node has been visited during sampling.</p
 <span class="sig-name descname"><span class="pre">path_prod</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nodeA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodeB</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.sampler.tree.Tree.path_prod" title="Link to this definition">¶</a></dt>
 <dd><p>Product of node values from <cite>nodeA</cite> to <cite>nodeB</cite></p>
 <p>Used e.g. in Eq. 12 in paper</p>
-<section id="id13">
-<h4>Parameters<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h4>
+<p><strong>Attributes:</strong></p>
 <dl class="simple">
 <dt>nodeA<span class="classifier">Constant, Variable or Delta</span></dt><dd><p>Start node of the path</p>
 </dd>
 <dt>nodeB<span class="classifier">Constant, Variable or Delta</span></dt><dd><p>End node of the path</p>
 </dd>
 </dl>
-</section>
 </dd></dl>
 
 <dl class="py method">
@@ -534,20 +518,16 @@ which represents the number of times a node has been visited during sampling.</p
 <span class="sig-name descname"><span class="pre">path_var</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zero_leaf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.sampler.tree.Tree.path_var" title="Link to this definition">¶</a></dt>
 <dd><p>Variance of path from <cite>root</cite> to <cite>node</cite></p>
 <p>See Alg. 2 in App. C in paper</p>
-<section id="id14">
-<h4>Parameters<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h4>
+<p><strong>Attributes:</strong></p>
 <dl class="simple">
 <dt>node<span class="classifier">Constant, Variable or Delta</span></dt><dd><p>End node of path for which to calculate variance</p>
 </dd>
 </dl>
-</section>
-<section id="id15">
-<h4>Returns<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h4>
+<p><strong>Returns:</strong></p>
 <dl class="simple">
 <dt>float</dt><dd><p>Variance of path</p>
 </dd>
 </dl>
-</section>
 </dd></dl>
 
 <dl class="py method">
@@ -558,20 +538,16 @@ which represents the number of times a node has been visited during sampling.</p
 Note: When there is a circuit in the path which was set <cite>ff_deterministic</cite> by the user, all qubits
 have been reset before execution and the path weight must only be calculated until this node</p>
 <p>w_{tot} = sum_i{w_i} in paper</p>
-<section id="id16">
-<h4>Parameters<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h4>
+<p><strong>Attributes:</strong></p>
 <dl class="simple">
 <dt>node<span class="classifier">Constant</span></dt><dd><p>End node of a path starting from <cite>root</cite></p>
 </dd>
 </dl>
-</section>
-<section id="id17">
-<h4>Returns<a class="headerlink" href="#id17" title="Link to this heading">¶</a></h4>
+<p><strong>Returns:</strong></p>
 <dl class="simple">
 <dt>int</dt><dd><p>Weight of path</p>
 </dd>
 </dl>
-</section>
 </dd></dl>
 
 <dl class="py method">
@@ -585,13 +561,11 @@ have been reset before execution and the path weight must only be calculated unt
 <em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">root_leaf_rate</span></span><a class="headerlink" href="#qsample.sampler.tree.Tree.root_leaf_rate" title="Link to this definition">¶</a></dt>
 <dd><p>Sum of rates marked leaf Variable node.count / root.count.</p>
 <p>see Eq. 1 in paper</p>
-<section id="id18">
-<h4>Returns<a class="headerlink" href="#id18" title="Link to this heading">¶</a></h4>
+<p><strong>Returns:</strong></p>
 <dl class="simple">
 <dt>float</dt><dd><p>Direct MC estimate of logical failure rate at p_max</p>
 </dd>
 </dl>
-</section>
 </dd></dl>
 
 <dl class="py property">
@@ -599,13 +573,11 @@ have been reset before execution and the path weight must only be calculated unt
 <em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">root_leaf_var</span></span><a class="headerlink" href="#qsample.sampler.tree.Tree.root_leaf_var" title="Link to this definition">¶</a></dt>
 <dd><p>Variance of root leaf rate</p>
 <p>see Eq. C12 in paper</p>
-<section id="id19">
-<h4>Returns<a class="headerlink" href="#id19" title="Link to this heading">¶</a></h4>
+<p><strong>Returns:</strong></p>
 <dl class="simple">
 <dt>float</dt><dd><p>Variance of direct MC estimate of logical failure rate at p_max</p>
 </dd>
 </dl>
-</section>
 </dd></dl>
 
 <dl class="py method">
@@ -613,8 +585,7 @@ have been reset before execution and the path weight must only be calculated unt
 <span class="sig-name descname"><span class="pre">subtree_sum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">leaves</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.sampler.tree.Tree.subtree_sum" title="Link to this definition">¶</a></dt>
 <dd><p>Sum of paths from <cite>node</cite> to <cite>leaves</cite></p>
 <p>Used e.g. in Eq. C9 in paper</p>
-<section id="id20">
-<h4>Parameters<a class="headerlink" href="#id20" title="Link to this heading">¶</a></h4>
+<p><strong>Attributes:</strong></p>
 <dl class="simple">
 <dt>node<span class="classifier">Variable, Constant or Delta</span></dt><dd><p>Start node for which to calculate the sum of paths, i.e. subtree</p>
 </dd>
@@ -622,14 +593,11 @@ have been reset before execution and the path weight must only be calculated unt
 in the calculation of the path products</p>
 </dd>
 </dl>
-</section>
-<section id="id21">
-<h4>Returns<a class="headerlink" href="#id21" title="Link to this heading">¶</a></h4>
+<p><strong>Returns:</strong></p>
 <dl class="simple">
 <dt>float</dt><dd><p>Sum of <cite>node</cite>’s subtree</p>
 </dd>
 </dl>
-</section>
 </dd></dl>
 
 <dl class="py method">
@@ -639,27 +607,21 @@ in the calculation of the path products</p>
 <p>For <cite>Variable</cite> return its <cite>rate</cite>, for <cite>Constant</cite> return a corresponding
 value from the <cite>constants</cite> dict, for <cite>Delta</cite> return the cutoff error, i.e.
 1 - sum(constants) in a level</p>
-<section id="id22">
-<h4>Parameters<a class="headerlink" href="#id22" title="Link to this heading">¶</a></h4>
+<p><strong>Attributes:</strong></p>
 <dl class="simple">
 <dt>node<span class="classifier">Constant, Variable or Delta</span></dt><dd><p>Node for which value is returned</p>
 </dd>
 </dl>
-</section>
-<section id="id23">
-<h4>Returns<a class="headerlink" href="#id23" title="Link to this heading">¶</a></h4>
+<p><strong>Returns:</strong></p>
 <dl class="simple">
 <dt>float</dt><dd><p>Value of node</p>
 </dd>
 </dl>
-</section>
-<section id="raises">
-<h4>Raises<a class="headerlink" href="#raises" title="Link to this heading">¶</a></h4>
+<p><strong>Raises:</strong></p>
 <dl class="simple">
 <dt>TypeError</dt><dd><p>If <cite>node</cite> has different type than <cite>Variable</cite> or <cite>Constant</cite></p>
 </dd>
 </dl>
-</section>
 </dd></dl>
 
 <dl class="py method">
@@ -667,23 +629,18 @@ value from the <cite>constants</cite> dict, for <cite>Delta</cite> return the cu
 <span class="sig-name descname"><span class="pre">var</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.sampler.tree.Tree.var" title="Link to this definition">¶</a></dt>
 <dd><p>Variance of tree</p>
 <p>See Eq. 18, Eq. 19 and Alg. 3 in paper</p>
-<section id="id24">
-<h4>Parameters<a class="headerlink" href="#id24" title="Link to this heading">¶</a></h4>
+<p><strong>Attributes:</strong></p>
 <dl class="simple">
 <dt>mode<span class="classifier">int</span></dt><dd><p>0: upper bound variance, 1: variance of pL (lower bound)</p>
 </dd>
 </dl>
-</section>
-<section id="id25">
-<h4>Returns<a class="headerlink" href="#id25" title="Link to this heading">¶</a></h4>
+<p><strong>Returns:</strong></p>
 <dl class="simple">
 <dt>float</dt><dd><p>Variance</p>
 </dd>
 </dl>
-</section>
 </dd></dl>
 
-</section>
 </dd></dl>
 
 <dl class="py class">
@@ -692,8 +649,7 @@ value from the <cite>constants</cite> dict, for <cite>Delta</cite> return the cu
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Node</span></code></p>
 <p>Representation of a random variable inside <cite>Tree</cite></p>
 <p>See Appendix C in paper</p>
-<section id="id26">
-<h3>Attributes<a class="headerlink" href="#id26" title="Link to this heading">¶</a></h3>
+<p><strong>Attributes:</strong></p>
 <dl class="simple">
 <dt>name<span class="classifier">str</span></dt><dd><p>The (not necessarily unique) name of the node</p>
 </dd>
@@ -715,13 +671,11 @@ for which we would like to determine the rate p that a transition from
 parent node to this node (X=1) took place, i.e.:</p>
 <p>p(X=1) = self.count / self.parent.count</p>
 <p>see Eq. C14 in paper</p>
-<section id="id27">
-<h4>Returns<a class="headerlink" href="#id27" title="Link to this heading">¶</a></h4>
+<p><strong>Returns:</strong></p>
 <dl class="simple">
 <dt>float</dt><dd><p>Value of transition rate in range [0,1]</p>
 </dd>
 </dl>
-</section>
 </dd></dl>
 
 <dl class="py property">
@@ -730,16 +684,13 @@ parent node to this node (X=1) took place, i.e.:</p>
 <dd><p>Calculate the variance of the transition rate between
 the parent node and this node according to Wilson interval.</p>
 <p>see Eq. C12 in paper</p>
-<section id="id28">
-<h4>Returns<a class="headerlink" href="#id28" title="Link to this heading">¶</a></h4>
+<p><strong>Returns:</strong></p>
 <dl class="simple">
 <dt>float</dt><dd><p>Value of variance of transition rate</p>
 </dd>
 </dl>
-</section>
 </dd></dl>
 
-</section>
 </dd></dl>
 
 <dl class="py function">
@@ -749,25 +700,18 @@ the parent node and this node according to Wilson interval.</p>
 <p>To display the image in command line call .show() on the returned
 PIL image object.</p>
 <p>see Fig. 1 in paper</p>
-<section id="id29">
-<h3>Parameters<a class="headerlink" href="#id29" title="Link to this heading">¶</a></h3>
+<p><strong>Attributes:</strong></p>
 <dl class="simple">
 <dt>path<span class="classifier">str or None</span></dt><dd><p>File path to save png image to, if None only display image</p>
 </dd>
 </dl>
-</section>
-<section id="id30">
-<h3>Returns<a class="headerlink" href="#id30" title="Link to this heading">¶</a></h3>
+<p><strong>Returns:</strong></p>
 <dl class="simple">
 <dt>PNG image</dt><dd><p>Image of <cite>CountTree</cite></p>
 </dd>
 </dl>
-</section>
 </dd></dl>
 
-</section>
-<section id="module-qsample.sampler">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-qsample.sampler" title="Link to this heading">¶</a></h2>
 </section>
 </section>
 
@@ -776,8 +720,26 @@ PIL image object.</p>
       <footer>
         
         <div class="related-pages">
-          
-          
+          <a class="next-page" href="qsample.sim.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Simulators</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="qsample.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">QSample documentation</div>
+                
+              </div>
+            </a>
         </div>
         <div class="bottom-of-page">
           <div class="left-details">
@@ -808,9 +770,8 @@ PIL image object.</p>
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">qsample.sampler package</a><ul>
-<li><a class="reference internal" href="#submodules">Submodules</a></li>
-<li><a class="reference internal" href="#module-qsample.sampler.direct">qsample.sampler.direct module</a><ul>
+<li><a class="reference internal" href="#">Samplers</a><ul>
+<li><a class="reference internal" href="#module-qsample.sampler.direct">Direct sampler</a><ul>
 <li><a class="reference internal" href="#qsample.sampler.direct.DirectSampler"><code class="docutils literal notranslate"><span class="pre">DirectSampler</span></code></a><ul>
 <li><a class="reference internal" href="#qsample.sampler.direct.DirectSampler.run"><code class="docutils literal notranslate"><span class="pre">DirectSampler.run()</span></code></a></li>
 <li><a class="reference internal" href="#qsample.sampler.direct.DirectSampler.save"><code class="docutils literal notranslate"><span class="pre">DirectSampler.save()</span></code></a></li>
@@ -819,14 +780,7 @@ PIL image object.</p>
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#module-qsample.sampler.experimental">qsample.sampler.experimental module</a><ul>
-<li><a class="reference internal" href="#qsample.sampler.experimental.SubsetSamplerERU"><code class="docutils literal notranslate"><span class="pre">SubsetSamplerERU</span></code></a><ul>
-<li><a class="reference internal" href="#qsample.sampler.experimental.SubsetSamplerERU.wplus1"><code class="docutils literal notranslate"><span class="pre">SubsetSamplerERU.wplus1()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#module-qsample.sampler.subset">qsample.sampler.subset module</a><ul>
+<li><a class="reference internal" href="#module-qsample.sampler.subset">Subset sampler</a><ul>
 <li><a class="reference internal" href="#qsample.sampler.subset.SubsetSampler"><code class="docutils literal notranslate"><span class="pre">SubsetSampler</span></code></a><ul>
 <li><a class="reference internal" href="#qsample.sampler.subset.SubsetSampler.err_params_to_matrix"><code class="docutils literal notranslate"><span class="pre">SubsetSampler.err_params_to_matrix()</span></code></a></li>
 <li><a class="reference internal" href="#qsample.sampler.subset.SubsetSampler.run"><code class="docutils literal notranslate"><span class="pre">SubsetSampler.run()</span></code></a></li>
@@ -836,7 +790,14 @@ PIL image object.</p>
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#module-qsample.sampler.tree">qsample.sampler.tree module</a><ul>
+<li><a class="reference internal" href="#module-qsample.sampler.experimental">ERU sampler (experimental)</a><ul>
+<li><a class="reference internal" href="#qsample.sampler.experimental.SubsetSamplerERU"><code class="docutils literal notranslate"><span class="pre">SubsetSamplerERU</span></code></a><ul>
+<li><a class="reference internal" href="#qsample.sampler.experimental.SubsetSamplerERU.wplus1"><code class="docutils literal notranslate"><span class="pre">SubsetSamplerERU.wplus1()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-qsample.sampler.tree">tree.py</a><ul>
 <li><a class="reference internal" href="#qsample.sampler.tree.Constant"><code class="docutils literal notranslate"><span class="pre">Constant</span></code></a></li>
 <li><a class="reference internal" href="#qsample.sampler.tree.Delta"><code class="docutils literal notranslate"><span class="pre">Delta</span></code></a><ul>
 <li><a class="reference internal" href="#qsample.sampler.tree.Delta.value"><code class="docutils literal notranslate"><span class="pre">Delta.value</span></code></a></li>
@@ -865,7 +826,6 @@ PIL image object.</p>
 <li><a class="reference internal" href="#qsample.sampler.tree.draw_tree"><code class="docutils literal notranslate"><span class="pre">draw_tree()</span></code></a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#module-qsample.sampler">Module contents</a></li>
 </ul>
 </li>
 </ul>
