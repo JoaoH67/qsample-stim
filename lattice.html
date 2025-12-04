@@ -3,10 +3,10 @@
   <head><meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html"><link rel="search" title="Search" href="search.html"><link rel="next" title="utils.py" href="qsample.utils.html"><link rel="prev" title="noise.py" href="qsample.noise.html">
+<link rel="index" title="Index" href="genindex.html"><link rel="search" title="Search" href="search.html"><link rel="next" title="Fault-tolerance check" href="ftcheck.html"><link rel="prev" title="Surface Code" href="Surface.html">
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2025.09.25 -->
-        <title>protocol.py - qsample 2.0 documentation</title>
+        <title>Lattice surgery - qsample 2.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d111a655" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=580074bf" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
@@ -172,7 +172,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
         <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
       </label>
     </div>
@@ -193,24 +193,24 @@
   <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation guide</a></li>
-<li class="toctree-l1 current has-children"><a class="reference internal" href="qsample.html">QSample docs</a><input aria-label="Toggle navigation of QSample docs" checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul class="current">
+<li class="toctree-l1 has-children"><a class="reference internal" href="qsample.html">QSample docs</a><input aria-label="Toggle navigation of QSample docs" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="qsample.sampler.html">Samplers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="qsample.sim.html">Simulators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="qsample.circuit.html">circuit.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="qsample.callbacks.html">callbacks.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="qsample.math.html">math.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="qsample.noise.html">noise.py</a></li>
-<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">protocol.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qsample.protocol.html">protocol.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="qsample.utils.html">utils.py</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="examples.html">Example protocols</a><input aria-label="Toggle navigation of Example protocols" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="examples.html">Example protocols</a><input aria-label="Toggle navigation of Example protocols" checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="GHZ.html">GHZ state preparation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Teleportation.html">Quantum teleportation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PyMatching.html">Using PyMatching to decode errors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Steane.html">Many ways of defining a circuit for the Steane code</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Surface.html">Topological QEC with the Surface code</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lattice.html">Multiple logical qubits with lattice surgery</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Multiple logical qubits with lattice surgery</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ftcheck.html">Checking for fault tolerance</a></li>
 </ul>
 </li>
@@ -234,7 +234,7 @@
         </a>
         <div class="content-icon-container">
           <div class="view-this-page">
-  <a class="muted-link" href="_sources/qsample.protocol.rst.txt" title="View this page">
+  <a class="muted-link" href="_sources/lattice.rst.txt" title="View this page">
     <svg><use href="#svg-eye"></use></svg>
     <span class="visually-hidden">View this page</span>
   </a>
@@ -247,128 +247,15 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
             <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="module-qsample.protocol">
-<span id="protocol-py"></span><h1>protocol.py<a class="headerlink" href="#module-qsample.protocol" title="Link to this heading">¶</a></h1>
-<dl class="py class">
-<dt class="sig sig-object py" id="qsample.protocol.Protocol">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qsample.protocol.</span></span><span class="sig-name descname"><span class="pre">Protocol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fault_tolerant</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_functions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.protocol.Protocol" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">DiGraph</span></code></p>
-<p>Representation of a Quantum (Error Correction) Protocol</p>
-<p><strong>Attributes:</strong></p>
-<dl class="simple">
-<dt>fault_tolerant<span class="classifier">bool</span></dt><dd><p>True if protocol fault tolerant (robust against any 1-qubit error)</p>
-</dd>
-<dt>check_functions<span class="classifier">dict</span></dt><dd><p>Functions used in transition checks between circuits</p>
-</dd>
-<dt>circuits<span class="classifier">dict</span></dt><dd><p>Circuits used inside protocol, key: circuit id</p>
-</dd>
-<dt>qubits<span class="classifier">set</span></dt><dd><p>All qubits “touched” by the circuits</p>
-</dd>
-<dt>root<span class="classifier">str</span></dt><dd><p>Start node of the protocol</p>
-</dd>
-</dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="qsample.protocol.Protocol.add_node">
-<span class="sig-name descname"><span class="pre">add_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">circuit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.protocol.Protocol.add_node" title="Link to this definition">¶</a></dt>
-<dd><p>Add node to protocol</p>
-<p><strong>Attributes:</strong></p>
-<dl class="simple">
-<dt>name<span class="classifier">str</span></dt><dd><p>Name of the node (must be unique)</p>
-</dd>
-<dt>circuit<span class="classifier">Circuit</span></dt><dd><p>Circuit associated with node</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="qsample.protocol.Protocol.add_nodes_from">
-<span class="sig-name descname"><span class="pre">add_nodes_from</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">names</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">circuits</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.protocol.Protocol.add_nodes_from" title="Link to this definition">¶</a></dt>
-<dd><p>Add list of nodes and corresponding circuits to protocol</p>
-<p><strong>Attributes:</strong></p>
-<dl class="simple">
-<dt>names<span class="classifier">list of str</span></dt><dd><p>Names of nodes (must be unique)</p>
-</dd>
-<dt>circuits<span class="classifier">list of Circuit or Circuit</span></dt><dd><p>Circuits corresponding to names</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="qsample.protocol.Protocol.draw">
-<span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.protocol.Protocol.draw" title="Link to this definition">¶</a></dt>
-<dd><p>Draw protocol</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="qsample.protocol.Protocol.get_circuit">
-<span class="sig-name descname"><span class="pre">get_circuit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.protocol.Protocol.get_circuit" title="Link to this definition">¶</a></dt>
-<dd><p>Return circuit corresponding to node <cite>name</cite></p>
-<p><strong>Attributes:</strong></p>
-<dl class="simple">
-<dt>name<span class="classifier">str</span></dt><dd><p>Name of node</p>
-</dd>
-</dl>
-<p><strong>Returns:</strong></p>
-<dl class="simple">
-<dt>Circuit</dt><dd><p>Circuit corresponding to <cite>name</cite></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="qsample.protocol.Protocol.qubits">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">qubits</span></span><a class="headerlink" href="#qsample.protocol.Protocol.qubits" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="qsample.protocol.Protocol.root">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">root</span></span><a class="headerlink" href="#qsample.protocol.Protocol.root" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="qsample.protocol.Protocol.successor">
-<span class="sig-name descname"><span class="pre">successor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hist</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.protocol.Protocol.successor" title="Link to this definition">¶</a></dt>
-<dd><p>Return successor node of node <cite>name</cite></p>
-<p><strong>Attributes:</strong></p>
-<dl class="simple">
-<dt>name<span class="classifier">str</span></dt><dd><p>Name of node of which the successor is determined</p>
-</dd>
-<dt>hist<span class="classifier">dict</span></dt><dd><p>Meaurement history used to determine successor via transition checks</p>
-</dd>
-</dl>
-<p><strong>Returns:</strong></p>
-<dl class="simple">
-<dt>tuple</dt><dd><p>(name of successor node or None, corresponding circuit or None)</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="qsample.protocol.draw_protocol">
-<span class="sig-prename descclassname"><span class="pre">qsample.protocol.</span></span><span class="sig-name descname"><span class="pre">draw_protocol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">protocol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">legend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(6,</span> <span class="pre">6)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.05,</span> <span class="pre">0.05)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.protocol.draw_protocol" title="Link to this definition">¶</a></dt>
-<dd><p>Draw protocol using <cite>networkx</cite> library</p>
-<p><strong>Attributes:</strong></p>
-<dl class="simple">
-<dt>protocol<span class="classifier">Protocol</span></dt><dd><p>The protocol to draw</p>
-</dd>
-<dt>path<span class="classifier">str or None</span></dt><dd><p>The path to save the resulting image to (optional)</p>
-</dd>
-<dt>legend<span class="classifier">bool</span></dt><dd><p>If true, edge labels will be numbers referenced in legend</p>
-</dd>
-<dt>figsize<span class="classifier">tuple</span></dt><dd><p>The <cite>matplotlib</cite> figsize argument of the plot</p>
-</dd>
-<dt>label_offset<span class="classifier">tuple</span></dt><dd><p>Offset position of all edge labels</p>
-</dd>
-</dl>
-</dd></dl>
-
+          <section id="lattice-surgery">
+<h1>Lattice surgery<a class="headerlink" href="#lattice-surgery" title="Link to this heading">¶</a></h1>
+<p>Here we will demonstrate a simple lattice surgery protocol, obtained from Crumbl.</p>
+<p>IMAGES IMAGES</p>
 </section>
 
         </article>
@@ -376,23 +263,23 @@
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="qsample.utils.html">
+          <a class="next-page" href="ftcheck.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">utils.py</div>
+                <div class="title">Fault-tolerance check</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="qsample.noise.html">
+          <a class="prev-page" href="Surface.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">noise.py</div>
+                <div class="title">Surface Code</div>
                 
               </div>
             </a>
@@ -414,37 +301,8 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer">
+    <aside class="toc-drawer no-toc">
       
-      
-      <div class="toc-sticky toc-scroll">
-        <div class="toc-title-container">
-          <span class="toc-title">
-            On this page
-          </span>
-        </div>
-        <div class="toc-tree-container">
-          <div class="toc-tree">
-            <ul>
-<li><a class="reference internal" href="#">protocol.py</a><ul>
-<li><a class="reference internal" href="#qsample.protocol.Protocol"><code class="docutils literal notranslate"><span class="pre">Protocol</span></code></a><ul>
-<li><a class="reference internal" href="#qsample.protocol.Protocol.add_node"><code class="docutils literal notranslate"><span class="pre">Protocol.add_node()</span></code></a></li>
-<li><a class="reference internal" href="#qsample.protocol.Protocol.add_nodes_from"><code class="docutils literal notranslate"><span class="pre">Protocol.add_nodes_from()</span></code></a></li>
-<li><a class="reference internal" href="#qsample.protocol.Protocol.draw"><code class="docutils literal notranslate"><span class="pre">Protocol.draw()</span></code></a></li>
-<li><a class="reference internal" href="#qsample.protocol.Protocol.get_circuit"><code class="docutils literal notranslate"><span class="pre">Protocol.get_circuit()</span></code></a></li>
-<li><a class="reference internal" href="#qsample.protocol.Protocol.qubits"><code class="docutils literal notranslate"><span class="pre">Protocol.qubits</span></code></a></li>
-<li><a class="reference internal" href="#qsample.protocol.Protocol.root"><code class="docutils literal notranslate"><span class="pre">Protocol.root</span></code></a></li>
-<li><a class="reference internal" href="#qsample.protocol.Protocol.successor"><code class="docutils literal notranslate"><span class="pre">Protocol.successor()</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#qsample.protocol.draw_protocol"><code class="docutils literal notranslate"><span class="pre">draw_protocol()</span></code></a></li>
-</ul>
-</li>
-</ul>
-
-          </div>
-        </div>
-      </div>
       
       
     </aside>

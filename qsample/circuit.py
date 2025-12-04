@@ -195,6 +195,62 @@ def extract_detector_measurements(stim_str):
 
     return result
 
+def extract_observable_measurements(stim_str):
+    """
+    Extracts the measurement dependencies for each DETECTOR in a stim circuit.
+
+    **Attributes:**
+
+        stim_str: The stim circuit string.
+
+    **Returns:**
+
+        result: A 2D list where each row corresponds to a DETECTOR and contains
+                    the measurement indices (relative 'rec' values) used in that detector.
+    """
+    result = []
+    combined_measurements = []
+    ordered_measurements = []
+    for instruction in stim_str.split('\n'):
+        instruction_list = instruction.split(' ')
+        observable_instruction=False
+        measurement_instruction=False
+        
+        for ii in instruction_list:
+            if (not observable_instruction) and (not measurement_instruction):
+                d_match = re.findall(r'OBSERVABLE_INCLUDE', ii)
+                if d_match:
+                    observable_measurements = []
+                    observable_instruction = True
+                
+                m_match = re.findall(r'M', ii)
+                if m_match:
+                    measurement_list=[]
+                    measurement_instruction=True
+            
+            elif observable_instruction:
+                match = re.findall(r"rec\[(\-?\d+)\]", ii)
+                if match:
+                    observable_measurements.append(combined_measurements[int(match[0])])
+            
+            elif measurement_instruction:
+                if len(ii)>0:
+                    measurement_list.append(int(ii))
+        
+        if observable_instruction:
+            result.append(observable_measurements)
+        
+        if measurement_instruction:
+            combined_measurements.extend(measurement_list)
+            ordered_measurements.extend(sorted(measurement_list))
+                
+    
+    for i in range(len(result)):
+        for j in range(len(result[i])):
+            result[i][j]=ordered_measurements.index(result[i][j])
+
+    return result
+
 class Circuit(MutableSequence):
     """Representation of a quantum circuit
     
@@ -238,12 +294,18 @@ class Circuit(MutableSequence):
         stim_str : str
             A string defining the circuit in STIM
         """
+        def remove_parenthesis(name):
+            if "(" in name:
+                name = name[:name.index("(")]
+            return name
+
         if isinstance(stim_str, stim.Circuit):
             self.dem = stim_str.detector_error_model()
             stim_str = repr(stim_str)
         else:
             self.dem = stim.Circuit(stim_str).detector_error_model()
         self.detector_array = extract_detector_measurements(stim_str)
+        self.observable_array = extract_observable_measurements(stim_str)
         self._ticks = ["foo"]
         
         
@@ -263,6 +325,7 @@ class Circuit(MutableSequence):
             for i in instruction_list:
                 if len(i)!=0 and not is_target: # First non-empty element in array is the gate name
                     name = i
+                    name = remove_parenthesis(name)
                     is_target = True
                     
                     if name == "REPEAT":    # Open repeat block
@@ -272,7 +335,6 @@ class Circuit(MutableSequence):
                         
                     elif name in GATES_stim_unpacked:
                         valid_gate=True
-                    
                     
                 
                 elif len(i)!=0 and (name=="REPEAT"): # The following number is the number of repetitions

@@ -9,4 +9,6 @@ Some example protocols:
     Using PyMatching to decode errors <PyMatching>
     Many ways of defining a circuit for the Steane code <Steane>
     Topological QEC with the Surface code <Surface> 
+    Multiple logical qubits with lattice surgery <lattice>
+    Checking for fault tolerance <ftcheck>
 

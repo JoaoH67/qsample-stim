@@ -192,7 +192,8 @@
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1 current has-children"><a class="reference internal" href="qsample.html">QSample documentation</a><input aria-label="Toggle navigation of QSample documentation" checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation guide</a></li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="qsample.html">QSample docs</a><input aria-label="Toggle navigation of QSample docs" checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="qsample.sampler.html">Samplers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="qsample.sim.html">Simulators</a></li>
 <li class="toctree-l2 current current-page"><a class="current reference internal" href="#">circuit.py</a></li>
@@ -203,12 +204,14 @@
 <li class="toctree-l2"><a class="reference internal" href="qsample.utils.html">utils.py</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="examples.html">Examples</a><input aria-label="Toggle navigation of Examples" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="examples.html">Example protocols</a><input aria-label="Toggle navigation of Example protocols" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="GHZ.html">GHZ state preparation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Teleportation.html">Quantum teleportation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PyMatching.html">Using PyMatching to decode errors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Steane.html">Many ways of defining a circuit for the Steane code</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Surface.html">Topological QEC with the Surface code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lattice.html">Multiple logical qubits with lattice surgery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ftcheck.html">Checking for fault tolerance</a></li>
 </ul>
 </li>
 </ul>
@@ -405,6 +408,23 @@ fault-free case is always deterministic</p>
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="qsample.circuit.extract_observable_measurements">
+<span class="sig-prename descclassname"><span class="pre">qsample.circuit.</span></span><span class="sig-name descname"><span class="pre">extract_observable_measurements</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stim_str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.circuit.extract_observable_measurements" title="Link to this definition">¶</a></dt>
+<dd><p>Extracts the measurement dependencies for each DETECTOR in a stim circuit.</p>
+<p><strong>Attributes:</strong></p>
+<blockquote>
+<div><p>stim_str: The stim circuit string.</p>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><dl class="simple">
+<dt>result: A 2D list where each row corresponds to a DETECTOR and contains</dt><dd><p>the measurement indices (relative ‘rec’ values) used in that detector.</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="qsample.circuit.pair_elements">
 <span class="sig-prename descclassname"><span class="pre">qsample.circuit.</span></span><span class="sig-name descname"><span class="pre">pair_elements</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lst</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qsample.circuit.pair_elements" title="Link to this definition">¶</a></dt>
 <dd><p>Helper function for converting 2 qubit gates from QSample to STIM</p>
@@ -505,6 +525,7 @@ a list of dicts</p>
 </li>
 <li><a class="reference internal" href="#qsample.circuit.draw_circuit"><code class="docutils literal notranslate"><span class="pre">draw_circuit()</span></code></a></li>
 <li><a class="reference internal" href="#qsample.circuit.extract_detector_measurements"><code class="docutils literal notranslate"><span class="pre">extract_detector_measurements()</span></code></a></li>
+<li><a class="reference internal" href="#qsample.circuit.extract_observable_measurements"><code class="docutils literal notranslate"><span class="pre">extract_observable_measurements()</span></code></a></li>
 <li><a class="reference internal" href="#qsample.circuit.pair_elements"><code class="docutils literal notranslate"><span class="pre">pair_elements()</span></code></a></li>
 <li><a class="reference internal" href="#qsample.circuit.qs2stim"><code class="docutils literal notranslate"><span class="pre">qs2stim()</span></code></a></li>
 <li><a class="reference internal" href="#qsample.circuit.unpack"><code class="docutils literal notranslate"><span class="pre">unpack()</span></code></a></li>
