@@ -1,4 +1,5 @@
 import numpy as np
+import random
 from .circuit import Circuit, GATES, unpack
 
 DEPOLAR1 = {"X", "Y", "Z"}
@@ -34,6 +35,14 @@ class ErrorModel:
         return {grp: [locs[i] for i in np.random.choice(len(locs), weight, replace=False)]
                 for (grp,locs),weight in zip(groups.items(), weights)}
     
+    @staticmethod
+    def get_next_circuit(groups: dict):
+        """Generates error chain E' one error location away from error chain E"""
+        grp, locs = list(groups.items())[0]
+        loc = random.sample(locs, 1)
+        return {grp:loc}
+
+
     def run(self, circuit, fgroups):
         """Generate new Circuit of same length as `Circuit` with faults generated
         by `self.generate` and corresponding location for each group in fgroups."""
