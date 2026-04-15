@@ -1,0 +1,5 @@
+\contentsline {section}{\numberline {0.1}Splitting method overview}{2}{section.0.1}%
+\contentsline {subsection}{\numberline {0.1.1}Splitting method for estimating QEC thresholds}{2}{subsection.0.1.1}%
+\contentsline {section}{\numberline {0.2}The Splitting method}{4}{section.0.2}%
+\contentsline {section}{\numberline {0.3}Results}{6}{section.0.3}%
+\contentsline {section}{\numberline {0.4}Conclusion}{8}{section.0.4}%

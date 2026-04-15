@@ -1,0 +1,69 @@
+\section{Splitting method overview}
+
+The splitting method is based on a estimation method to calculate the
+free energy difference between two highly overlapping canonical ensembles\cite{bennett1976efficient}.
+Consider a system with a configuration space defined by coordinates $\{q_1, \ldots, q_N\}$,
+on which we define a temperature-scaled energy function $U_0(q_1, \ldots, q_N) = \Phi_0(q_1, \ldots, q_N)/k_BT$.
+With this energy, we can build the partition function for the ensemble:
+$$ Z_0 = \int \exp[-U_0(q_1, \ldots, q_N)] dq_1\ldots dq_N $$
+An exact calculation of $Z_0$ is often intractable, but given the same configuration space, the ratio
+between two partition functions $Z_0/Z_1$ defined by energy functions $U_0$ and $U_1$ is tractable by Monte Carlo methods.
+
+To calculate this ratio, we define a Metropolis function $M(x)= \min\{1, e^{-x}\}$,
+and notice that, for a given configuration of the ensemble, the two energy functions have the property
+$$ M(U_1-U_0)\exp(-U_0)=M(U_0-U_1)\exp(-U_1).$$
+We can then integrate both sides over the configuration space and obtain:
+\begin{equation}
+    \begin{split}
+        \int M(U_1-U_0)\exp(-U_0) dq_1\ldots dq_N & = \int M(U_0-U_1)\exp(-U_1) dq_1\ldots dq_N = \\
+        Z_0\frac{\int M(U_1-U_0)\exp(-U_0) dq_1\ldots dq_N}{Z_0}& = Z_1 \frac{\int M(U_0-U_1)\exp(-U_1) dq_1\ldots dq_N}{Z_1}=\\
+        Z_0\langle  M(U_1-U_0)\rangle_0 & = Z_1\langle  M(U_0-U_1)\rangle_1 \\
+    \end{split}
+\end{equation}
+So that we obtain the ratio as:
+\begin{equation}
+ \frac{Z_0}{Z_1}=\frac{\langle  M(U_0-U_1)\rangle_1}{\langle  M(U_1-U_0)\rangle_0}.
+\label{eq:ratio}
+\end{equation}
+The quantities on the right-hand side can be calculated by direct Monte Carlo sampling if $|U_1-U_0|$ is
+not too big. One way around if this difference is big is to define intermediate energy functions $U_i$ to
+create a chain of highly overlapping ensembles between the two target ensembles. This is especially simple to
+do in our particular case of estimating the error rate of QEC codes, as we will see below.
+
+\subsection{Splitting method for estimating QEC thresholds}
+
+An application of the splitting method for the calculation of quantum error correction thresholds can be found in \cite{beverland2025fail}.
+In the calculation of QEC thresholds, each energy function corresponds to a physical error rate $p$ for which
+we want to find the logical error rate $P(p)$. We begin with a high enough $p_0$ for which we can use regular
+Monte Carlo methods to obtain a reliable estimate $P(p_0)$, and obtain $P(p)$ by multiplying over a chain of 
+$t$ physical error rates $p_0>p_1>\ldots>p_{t-1}>p$:
+$$ P(p) = P(p_0)\cdot\frac{P(p_1)}{P(p_0)}\cdot\ldots\cdot\frac{P(p)}{P(p_{t-1})}$$
+If the circuit we are testing has $N$ possible error locations, then a bitstring $E$ of errors has a probability
+$\pi_j=p_j^{|E|}(1-p_j)^{N-|E|}$ to occur. Denoting the set of all bitstrings that lead to a logical fault by $\mathcal{F}$,
+the probability of a bitstring $E$ given the presence of a logical fault is $\pi_j(E|\mathcal{F})=\pi_j(E)/P(p_j)$.
+Then, any function of error configurations can be defined by:
+$$\langle f\rangle_j = \sum_{E\in\mathcal{F}} \pi_j(E|\mathcal{F}) f(E)$$
+Which we can estimate using $T$ Monte Carlo samples by 
+$$\langle \hat{f}\rangle_j = \frac{1}{T}\sum_{\alpha=1}{T}f(E_\alpha)$$
+provided that the distribution of $E_\alpha$ approaches $\pi_j(E|\mathcal{F})$.
+We can obtain such a set $\{E_\alpha\}_j$ by performing metropolis sampling over error configurations, beginning with
+a bitstring $E_0$ that is known to cause a logical fault, and given a last known failing configuration $E_i$,
+adding a new bistring $E_{i+1}$ that differs from $E_i$ on
+a single error location with probability $q = \min{1, \frac{\pi_j(E_i)}{\pi_j(E_{i+1})}}$.
+The $E_i$'s will form a Markov chain that will eventually become a stationary distribution on $\mathcal{F}$ that approximates $\pi_j(E|\mathcal{F})$.
+
+With two Markov chains $\mathcal{M}_{j-1}$ and $\mathcal{M}_j$ we can calculate the ratio $r_j=\frac{P(p_j)}{P(p_{j-1})}$ by:
+$$r_j = \frac{P(p_j)}{P(p_{j-1})}
+= c \cdot \frac{\langle g(c\pi_{j-1}/\pi_j)\rangle_{j-1}}
+{\langle g(c^{-1}\pi_j/\pi_{j-1})\rangle_j}$$
+for some constant $c$ whose optimal value is $r_j$, which typically we arrive at by iterating the equation above 3 times.
+The algorithm is detailed below.
+
+
+
+
+
+
+
+
+

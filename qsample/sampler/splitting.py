@@ -4,6 +4,7 @@ import qsample.utils as utils
 from copy import deepcopy
 from ..callbacks import CallbackList
 from tqdm.auto import tqdm
+from time import time
 
 import numpy as np
 
@@ -224,13 +225,16 @@ class SplittingSampler:
             if i: subset+=1
         return subset
 
-    def calculate_error(self, p_min, t_init):
+    def calculate_error(self, p_min, t_init, seed=None):
         """Execute n_shots of subset sampling
         
         **Attributes:**
     
         """
-
+        if seed is None:
+            seed = int((time() * 1000000000) % (2**32 - 1))
+        np.random.seed(seed)
+        
         self.physical_p = [self.p_max[0][0]] # p1
         self.logical_p = [self.monte_carlo.stats()[0]]
         E_0_subset=self.calculate_subset(self.E_0)

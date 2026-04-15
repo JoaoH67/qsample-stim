@@ -1,0 +1,78 @@
+\section{The Splitting method}
+
+\begin{algorithm}[t]
+\caption{Splitting Method for Estimating $P(p)$}
+\begin{algorithmic}[1]
+
+\State \textbf{Input:} Probability sequence $p_1,\ldots,p_t = p$, initial chain length $T_{\text{init}}$, initial failure probability $P(p_1)$.
+\State \textbf{Parameters:} Scaling factor $\lambda = 2$, target relative error $\epsilon = 0.25$, function $g(x) = \frac{1}{1+x}$.
+\State \textbf{Output:} Estimated failure probability $\hat{P}(p)$ with relative error $< \epsilon$.
+\State Initialize $\hat{P} \gets P(p_1)$.
+
+\For{$j = 1$ to $t$}
+\hrule
+\textbf{Gather Metropolis samples until desired precision reached}
+\State Initialize Markov chain $\mathcal{M}_j = [E_0]$, where $E_0$ is a known failing fault configuration.
+\State Set sequence length $T_j \gets T_{\text{init}}$
+\State Initialize $\lambda' \gets \lambda$
+
+\While{$|\mathcal{M}_j| < T_j + 1$}
+    \State Extend $\mathcal{M}_j$ using Metropolis updates (Algorithm 3 with $p_j$) until length $T_j + 1$: $\mathcal{M}_j = [E_0, E_1, \ldots, E_{T_j}]$
+
+    \State Compute sample estimates:$
+    \langle \hat{g}_\pm \rangle_j = \frac{1}{T_j} \sum_{\alpha=1}^{T_j} g\left(\frac{\pi_j(E_\alpha)}{\pi_{j\pm1}(E_\alpha)}\right)
+    $
+
+    \State Compute sample variances: 
+    $
+    s_\pm^2 = \frac{1}{T_j - 1} \sum_{\alpha=1}^{T_j} 
+    \left( g\left(\frac{\pi_j(E_\alpha)}{\pi_{j\pm1}(E_\alpha)}\right) - \langle \hat{g}_\pm \rangle_j \right)^2
+    $
+
+    \State Estimate statistical error: $
+    \sigma = \max\left( \frac{s_+}{\langle \hat{g}_+ \rangle_j}, \frac{s_-}{\langle \hat{g}_- \rangle_j} \right) \frac{1}{\sqrt{T_j}}
+    $
+
+    \State Compute sample subset estimates (first half):$\langle \hat{g}'_\pm \rangle_j = \frac{1}{\lfloor T_j/2 \rfloor} 
+    \sum_{\alpha=1}^{\lfloor T_j/2 \rfloor} 
+    g\left(\frac{\pi_j(E_\alpha)}{\pi_{j\pm1}(E_\alpha)}\right)
+    $
+
+    \State Estimate mixing discrepancy:$ \Delta = \max\left(
+    \frac{|\langle \hat{g}_+ \rangle_j - \langle \hat{g}'_+ \rangle_j|}{\langle \hat{g}_+ \rangle_j},
+    \frac{|\langle \hat{g}_- \rangle_j - \langle \hat{g}'_- \rangle_j|}{\langle \hat{g}_- \rangle_j}
+    \right)$
+
+    \If{$(\sigma + \Delta) > \epsilon / \sqrt{t}$}
+        \State $T_j \gets T_j + \lceil \lambda' \cdot T_{\text{init}} \rceil$
+        \State $\lambda' \gets \lambda \cdot \lambda'$
+    \EndIf
+
+\EndWhile
+
+\State \textbf{Estimate ratio using Metropolis samples from current and previous round}
+
+\If{$j \geq 2$}
+    \State Initialize $c \gets 1$
+    \For{$i \in \{1,2,3\}$}
+        \State Compute ratio estimate:
+        \[
+        \hat{r}_{j-1} = c \cdot 
+        \frac{\sum_{\alpha=1}^{T_{j-1}} g\left(\frac{c\,\pi_{j-1}(E'_\alpha)}{\pi_j(E'_\alpha)}\right)}
+        {\sum_{\alpha=1}^{T_j} g\left(\frac{\pi_j(E_\alpha)}{c\,\pi_{j-1}(E_\alpha)}\right)}
+        \]
+        \State $c \gets \hat{r}_{j-1}$
+    \EndFor
+
+    \State Update failure probability estimate:
+    \[
+    \hat{P} \gets \hat{P} \cdot \hat{r}_{j-1}
+    \]
+\EndIf
+
+\EndFor
+
+\State \Return $\hat{P}$
+
+\end{algorithmic}
+\end{algorithm}
