@@ -239,6 +239,7 @@ class SplittingSampler:
         self.logical_p = [self.monte_carlo.stats()[0]]
         E_0_subset=self.calculate_subset(self.E_0)
         self.t_init = t_init # Initial Markov chain length
+        self.actual_lengths = []
 
         while self.physical_p[-1]>p_min:
             w = max(self.distance/2, len(self.circuit)*self.physical_p[-1])
@@ -302,6 +303,7 @@ class SplittingSampler:
                         t += scaling*t_init
                         scaling*=2
 
+            self.actual_lengths.append(len(self.subsets))
             r = self.find_ratio(j)
             self.logical_p.append(self.logical_p[-1]*r)
 
@@ -318,9 +320,9 @@ class SplittingSampler:
         
         for _ in range(3):
 
-            c*= (np.sum(self.g(c*self.subset_probs[j-1, self.old_subsets[1:]]/ # pi_j-1(E')
+            c*= (np.average(self.g(c*self.subset_probs[j-1, self.old_subsets[1:]]/ # pi_j-1(E')
                                         self.subset_probs[j, self.old_subsets[1:]]))/ #pi_j(E')
-            np.sum(self.g(1/c*self.subset_probs[j, self.subsets[1:]]/ # pi_j-1(E)
+            np.average(self.g(1/c*self.subset_probs[j, self.subsets[1:]]/ # pi_j-1(E)
                                         self.subset_probs[j-1, self.subsets[1:]]))) # pi_j(E)
         return c
         

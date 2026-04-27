@@ -58,8 +58,8 @@
         \State Compute ratio estimate:
         \[
         \hat{r}_{j-1} = c \cdot 
-        \frac{\sum_{\alpha=1}^{T_{j-1}} g\left(\frac{c\,\pi_{j-1}(E'_\alpha)}{\pi_j(E'_\alpha)}\right)}
-        {\sum_{\alpha=1}^{T_j} g\left(\frac{\pi_j(E_\alpha)}{c\,\pi_{j-1}(E_\alpha)}\right)}
+        \frac{\frac{1}{T_{j-1}}\sum_{\alpha=1}^{T_{j-1}} g\left(\frac{c\,\pi_{j-1}(E'_\alpha)}{\pi_j(E'_\alpha)}\right)}
+        {\frac{1}{T_j}\sum_{\alpha=1}^{T_j} g\left(\frac{\pi_j(E_\alpha)}{c\,\pi_{j-1}(E_\alpha)}\right)}
         \]
         \State $c \gets \hat{r}_{j-1}$
     \EndFor
