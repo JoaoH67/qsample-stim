@@ -419,11 +419,14 @@ class LifetimeSampler:
         utils.save(self, path)
         
     def calculate_subset(self, circuits):
-        subset = 0
+        subsets=[]
+        
         for circuit in circuits:
+            subset = 0
             for i in list(circuit._ticks):
                 if i: subset+=1
-        return subset
+            subsets.append(subset)
+        return np.array(subsets)
 
     def calculate_lifetime(self, n_rounds, t_init, p, seed=None):
         """
@@ -446,19 +449,25 @@ class LifetimeSampler:
         self.subset_probs = p**np.arange(N*n_rounds)*(1-p)**(np.arange(N*n_rounds)[::-1])
 
         # Create first Markov chain
-        self.subsets = [[E_0_subset]*n_rounds] 
         self.pi_E=self.subset_probs[E_0_subset*n_rounds] # pi_1(E0)
         self.failing_circuits = [[self.E_0]*n_rounds]
 
         # Begin with a failure configuration that fails on the first round
         self.failing_times = [1]
-        
+        self.failing_subsets = [np.ones(n_rounds)*E_0_subset]
+
         t = t_init
     
         while len(self.failing_circuits)<t:
             self.get_next_element(n_rounds)
 
+
         self.failing_times = np.array(self.failing_times)
+        self.failing_subsets_all = np.array(self.failing_subsets)
+
+        self.failing_weights = np.zeros(t)
+        for i in range(t):
+            self.failing_weights[i] = np.sum(self.failing_subsets_all[i,:self.failing_times[i]])
 
         return np.average(self.failing_times)
         
@@ -516,15 +525,15 @@ class LifetimeSampler:
             new_circuit_all.append(new_circuit)
 
         new_subset = self.calculate_subset(new_circuit_all)
-        pi_E_new = self.subset_probs[new_subset]
+        pi_E_new = self.subset_probs[np.sum(new_subset)]
         q = pi_E_new/self.pi_E
         if np.random.rand(1)<q:
             fail_round =  self.run(new_circuit_all, n_rounds)
             if fail_round is not None:
                 self.failing_times.append(fail_round)
                 self.failing_circuits.append(new_circuit_all)
+                self.failing_subsets.append(new_subset)
                 self.pi_E = pi_E_new
-                self.subsets.append(new_subset)
         
     def run(self, fault_circuits, n_rounds):
 
@@ -545,7 +554,7 @@ class LifetimeSampler:
                 msmt_hist[pnode] = msmt_hist.get(pnode, []) + [msmt]
             else:
                 round += 1
-                if pnode != None:
+                if (pnode != None) and (fail_round is None):
                     fail_round = np.copy(round)
                 if round < n_rounds:
                     pnode = self.protocol.root
