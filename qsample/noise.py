@@ -40,7 +40,21 @@ class ErrorModel:
         """Generates error chain E' one error location away from error chain E"""
         grp, locs = list(groups.items())[0]
         loc = random.sample(locs, 1)
+        first_elements = [x for x, _ in loc]
         return {grp:loc}
+
+    @staticmethod
+    def birth(current, groups: dict):
+        grp, locs = list(groups.items())[0]
+        loc = random.choice([x for x in locs if x not in current])
+        return {grp:[loc]}, loc[0]
+
+    @staticmethod
+    def death(current, groups: dict):
+        grp, locs = list(groups.items())[0]
+        loc = random.choice(current)
+        return {grp:[loc]}
+    
 
 
     def run(self, circuit, fgroups):

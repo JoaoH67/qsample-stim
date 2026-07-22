@@ -5,7 +5,7 @@ from copy import deepcopy
 from ..callbacks import CallbackList
 from tqdm.auto import tqdm
 from time import time
-
+import random
 import numpy as np
 
 class DirectSampler:
@@ -88,6 +88,25 @@ class DirectSampler:
             callbacks = CallbackList(sampler=self, callbacks=callbacks)
                     
         callbacks.on_sampler_begin()
+                
+
+        pnode = self.protocol.root # get protocol start node
+        state = self.simulator(len(self.protocol.qubits)) # init state
+        msmt_hist = {} # init measurement history
+        
+        while True:
+            pnode, circuit = self.protocol.successor(pnode, msmt_hist)
+            if circuit != None:
+                if not circuit.noisy:
+                    msmt = state.run(circuit)
+                else:
+                    no_locs = self.err_model.choose_p(self.partitions[circuit.id], [1e-30])
+                    no_fault_circuit = self.err_model.run(circuit, no_locs)
+                    msmt = state.run(circuit, no_fault_circuit)
+                msmt = msmt if msmt==None else int(msmt,2) # convert to int for comparison in checks
+                msmt_hist[pnode] = msmt_hist.get(pnode, []) + [msmt]
+            else:
+                break
         
         for i, p in enumerate(self.err_params):
             
@@ -133,7 +152,7 @@ class DirectSampler:
         
         del self.stop_sampling
         callbacks.on_sampler_end()
-        return error_circuits, relevant_circuit # Modified so that it returns a failing fault configuration
+        return error_circuits, relevant_circuit, no_fault_circuit # Modified so that it returns a failing fault configuration
 
 
 class SplittingSampler:
@@ -178,7 +197,7 @@ class SplittingSampler:
         
         # Calculate initial failure probability P(p1) using Direct Monte Carlo sampling
         self.monte_carlo=DirectSampler(self.protocol, self.simulator, err_model, p_max)
-        self.E_0, self.circuit = self.monte_carlo.run(n_shots) # Modified .run from original function
+        self.E_0, self.circuit, self.no_faults = self.monte_carlo.run(n_shots) # Modified .run from original function
         self.logical_p = [self.monte_carlo.stats()[0]] # P(p1)
         self.logical_error = [self.monte_carlo.stats()[1]] # epsilon
 
@@ -378,20 +397,19 @@ class SplittingSampler:
 
 class LifetimeSampler:
     
-    def __init__(self, n_shots, protocol, simulator, p_max, err_model, distance=None):
+    def __init__(self, n_shots, protocol, simulator, p_max, err_model):
 
         self.protocol = protocol
         self.simulator = simulator
         
         # Calculate initial failure probability P(p1) using Direct Monte Carlo sampling
         self.monte_carlo=DirectSampler(self.protocol, self.simulator, err_model, p_max)
-        self.E_0, self.circuit = self.monte_carlo.run(n_shots) # Modified .run from original function
+        self.E_0, self.circuit, self.no_faults = self.monte_carlo.run(n_shots) # Modified .run from original function
         self.logical_p = [self.monte_carlo.stats()[0]] # P(p1)
         self.logical_error = [self.monte_carlo.stats()[1]] # epsilon
 
         self.err_model = err_model()
         self.p_max = self.err_params_to_matrix(p_max) # p1
-        self.distance = distance
         
         self.partitions = {cid: self.err_model.group(circuit) for cid, circuit in self.protocol.circuits.items()}
         constants = {cid: math.subset_probs(circuit, self.err_model, self.p_max) for cid, circuit in protocol.circuits.items()}
@@ -443,23 +461,28 @@ class LifetimeSampler:
         self.t_init = t_init # Initial Markov chain length
 
         
-        N = len(self.circuit)
+        self.max_faults = len(self.no_faults)
+        self.max_faults = 1 # to debug
 
         # pi(E) for n_rounds of circuits
-        self.subset_probs = p**np.arange(N*n_rounds)*(1-p)**(np.arange(N*n_rounds)[::-1])
+        round = 1-(1-p)**self.max_faults
+        self.round_probs = ((1-round)**np.arange(n_rounds))*round
+        self.round_probs[-1]/=round
 
-        # Create first Markov chain
-        self.pi_E=self.subset_probs[E_0_subset*n_rounds] # pi_1(E0)
+        self.n_locs = len(self.partitions[self.circuit.id])*n_rounds
+
         self.failing_circuits = [[self.E_0]*n_rounds]
+        self.pi_E=self.log_probs(self.failing_circuits[-1], self.n_locs)
 
         # Begin with a failure configuration that fails on the first round
         self.failing_times = [1]
-        self.failing_subsets = [np.ones(n_rounds)*E_0_subset]
+        self.failing_subsets = [self.calculate_subset(self.failing_circuits[0])]
 
         t = t_init
     
         while len(self.failing_circuits)<t:
             self.get_next_element(n_rounds)
+            #print(self.failing_subsets[-1])
 
 
         self.failing_times = np.array(self.failing_times)
@@ -496,44 +519,130 @@ class LifetimeSampler:
                 scaling*=2
         """
 
+    def log_probs(self, circuits, n_locs):
 
+        count = 0
+        for circuit in circuits:
+            for i in list(circuit._ticks):
+                if i: count+=1
+        return np.log(self.physical_p)*count-np.log(1-self.physical_p)*n_locs
 
 
     def get_next_element(self, n_rounds): # Metropolis sampling step
         
-        new_circuit_all = []
-        fault_round = np.random.randint(n_rounds)
+        u = np.random.rand(1)
 
-        for j in range(n_rounds):
-            if j==fault_round:
-                new_loc = self.err_model.get_next_circuit(self.partitions[self.circuit.id])
-                loc_circuit = self.err_model.run(self.circuit, new_loc)
-                new_circuit = deepcopy(self.failing_circuits[-1][j]) ## OLHAR AQUI
-                for i in range(len(loc_circuit._ticks)):
-                    if loc_circuit._ticks[i]:
-                        qubit_loc = list(loc_circuit[i].values())
-                        for ii in qubit_loc:
-                            if ii in list(new_circuit[i].values()):
-                                index = list(new_circuit[i].values()).index(ii)
-                                key = list(new_circuit[i].keys())[index]   # index you want
-                                new_circuit[i].pop(key)
-                                
-                            else:
-                                new_circuit[i] = new_circuit[i]|loc_circuit[i]
-            else:
-                new_circuit = deepcopy(self.failing_circuits[-1][j])
-            new_circuit_all.append(new_circuit)
+        last_subsets = self.failing_subsets[-1]
+        possible_targets = np.where(last_subsets<self.max_faults)[0]
+        possible_sources = np.where(last_subsets>0)[0]
 
-        new_subset = self.calculate_subset(new_circuit_all)
-        pi_E_new = self.subset_probs[np.sum(new_subset)]
-        q = pi_E_new/self.pi_E
-        if np.random.rand(1)<q:
-            fail_round =  self.run(new_circuit_all, n_rounds)
-            if fail_round is not None:
-                self.failing_times.append(fail_round)
-                self.failing_circuits.append(new_circuit_all)
-                self.failing_subsets.append(new_subset)
-                self.pi_E = pi_E_new
+        source_p = self.round_probs[possible_sources]
+        target_p = self.round_probs[possible_targets]
+
+        death = np.sum(source_p)
+        birth = np.sum(target_p)
+
+        p_birth = 0.2#(birth/(birth+death))**2
+        p_death = 0.2#(death/(birth+death))**2
+        p_reloc = 0.6#2*birth/(birth+death)*death/(birth+death)
+
+
+        if u < p_reloc:
+            new_circuit_all = self.propose_relocation(source_p/death, target_p/birth)
+            move_type_ratio = 0.0
+
+        elif u < p_reloc + p_birth:
+            new_circuit_all = self.propose_birth(target_p/birth)
+            move_type_ratio = 0.0 #np.log(p_birth) - np.log(p_death)
+
+        else:
+            new_circuit_all = self.propose_death(source_p/death)
+            move_type_ratio = 0.0 #np.log(p_death) - np.log(p_birth)
+
+        if new_circuit_all is not None:
+            new_subset = self.calculate_subset(new_circuit_all)
+            pi_E_new = self.log_probs(new_circuit_all, self.n_locs)
+            q = pi_E_new-self.pi_E
+            if np.random.rand(1)<np.exp(q+move_type_ratio):
+                fail_round =  self.run(new_circuit_all, n_rounds)
+                if fail_round is not None:
+                    self.failing_times.append(fail_round)
+                    self.failing_circuits.append(new_circuit_all)
+                    self.failing_subsets.append(new_subset)
+                    self.pi_E = pi_E_new
+
+
+
+    def propose_birth(self, probs):
+        last_subsets = self.failing_subsets[-1]
+        possible_locs = np.where(last_subsets<self.max_faults)[0]
+        if len(possible_locs)==0:
+            return None
+
+        new_circuit=[]
+        for i in range(len(self.failing_circuits[-1])):
+            new_circuit.append(deepcopy(self.failing_circuits[-1][i]))
+        #print(self.round_probs[possible_locs]/np.sum(self.round_probs[possible_locs]))
+        fault_round = np.random.choice(possible_locs, p=probs)
+
+        lst = new_circuit[fault_round]._ticks
+        current = [(i, next(iter(v))) for i, d in enumerate(lst) if d for v in d.values()]
+        
+        new_fault, new_loc = self.err_model.birth(current, self.partitions[self.circuit.id])
+        loc_circuit = self.err_model.run(self.circuit, new_fault)
+
+        new_circuit[fault_round][new_loc] = new_circuit[fault_round][new_loc]|loc_circuit[new_loc]
+
+        return new_circuit
+        
+
+    def propose_death(self, probs):
+        last_subsets = self.failing_subsets[-1]
+        possible_locs = np.where(last_subsets>0)[0]
+        #print(self.round_probs[possible_locs]/np.sum(self.round_probs[possible_locs]))
+        fault_round = np.random.choice(possible_locs, p=probs)
+
+        if len(possible_locs)==0:
+            return None
+
+        new_circuit=[]
+        for i in range(len(self.failing_circuits[-1])):
+            new_circuit.append(deepcopy(self.failing_circuits[-1][i]))
+        indices = [i for i, d in enumerate(new_circuit[fault_round]._ticks) if d != {}]
+
+        idx = random.choice(indices)
+        new_circuit[fault_round]._ticks[idx] = {}
+
+
+        return new_circuit
+
+    def propose_relocation(self, probs_s, probs_t):
+        
+        last_subsets = self.failing_subsets[-1]
+        possible_targets = np.where(last_subsets<self.max_faults)[0]
+        possible_sources = np.where(last_subsets>0)[0]
+        if len(possible_sources)==0 or len(possible_targets)==0:
+            return None
+
+        new_circuit=[]
+        for i in range(len(self.failing_circuits[-1])):
+            new_circuit.append(deepcopy(self.failing_circuits[-1][i]))
+        source_round = np.random.choice(possible_sources, p=probs_s)
+        target_round = np.random.choice(possible_targets, p=probs_t)
+
+        lst = new_circuit[target_round]._ticks
+        current = [(i, next(iter(v))) for i, d in enumerate(lst) if d for v in d.values()]
+        
+        new_fault, new_loc = self.err_model.birth(current, self.partitions[self.circuit.id])
+        loc_circuit = self.err_model.run(self.circuit, new_fault)
+
+        indices = [i for i, d in enumerate(new_circuit[source_round]._ticks) if d != {}]
+        
+        idx = random.choice(indices)
+        new_circuit[source_round]._ticks[idx] = {}
+        new_circuit[target_round][new_loc] = new_circuit[target_round][new_loc]|loc_circuit[new_loc]
+
+        return new_circuit
         
     def run(self, fault_circuits, n_rounds):
 
