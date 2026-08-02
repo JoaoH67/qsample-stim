@@ -140,10 +140,8 @@ class DirectSampler:
                         msmt_hist[pnode] = msmt_hist.get(pnode, []) + [msmt]
                     else:
                         if pnode != None:
-                            # "Interesting" event happened
                             if error_circuits is None:
-                                error_circuits = fault_circuit
-                            self.counts[i] += 1
+                                return fault_circuit, relevant_circuit, fault_locs
                         break
                     callbacks.on_circuit_end(locals())
                 callbacks.on_protocol_end()
@@ -152,7 +150,7 @@ class DirectSampler:
         
         del self.stop_sampling
         callbacks.on_sampler_end()
-        return error_circuits, relevant_circuit, no_fault_circuit # Modified so that it returns a failing fault configuration
+        return None, None, None
 
 
 class SplittingSampler:
@@ -197,7 +195,7 @@ class SplittingSampler:
         
         # Calculate initial failure probability P(p1) using Direct Monte Carlo sampling
         self.monte_carlo=DirectSampler(self.protocol, self.simulator, err_model, p_max)
-        self.E_0, self.circuit, self.no_faults = self.monte_carlo.run(n_shots) # Modified .run from original function
+        self.E_0, self.circuit, self.faults = self.monte_carlo.run(n_shots) # Modified .run from original function
         self.logical_p = [self.monte_carlo.stats()[0]] # P(p1)
         self.logical_error = [self.monte_carlo.stats()[1]] # epsilon
 
@@ -401,52 +399,57 @@ class LifetimeSampler:
 
         self.protocol = protocol
         self.simulator = simulator
-        
-        # Calculate initial failure probability P(p1) using Direct Monte Carlo sampling
-        self.monte_carlo=DirectSampler(self.protocol, self.simulator, err_model, p_max)
-        self.E_0, self.circuit, self.no_faults = self.monte_carlo.run(n_shots) # Modified .run from original function
-        self.logical_p = [self.monte_carlo.stats()[0]] # P(p1)
-        self.logical_error = [self.monte_carlo.stats()[1]] # epsilon
-
+        self.p_max = p_max
         self.err_model = err_model()
-        self.p_max = self.err_params_to_matrix(p_max) # p1
+        
+        self.monte_carlo=DirectSampler(self.protocol, self.simulator, err_model, p_max)
+        self.E_0, self.circuit, self.fault_loc = self.monte_carlo.run(n_shots) # Modified .run from original function
+
+
+        self.err_groups = self.err_model.group(self.circuit)
+        self.max_faults = 0
+        for key in self.err_groups.keys():
+            self.max_faults = len(self.err_groups[key])
+
         
         self.partitions = {cid: self.err_model.group(circuit) for cid, circuit in self.protocol.circuits.items()}
-        constants = {cid: math.subset_probs(circuit, self.err_model, self.p_max) for cid, circuit in protocol.circuits.items()}
-        self.tree = Tree(constants)
-      
-    def err_params_to_matrix(self, err_params):
-        sorted_params = [err_params[k] for k in self.err_model.groups]
-        return np.array(np.broadcast_arrays(*sorted_params)).T
+    
         
-    def stats(self, err_params=None):
+    def log_probs(self, faults, no_faults):
 
-        _constants = self.tree.constants
-        prob = self.err_params if err_params == None else self.err_params_to_matrix(err_params)
-        self.tree.constants = {cid: math.subset_probs(circuit, self.err_model, prob) for cid, circuit in self.protocol.circuits.items()}
-        
-        p_L = self.tree.subtree_sum(self.tree.root, self.tree.marked)
-        delta = self.tree.delta
-        var = self.tree.var(mode=1)
-        var_up = self.tree.var(mode=0)
-        
-        self.tree.constants = _constants
-        return np.broadcast_arrays(p_L, np.sqrt(var), p_L+delta, np.sqrt(var_up))
-        
-    def save(self, path):
-        utils.save(self, path)
-        
-    def calculate_subset(self, circuits):
-        subsets=[]
-        
-        for circuit in circuits:
-            subset = 0
-            for i in list(circuit._ticks):
-                if i: subset+=1
-            subsets.append(subset)
-        return np.array(subsets)
+        arr = np.array([
+            self.p_max[k][0]
+            for d in faults
+            for k, items in d.items()
+            for _ in items
+        ])
 
-    def calculate_lifetime(self, n_rounds, t_init, p, seed=None):
+        no_arr = np.array([1-self.p_max[k][0]
+                for d in no_faults
+                for k, items in d.items()
+                for _ in items
+            ])
+
+        return np.sum(np.log(arr))+np.sum(np.log(no_arr))
+    
+    
+    def no_faults(self, faults):
+        return [
+            {
+                k: [x for x in self.err_groups.get(k, []) if x not in d.get(k, [])]
+                for k in self.err_groups
+            }
+            for d in faults
+        ]
+
+    def calculate_lifetime(self, 
+                           n_rounds=50, 
+                           t_init=1000, 
+                           p=0.3, 
+                           burn_in=500, 
+                           thin=10, 
+                           move_probs=(0.60, 0.20, 0.20), 
+                           seed=None):
         """
         
         **Attributes:**
@@ -455,202 +458,239 @@ class LifetimeSampler:
         if seed is None:
             seed = int((time() * 1000000000) % (2**32 - 1))
         np.random.seed(seed)
-        
+
+        self.t_init = t_init
         self.physical_p = p 
-        E_0_subset=self.calculate_subset([self.E_0])
-        self.t_init = t_init # Initial Markov chain length
+        self.burn_in = burn_in
+        self.thin = thin
+        self.move_probs = move_probs
 
-        
-        self.max_faults = len(self.no_faults)
-        self.max_faults = 1 # to debug
-
-        # pi(E) for n_rounds of circuits
-        round = 1-(1-p)**self.max_faults
-        self.round_probs = ((1-round)**np.arange(n_rounds))*round
-        self.round_probs[-1]/=round
-
-        self.n_locs = len(self.partitions[self.circuit.id])*n_rounds
-
+        self.fault_loc = [deepcopy(self.fault_loc) for _ in range(n_rounds)]
+        self.fault_loc_all = [self.fault_loc]
         self.failing_circuits = [[self.E_0]*n_rounds]
-        self.pi_E=self.log_probs(self.failing_circuits[-1], self.n_locs)
+        self.not_empty = [any(d.values()) for i, d in enumerate(self.fault_loc)]
+        self.no_fault_loc = self.no_faults(self.fault_loc)
+        self.not_full = [any(d.values()) for i, d in enumerate(self.no_fault_loc)]
+
+        self.pi_E = [self.log_probs(self.fault_loc, self.no_fault_loc)]
+
 
         # Begin with a failure configuration that fails on the first round
         self.failing_times = [1]
-        self.failing_subsets = [self.calculate_subset(self.failing_circuits[0])]
 
-        t = t_init
-    
-        while len(self.failing_circuits)<t:
-            self.get_next_element(n_rounds)
-            #print(self.failing_subsets[-1])
+        accepted_burn = 0
+        for _ in tqdm(range(self.burn_in)):
+            accepted = self.get_next_element(n_rounds=n_rounds, move_probs=move_probs)
+            accepted_burn += int(accepted)
+
+        accepted_main = 0    
+        steps_main = 0
+        for _ in tqdm(range(self.t_init)):
+            for _ in range(self.thin):
+                accepted = self.get_next_element(n_rounds=n_rounds, move_probs=move_probs)
+                accepted_main += int(accepted)
+                steps_main += 1
 
 
         self.failing_times = np.array(self.failing_times)
-        self.failing_subsets_all = np.array(self.failing_subsets)
+        #self.failing_subsets_all = np.array(self.failing_subsets)
 
-        self.failing_weights = np.zeros(t)
-        for i in range(t):
-            self.failing_weights[i] = np.sum(self.failing_subsets_all[i,:self.failing_times[i]])
+        #self.failing_weights = np.zeros(self.t_init)
+        #for i in range(self.t_init):
+         #   self.failing_weights[i] = np.sum(self.failing_subsets_all[i,:self.failing_times[i]])
 
-        return np.average(self.failing_times)
+        diagnostics = {
+                "accept_burn": accepted_burn / max(1, self.burn_in),
+                "accept_main": accepted_main / max(1, steps_main),
+                #"final_weight": self.failing_weights,
+                #"final_first_T": self.failing_times,
+                "average_first_T": np.average(self.failing_times[self.burn_in:])
+            }
         
-        """
-        ## HOW DO I MAKE AN EQUIVALENT CALCULATION FOR THE LIFETIME MEASUREMENT
-        if j<n_steps-1:
-            samples_minus = self.g(self.subset_probs[j, self.subsets[1:]]/
-                                    self.subset_probs[j-1, self.subsets[1:]])
-            samples_plus = self.g(self.subset_probs[j, self.subsets[1:]]/
-                                    self.subset_probs[j+1, self.subsets[1:]])
-            
-            g_minus = np.sum(samples_minus)/t
-            g_plus = np.sum(samples_plus)/t
-
-            s_minus = np.sqrt(np.sum((samples_minus-g_minus)**2)/(t-1))
-            s_plus = np.sqrt(np.sum((samples_plus-g_plus)**2)/(t-1))
-
-            sigma = max(s_plus/g_plus, s_minus/g_minus)/np.sqrt(t)
-
-            g_minus_ = np.sum(samples_minus[:int(t/2)])/int(t/2)
-            g_plus_ = np.sum(samples_plus[:int(t/2)])/int(t/2)
-
-            delta = max(abs(g_plus-g_plus_)/g_plus, abs(g_minus-g_minus_)/g_minus)
-            if sigma+delta > 0.25/np.sqrt(n_steps):
-                t += scaling*t_init
-                scaling*=2
-        """
-
-    def log_probs(self, circuits, n_locs):
-
-        count = 0
-        for circuit in circuits:
-            for i in list(circuit._ticks):
-                if i: count+=1
-        return np.log(self.physical_p)*count-np.log(1-self.physical_p)*n_locs
+        return diagnostics
+        
 
 
-    def get_next_element(self, n_rounds): # Metropolis sampling step
+    
+
+    
+    def get_next_element(self, 
+                         n_rounds=50, 
+                         move_probs=(0.60, 0.20, 0.20)): # Metropolis sampling step
         
         u = np.random.rand(1)
 
-        last_subsets = self.failing_subsets[-1]
-        possible_targets = np.where(last_subsets<self.max_faults)[0]
-        possible_sources = np.where(last_subsets>0)[0]
 
-        source_p = self.round_probs[possible_sources]
-        target_p = self.round_probs[possible_targets]
-
-        death = np.sum(source_p)
-        birth = np.sum(target_p)
-
-        p_birth = 0.2#(birth/(birth+death))**2
-        p_death = 0.2#(death/(birth+death))**2
-        p_reloc = 0.6#2*birth/(birth+death)*death/(birth+death)
-
+        p_reloc, p_birth, p_death = move_probs
+        fault_target = None
+        fault_source = None
 
         if u < p_reloc:
-            new_circuit_all = self.propose_relocation(source_p/death, target_p/birth)
+            q, fault_target, fault_source, proposal, no_proposal, new_circuit_all = self.propose_relocation(self.not_empty, self.not_full)
             move_type_ratio = 0.0
 
         elif u < p_reloc + p_birth:
-            new_circuit_all = self.propose_birth(target_p/birth)
-            move_type_ratio = 0.0 #np.log(p_birth) - np.log(p_death)
+            q, fault_target, proposal, no_proposal, new_circuit_all = self.propose_birth(self.not_full)
+            move_type_ratio = np.log(p_birth) - np.log(p_death)
 
         else:
-            new_circuit_all = self.propose_death(source_p/death)
-            move_type_ratio = 0.0 #np.log(p_death) - np.log(p_birth)
+            q, fault_source, proposal, no_proposal, new_circuit_all = self.propose_death(self.not_empty)
+            move_type_ratio = np.log(p_death) - np.log(p_birth)
 
         if new_circuit_all is not None:
-            new_subset = self.calculate_subset(new_circuit_all)
-            pi_E_new = self.log_probs(new_circuit_all, self.n_locs)
-            q = pi_E_new-self.pi_E
-            if np.random.rand(1)<np.exp(q+move_type_ratio):
+            
+
+            if np.random.rand(1)<np.exp(q+move_type_ratio): # Only run circuit if it gets accepted in the first place
+
                 fail_round =  self.run(new_circuit_all, n_rounds)
-                if fail_round is not None:
+                if fail_round: # If FAIL 
                     self.failing_times.append(fail_round)
                     self.failing_circuits.append(new_circuit_all)
-                    self.failing_subsets.append(new_subset)
-                    self.pi_E = pi_E_new
+
+                    self.fault_loc = proposal
+                    self.fault_loc_all.append(self.fault_loc)
+                    self.no_fault_loc = no_proposal
+
+                    if fault_target is not None:
+                        self.not_empty[fault_target] = True
+                        self.not_full[fault_target] = any(self.no_fault_loc[fault_target].values())
+                    if fault_source is not None:
+                        self.not_empty[fault_source] = any(self.fault_loc[fault_source].values())
+                        self.not_full[fault_source] = True
+
+                    self.pi_E.append(self.pi_E[-1]+q)
+
+                    return True
+                else:
+                    return False 
+            else:
+                return False
+        else:
+            return False
 
 
 
-    def propose_birth(self, probs):
-        last_subsets = self.failing_subsets[-1]
-        possible_locs = np.where(last_subsets<self.max_faults)[0]
-        if len(possible_locs)==0:
-            return None
+    def propose_birth(self, possible_locs):
 
-        new_circuit=[]
-        for i in range(len(self.failing_circuits[-1])):
-            new_circuit.append(deepcopy(self.failing_circuits[-1][i]))
-        #print(self.round_probs[possible_locs]/np.sum(self.round_probs[possible_locs]))
-        fault_round = np.random.choice(possible_locs, p=probs)
-
-        lst = new_circuit[fault_round]._ticks
-        current = [(i, next(iter(v))) for i, d in enumerate(lst) if d for v in d.values()]
-        
-        new_fault, new_loc = self.err_model.birth(current, self.partitions[self.circuit.id])
-        loc_circuit = self.err_model.run(self.circuit, new_fault)
-
-        new_circuit[fault_round][new_loc] = new_circuit[fault_round][new_loc]|loc_circuit[new_loc]
-
-        return new_circuit
-        
-
-    def propose_death(self, probs):
-        last_subsets = self.failing_subsets[-1]
-        possible_locs = np.where(last_subsets>0)[0]
-        #print(self.round_probs[possible_locs]/np.sum(self.round_probs[possible_locs]))
-        fault_round = np.random.choice(possible_locs, p=probs)
-
-        if len(possible_locs)==0:
-            return None
+        if sum(possible_locs)==0:
+            return tuple([None]*5)
 
         new_circuit=[]
         for i in range(len(self.failing_circuits[-1])):
             new_circuit.append(deepcopy(self.failing_circuits[-1][i]))
-        indices = [i for i, d in enumerate(new_circuit[fault_round]._ticks) if d != {}]
-
-        idx = random.choice(indices)
-        new_circuit[fault_round]._ticks[idx] = {}
 
 
-        return new_circuit
+        fault_round = random.choice([i for i, x in enumerate(possible_locs) if x])
 
-    def propose_relocation(self, probs_s, probs_t):
+        key, item = random.choice([
+            (k, x)
+            for k, values in self.no_fault_loc[fault_round].items()
+            for x in values
+        ])
+
+        q = np.log(self.p_max[key][0])-np.log(1-self.p_max[key][0])
+                        
+
+        proposal = deepcopy(self.fault_loc)
+        no_proposal = deepcopy(self.no_fault_loc)
+        proposal[fault_round][key].append(item)
+        no_proposal[fault_round][key].remove(item)         
         
-        last_subsets = self.failing_subsets[-1]
-        possible_targets = np.where(last_subsets<self.max_faults)[0]
-        possible_sources = np.where(last_subsets>0)[0]
-        if len(possible_sources)==0 or len(possible_targets)==0:
-            return None
+        loc_circuit = self.err_model.run(self.circuit, {key: [item]})
+        for ii in range(len(loc_circuit)):
+            new_circuit[fault_round][ii] = new_circuit[fault_round][ii]|loc_circuit[ii]
+
+        return q, fault_round, proposal, no_proposal, new_circuit
+        
+
+    def propose_death(self, possible_locs):
+
+        if sum(possible_locs)==0:
+            return tuple([None]*5)
 
         new_circuit=[]
         for i in range(len(self.failing_circuits[-1])):
             new_circuit.append(deepcopy(self.failing_circuits[-1][i]))
-        source_round = np.random.choice(possible_sources, p=probs_s)
-        target_round = np.random.choice(possible_targets, p=probs_t)
 
-        lst = new_circuit[target_round]._ticks
-        current = [(i, next(iter(v))) for i, d in enumerate(lst) if d for v in d.values()]
+
+        fault_round = random.choice([i for i, x in enumerate(possible_locs) if x])
+
+        key, item = random.choice([
+            (k, x)
+            for k, values in self.fault_loc[fault_round].items()
+            for x in values
+        ])
+
+        q = -np.log(self.p_max[key][0])+np.log(1-self.p_max[key][0])
+                        
+
+        proposal = deepcopy(self.fault_loc)
+        no_proposal = deepcopy(self.no_fault_loc)
+        proposal[fault_round][key].remove(item)
+        no_proposal[fault_round][key].append(item)         
         
-        new_fault, new_loc = self.err_model.birth(current, self.partitions[self.circuit.id])
-        loc_circuit = self.err_model.run(self.circuit, new_fault)
+        ii = item[0]
+        new_circuit[fault_round]._ticks[ii] = {}
 
-        indices = [i for i, d in enumerate(new_circuit[source_round]._ticks) if d != {}]
+
+        return q, fault_round, proposal, no_proposal, new_circuit
+
+    def propose_relocation(self, not_empty, not_full):
+
         
-        idx = random.choice(indices)
-        new_circuit[source_round]._ticks[idx] = {}
-        new_circuit[target_round][new_loc] = new_circuit[target_round][new_loc]|loc_circuit[new_loc]
+        if sum(not_empty)==0 or sum(not_full)==0:
+            return tuple([None]*6)
 
-        return new_circuit
+        new_circuit=[]
+        for i in range(len(self.failing_circuits[-1])):
+            new_circuit.append(deepcopy(self.failing_circuits[-1][i]))
+        proposal = deepcopy(self.fault_loc)
+        no_proposal = deepcopy(self.no_fault_loc)
+
+        # BIRTH
+        fault_target = random.choice([i for i, x in enumerate(not_full) if x])
+
+
+        key, item = random.choice([
+            (k, x)
+            for k, values in self.no_fault_loc[fault_target].items()
+            for x in values
+        ])
+
+        q = np.log(self.p_max[key][0])-np.log(1-self.p_max[key][0])
+        proposal[fault_target][key].append(item)
+        no_proposal[fault_target][key].remove(item)         
+        
+        loc_circuit = self.err_model.run(self.circuit, {key: [item]})
+        for ii in range(len(loc_circuit)):
+            new_circuit[fault_target][ii] = new_circuit[fault_target][ii]|loc_circuit[ii]
+
+        # DEATH
+        fault_source = random.choice([i for i, x in enumerate(not_empty) if x])
+
+
+        key, item = random.choice([
+            (k, x)
+            for k, values in self.fault_loc[fault_source].items()
+            for x in values
+        ])
+
+        q += (-np.log(self.p_max[key][0])+np.log(1-self.p_max[key][0]))
+        proposal[fault_source][key].remove(item)
+        no_proposal[fault_source][key].append(item)         
+        
+        ii = item[0]
+        new_circuit[fault_source]._ticks[ii] = {}
+
+        return q, fault_target, fault_source, proposal, no_proposal, new_circuit
         
     def run(self, fault_circuits, n_rounds):
 
         round = 0
-        fail_round = None
         pnode = self.protocol.root # get protocol start node
         state = self.simulator(max(self.protocol.qubits)+1) # init state
         msmt_hist = {} # init measurement history
+
         while True:
             pnode, circuit = self.protocol.successor(pnode, msmt_hist)
             if circuit != None:
@@ -658,16 +698,16 @@ class LifetimeSampler:
                     msmt = state.run(circuit)
                 else:
                     msmt = state.run(circuit, fault_circuits[round])
-
                 msmt = msmt if msmt==None else int(msmt,2) # convert to int for comparison in checks
                 msmt_hist[pnode] = msmt_hist.get(pnode, []) + [msmt]
             else:
                 round += 1
-                if (pnode != None) and (fail_round is None):
-                    fail_round = np.copy(round)
+                if (pnode != None):
+                    return deepcopy(round)
+                
                 if round < n_rounds:
                     pnode = self.protocol.root
                     msmt_hist = {}
                 else:
-                    return fail_round
+                    return False
             
