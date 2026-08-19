@@ -7,6 +7,7 @@ from .protocol import Protocol
 from .sampler.direct import DirectSampler
 from .sampler.subset import SubsetSampler
 from .sampler.ftcheck import FT_Check
-from .sampler.splitting import SplittingSampler, LifetimeSampler
+from .sampler.splitting import SplittingSampler
+from .sampler.lifetime import LifetimeSampler
 
 from .noise import *
